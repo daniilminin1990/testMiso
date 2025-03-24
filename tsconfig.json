@@ -1,0 +1,57 @@
+// editor only --babel ignores tsconfig
+{
+  "compilerOptions": {
+    "rootDirs": ["src" /* "jest" */],
+    "baseUrl": "./src",
+    "paths": {
+      "@shared/": ["./shared/"],
+      "@entities/": ["./entities/"],
+      "@features/": ["./features/"],
+      "@pages/": ["./pages/"],
+      "@widgets/": ["./widgets/"],
+      "@app/": ["./app/"],
+      "@server/*": ["./server/*"],
+      "@defs/*": ["./types/*"]
+    },
+    "outDir": "build",
+    "lib": ["dom", "esnext"],
+
+    "target": "ES6",
+    "module": "Preserve",
+    "strict": true,
+    "esModuleInterop": true,
+
+    "typeRoots": ["node_modules/@types", "src/@types"],
+
+    "allowJs": true,
+    "skipLibCheck": true,
+
+    "allowSyntheticDefaultImports": true,
+
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    "noEmit": true,
+    "jsx": "preserve",
+
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "goToDefinition": true,
+          "customTemplate": "./customTemplate.js" // ЭТО ЧТО???
+        }
+      }
+    ]
+  },
+  // ****** "include": ["./src"], // Добавил *mjs файл, и строка в eslint config mjs импорта eslint/js перестала ругаться
+  "include": ["./src", "*.mjs"],
+  "exclude": ["node_modules", "build", "coverage", "webpack.js", ".config.js"]
+}

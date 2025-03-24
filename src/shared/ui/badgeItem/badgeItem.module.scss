@@ -1,0 +1,41 @@
+@use "../../../shared/styles/mixins/textTransform.scss";
+@use "../../../shared/styles/variables.scss";
+@use "../../../shared/styles/mixins/rfs.scss";
+
+$badgeDefaultSize: 48px;
+
+.badgeItemContainer {
+  width: $badgeDefaultSize;
+  height: $badgeDefaultSize;
+  position: relative;
+
+  &.titled {
+    width: fit-content;
+  }
+}
+
+.acBadgeContent {
+  width: $badgeDefaultSize;
+  height: $badgeDefaultSize;
+
+  .title {
+    width: min-content;
+    padding-left: 10px;
+
+    color: variables.$white;
+    font-size: 23px;
+    text-align: left;
+    line-height: 115%;
+    white-space: break-spaces;
+    @include rfs.font-size(1rem);
+    @include textTransform.ellipsing($lines: 2);
+  }
+
+  .iconContainer {
+    @include rfs.font-size(1.25rem);
+  }
+
+  &.titled {
+    width: fit-content;
+  }
+}

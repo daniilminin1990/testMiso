@@ -1,0 +1,36 @@
+@use "../../../shared/styles/variables.scss";
+// @use "../../../shared/styles/mixins/scroll.scss";
+// @use "../../../shared/styles/mixins/rfs.scss";
+// @use "../../../shared/styles/mixins/textTransform.scss";
+
+.menuContainer {
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;
+  overflow-y: hidden;
+  // TODO EDIT MININ
+  // Если меню горизонтальное и может выходить за пределы контейнера, то overflow-y: hidden нужно менять на overflow-x: auto
+  // и раскомментиролвать миксин скролла, если он понадобится.
+  align-items: center;
+  // @include scroll.scroll($size: 4px);
+
+  a {
+    white-space: nowrap;
+
+    color: variables.$dark;
+    // TODO EDIT MININ -- можно уточнить переход через color
+    // transition: 0.3s;
+    transition: color 0.3s;
+
+    font-weight: 500;
+    font-size: 1.15rem;
+    // @include rfs.font-size(1.15rem);
+
+    // @include textTransform.underline();
+    &:hover,
+    &.current {
+      color: variables.$base;
+      // text-decoration: underline;
+    }
+  }
+}

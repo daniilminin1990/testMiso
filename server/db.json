@@ -1,0 +1,500 @@
+{
+  "list": {
+    "total": 23,
+    "items": [
+      {
+        "id": "037008fc-9736-4c2a-ab01-5bb8381d2b8a",
+        "tempNumber": null,
+        "number": "КМ-1-9",
+        "name": "White Lines",
+        "status": "Prepare_Registered",
+        "stage": "Prepare",
+        "administratorId": "00000002-0000-0000-0000-000000000000",
+        "curatorId": null,
+        "headId": "00000002-0000-0000-0000-000000000000",
+        "headDepartmentId": null,
+        "checkDepartmentId": ["0000000b-0000-0000-0000-000000000000"],
+        "reviewDepartmentId": "00000004-0000-0000-0000-000000000000",
+        "prepareStartDate": "2025-01-30",
+        "prepareEndDate": null,
+        "startDate": null,
+        "endDate": null,
+        "planPoint": [],
+        "goal": null,
+        "functionalBlock": null,
+        "custmerJourney": null,
+        "sprint": null,
+        "risk": [],
+        "esg": null,
+        "comment": null,
+        "parentId": null
+      },
+      {
+        "id": "0aaf9b36-69ed-4125-8cb1-fa80d1677545",
+        "tempNumber": null,
+        "number": "КМ-1-8",
+        "name": "o4ko",
+        "status": "Prepare_CheckConflictOfInterest",
+        "stage": "Prepare",
+        "administratorId": "00000003-0000-0000-0000-000000000000",
+        "curatorId": null,
+        "headId": "00000002-0000-0000-0000-000000000000",
+        "headDepartmentId": null,
+        "checkDepartmentId": [
+          "0000000b-0000-0000-0000-000000000000",
+          "00000004-0000-0000-0000-000000000000",
+          "00000005-0000-0000-0000-000000000000",
+          "00000007-0000-0000-0000-000000000000"
+        ],
+        "reviewDepartmentId": "00000004-0000-0000-0000-000000000000",
+        "prepareStartDate": "2024-12-13",
+        "prepareEndDate": null,
+        "startDate": null,
+        "endDate": null,
+        "planPoint": [],
+        "goal": null,
+        "functionalBlock": null,
+        "custmerJourney": null,
+        "sprint": null,
+        "risk": [],
+        "esg": null,
+        "comment": null,
+        "parentId": null
+      },
+      {
+        "id": "0b426920-6c9f-4149-b4d4-d2acf4439b8e",
+        "tempNumber": null,
+        "number": "КМ-1-11",
+        "name": "dasfasdfasdf",
+        "status": "Prepare_CheckConflictOfInterest",
+        "stage": "Prepare",
+        "administratorId": "00000001-0000-0000-0000-000000000000",
+        "curatorId": "00000002-0000-0000-0000-000000000000",
+        "headId": "00000002-0000-0000-0000-000000000000",
+        "headDepartmentId": "00000009-0000-0000-0000-000000000000",
+        "checkDepartmentId": [
+          "00000005-0000-0000-0000-000000000000",
+          "00000007-0000-0000-0000-000000000000"
+        ],
+        "reviewDepartmentId": "0000000a-0000-0000-0000-000000000000",
+        "prepareStartDate": "2025-01-07",
+        "prepareEndDate": null,
+        "startDate": "2025-01-15",
+        "endDate": null,
+        "planPoint": [
+          "00000002-0000-0000-0000-000000000000",
+          "00000001-0000-0000-0000-000000000000"
+        ],
+        "goal": null,
+        "functionalBlock": null,
+        "custmerJourney": null,
+        "sprint": null,
+        "risk": [
+          "0000000e-0000-0000-0000-000000000000",
+          "00000009-0000-0000-0000-000000000000"
+        ],
+        "esg": "00000003-0000-0000-0000-000000000000",
+        "comment": null,
+        "parentId": "00000002-0000-0000-0000-000000000000"
+      },
+      {
+        "id": "183fecf5-d3a0-42d5-b466-17248aa11ed9",
+        "tempNumber": null,
+        "number": "Вр-1-15",
+        "name": "vsasdvasdca",
+        "status": "Draft",
+        "stage": "Draft",
+        "administratorId": "00000001-0000-0000-0000-000000000000",
+        "curatorId": null,
+        "headId": null,
+        "headDepartmentId": null,
+        "checkDepartmentId": [],
+        "reviewDepartmentId": null,
+        "prepareStartDate": null,
+        "prepareEndDate": null,
+        "startDate": null,
+        "endDate": null,
+        "planPoint": [],
+        "goal": null,
+        "functionalBlock": null,
+        "custmerJourney": null,
+        "sprint": null,
+        "risk": [],
+        "esg": null,
+        "comment": null,
+        "parentId": null
+      },
+      {
+        "id": "19543276-28d5-4983-97db-13f970a4f07b",
+        "tempNumber": null,
+        "number": "КМ-1-5",
+        "name": "My test123",
+        "status": "Proceeding_CheckConflictOfInterest",
+        "stage": "Proceeding",
+        "administratorId": "00000001-0000-0000-0000-000000000000",
+        "curatorId": null,
+        "headId": "00000002-0000-0000-0000-000000000000",
+        "headDepartmentId": "00000004-0000-0000-0000-000000000000",
+        "checkDepartmentId": ["00000009-0000-0000-0000-000000000000"],
+        "reviewDepartmentId": "00000005-0000-0000-0000-000000000000",
+        "prepareStartDate": null,
+        "prepareEndDate": null,
+        "startDate": "2025-01-09",
+        "endDate": null,
+        "planPoint": ["00000001-0000-0000-0000-000000000000"],
+        "goal": "dsa",
+        "functionalBlock": null,
+        "custmerJourney": null,
+        "sprint": "asd",
+        "risk": ["0000000f-0000-0000-0000-000000000000"],
+        "esg": null,
+        "comment": null,
+        "parentId": null
+      },
+      {
+        "id": "1d88255d-6c4d-471f-bd98-c0077033d405",
+        "tempNumber": null,
+        "number": "Вр-1-13",
+        "name": "ewqdedwed",
+        "status": "Draft",
+        "stage": "Draft",
+        "administratorId": "00000001-0000-0000-0000-000000000000",
+        "curatorId": null,
+        "headId": null,
+        "headDepartmentId": null,
+        "checkDepartmentId": [],
+        "reviewDepartmentId": null,
+        "prepareStartDate": "2025-01-15",
+        "prepareEndDate": null,
+        "startDate": null,
+        "endDate": null,
+        "planPoint": [],
+        "goal": null,
+        "functionalBlock": null,
+        "custmerJourney": null,
+        "sprint": null,
+        "risk": [],
+        "esg": null,
+        "comment": null,
+        "parentId": null
+      },
+      {
+        "id": "524d859f-348f-4dec-85c0-dcdae0525ef3",
+        "tempNumber": null,
+        "number": "Вр-1-16",
+        "name": "test 2025-01-09 3",
+        "status": "Proceeding_Registration",
+        "stage": "Proceeding",
+        "administratorId": "00000001-0000-0000-0000-000000000000",
+        "curatorId": null,
+        "headId": "00000001-0000-0000-0000-000000000000",
+        "headDepartmentId": "0000000c-0000-0000-0000-000000000000",
+        "checkDepartmentId": ["00000003-0000-0000-0000-000000000000"],
+        "reviewDepartmentId": "0000000c-0000-0000-0000-000000000000",
+        "prepareStartDate": null,
+        "prepareEndDate": null,
+        "startDate": "2025-01-08",
+        "endDate": null,
+        "planPoint": ["00000001-0000-0000-0000-000000000000"],
+        "goal": "test",
+        "functionalBlock": null,
+        "custmerJourney": null,
+        "sprint": "32423",
+        "risk": [
+          "0000000d-0000-0000-0000-000000000000",
+          "0000000c-0000-0000-0000-000000000000"
+        ],
+        "esg": null,
+        "comment": null,
+        "parentId": null
+      },
+      {
+        "id": "5690b4de-662d-43c4-9fdb-f2d1ea67304b",
+        "tempNumber": null,
+        "number": null,
+        "name": null,
+        "status": "Draft",
+        "stage": "Draft",
+        "administratorId": "00000001-0000-0000-0000-000000000000",
+        "curatorId": null,
+        "headId": null,
+        "headDepartmentId": null,
+        "checkDepartmentId": [],
+        "reviewDepartmentId": null,
+        "prepareStartDate": null,
+        "prepareEndDate": null,
+        "startDate": null,
+        "endDate": null,
+        "planPoint": [],
+        "goal": null,
+        "functionalBlock": null,
+        "custmerJourney": null,
+        "sprint": null,
+        "risk": [],
+        "esg": null,
+        "comment": null,
+        "parentId": null
+      }
+    ]
+  },
+  "meta": [
+    {
+      "type": "String",
+      "id": "Number",
+      "title": "Номер КМ",
+      "description": "Number Description",
+      "validations": null,
+      "group": "Общая информация",
+      "directoryDescriptor": null,
+      "isCollection": false
+    },
+    {
+      "type": "String",
+      "id": "Name",
+      "title": "Наименование АП",
+      "description": "Name Description",
+      "validations": null,
+      "group": "Общая информация",
+      "directoryDescriptor": null,
+      "isCollection": false
+    },
+    {
+      "type": "Directory",
+      "id": "AdministratorId",
+      "title": "Администратор проекта",
+      "description": "AdministratorId Description",
+      "validations": null,
+      "group": "Общая информация",
+      "directoryDescriptor": {
+        "id": "10000000-0000-0000-0000-000000000000",
+        "name": "Пользователь",
+        "type": "Fixed"
+      },
+      "isCollection": false
+    },
+    {
+      "type": "Directory",
+      "id": "CuratorId",
+      "title": "Куратор АП",
+      "description": "CuratorId Description",
+      "validations": null,
+      "group": "Данные КМ",
+      "directoryDescriptor": {
+        "id": "10000000-0000-0000-0000-000000000000",
+        "name": "Пользователь",
+        "type": "Fixed"
+      },
+      "isCollection": false
+    },
+    {
+      "type": "Directory",
+      "id": "HeadId",
+      "title": "Руководитель АП",
+      "description": "HeadId Description",
+      "validations": null,
+      "group": "Данные КМ",
+      "directoryDescriptor": {
+        "id": "10000000-0000-0000-0000-000000000000",
+        "name": "Пользователь",
+        "type": "Fixed"
+      },
+      "isCollection": false
+    },
+    {
+      "type": "Directory",
+      "id": "HeadDepartmentId",
+      "title": "Подразделение руководителя",
+      "description": "HeadDepartmentId Description",
+      "validations": null,
+      "group": "Данные КМ",
+      "directoryDescriptor": {
+        "id": "20000000-0000-0000-0000-000000000000",
+        "name": "Департамент",
+        "type": "Fixed"
+      },
+      "isCollection": false
+    },
+    {
+      "type": "Directory",
+      "id": "CheckDepartmentId",
+      "title": "Проверяемое подразделение",
+      "description": "CheckDepartmentId Description",
+      "validations": null,
+      "group": "Общая информация",
+      "directoryDescriptor": {
+        "id": "20000000-0000-0000-0000-000000000000",
+        "name": "Департамент",
+        "type": "Fixed"
+      },
+      "isCollection": true
+    },
+    {
+      "type": "Directory",
+      "id": "ReviewDepartmentId",
+      "title": "Проверяющее подразделение",
+      "description": "ReviewDepartmentId Description",
+      "validations": null,
+      "group": "Общая информация",
+      "directoryDescriptor": {
+        "id": "20000000-0000-0000-0000-000000000000",
+        "name": "Департамент",
+        "type": "Fixed"
+      },
+      "isCollection": false
+    },
+    {
+      "type": "Date",
+      "id": "PrepareStartDate",
+      "title": "Дата начала подготовки к АП",
+      "description": "PrepareStartDate Description",
+      "validations": null,
+      "group": "Даты подготовки к АП",
+      "directoryDescriptor": null,
+      "isCollection": false
+    },
+    {
+      "type": "Date",
+      "id": "PrepareEndDate",
+      "title": "Дата окончания подготовки к АП",
+      "description": "PrepareEndDate Description",
+      "validations": null,
+      "group": "Даты подготовки к АП",
+      "directoryDescriptor": null,
+      "isCollection": false
+    },
+    {
+      "type": "Date",
+      "id": "StartDate",
+      "title": "Дата начала проведения АП",
+      "description": "StartDate Description",
+      "validations": null,
+      "group": "Данные КМ",
+      "directoryDescriptor": null,
+      "isCollection": false
+    },
+    {
+      "type": "Date",
+      "id": "EndDate",
+      "title": "Дата окончания проведения к АП",
+      "description": "EndDate Description",
+      "validations": null,
+      "group": "Данные КМ",
+      "directoryDescriptor": null,
+      "isCollection": false
+    },
+    {
+      "type": "Directory",
+      "id": "PlanPoint",
+      "title": "Пункт плана",
+      "description": "PlanPoint Description",
+      "validations": null,
+      "group": "Данные КМ",
+      "directoryDescriptor": {
+        "id": "80000000-0000-0000-0000-000000000000",
+        "name": "Пункт плана",
+        "type": "Fixed"
+      },
+      "isCollection": true
+    },
+    {
+      "type": "String",
+      "id": "Goal",
+      "title": "Цель АП",
+      "description": "Goal Description",
+      "validations": null,
+      "group": "Данные КМ",
+      "directoryDescriptor": null,
+      "isCollection": false
+    },
+    {
+      "type": "Directory",
+      "id": "FunctionalBlock",
+      "title": "Функциональный блок",
+      "description": "FunctionalBlock Description",
+      "validations": null,
+      "group": "Данные КМ",
+      "directoryDescriptor": {
+        "id": "30000000-0000-0000-0000-000000000000",
+        "name": "Функциональный блок",
+        "type": "Fixed"
+      },
+      "isCollection": false
+    },
+    {
+      "type": "Directory",
+      "id": "CustomerJourney",
+      "title": "Бизнесы-процессы и клиентские пути (БП и КП)",
+      "description": "CustomerJourney Description",
+      "validations": null,
+      "group": "Данные КМ",
+      "directoryDescriptor": {
+        "id": "40000000-0000-0000-0000-000000000000",
+        "name": "П и КП",
+        "type": "Fixed"
+      },
+      "isCollection": true
+    },
+    {
+      "type": "String",
+      "id": "Sprint",
+      "title": "ID спринта",
+      "description": "Sprint Description",
+      "validations": null,
+      "group": "Данные КМ",
+      "directoryDescriptor": null,
+      "isCollection": false
+    },
+    {
+      "type": "Directory",
+      "id": "Risk",
+      "title": "Риск",
+      "description": "Risk Description",
+      "validations": null,
+      "group": "Данные КМ",
+      "directoryDescriptor": {
+        "id": "50000000-0000-0000-0000-000000000000",
+        "name": "Риски",
+        "type": "Fixed"
+      },
+      "isCollection": true
+    },
+    {
+      "type": "Directory",
+      "id": "Esg",
+      "title": "ESG",
+      "description": "Esg Description",
+      "validations": null,
+      "group": "Данные КМ",
+      "directoryDescriptor": {
+        "id": "60000000-0000-0000-0000-000000000000",
+        "name": "ESG",
+        "type": "Fixed"
+      },
+      "isCollection": false
+    },
+    {
+      "type": "String",
+      "id": "Comment",
+      "title": "Комментарий",
+      "description": "Comment Description",
+      "validations": null,
+      "group": "Данные КМ",
+      "directoryDescriptor": null,
+      "isCollection": false
+    },
+    {
+      "type": "Directory",
+      "id": "ParentId",
+      "title": "Родительская АП",
+      "description": "ParentId Description",
+      "validations": null,
+      "group": "Данные КМ",
+      "directoryDescriptor": {
+        "id": "70000000-0000-0000-0000-000000000000",
+        "name": "Parent",
+        "type": "Fixed"
+      },
+      "isCollection": false
+    }
+  ]
+}

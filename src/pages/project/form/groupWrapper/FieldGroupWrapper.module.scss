@@ -1,0 +1,16 @@
+@use "../../../../shared/styles/variables.scss";
+@use "../../../../shared/styles/mixins/rfs.scss";
+
+.fieldGroup {
+  padding: 15px;
+  border: solid 2px variables.$grey;
+  border-radius: 5px;
+}
+
+.fieldGroupTitle {
+  @include rfs.font-size(1rem);
+  position: absolute;
+  padding: 0 10px;
+  transform: translate(15px, -50%);
+  background: variables.$white;
+}

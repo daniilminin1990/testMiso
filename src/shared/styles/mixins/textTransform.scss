@@ -1,0 +1,49 @@
+@use "../variables.scss";
+
+@mixin underline($color: variables.$base, $speed: 0.3s, $size: 2px) {
+  & {
+    position: relative;
+
+    padding-bottom: $size;
+    &:hover {
+      color: $color;
+      &::before {
+        transform: translateY(calc(0px - $size));
+        opacity: 1;
+        transition: $speed;
+      }
+    }
+
+    &::before {
+      content: "";
+      background: variables.$base;
+
+      position: absolute;
+      width: 100%;
+      height: $size;
+      border-radius: $size;
+
+      left: 0;
+      top: 100%;
+      transition: $speed;
+      opacity: 0;
+    }
+  }
+}
+
+@mixin ellipsing($lines: 1) {
+  & {
+    // -webkit- prefix is required https://developer.mozilla.org/en-US/docs/Web/CSS/line-clamp
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    // -moz-box-orient: vertical;
+    // -ms-box-orient: vertical;
+    // box-orient: vertical;
+    -webkit-line-clamp: $lines;
+    -moz-line-clamp: $lines;
+    -ms-line-clamp: $lines;
+    line-clamp: $lines;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}

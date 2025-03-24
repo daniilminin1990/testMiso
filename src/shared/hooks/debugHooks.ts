@@ -1,0 +1,69 @@
+import { useRef, useEffect } from "react";
+
+const empty = {};
+export function useTraceUpdate(name: string, props: object) {
+  const renderRef = useRef(true);
+
+  let first;
+  // eslint-disable-next-line react-compiler/react-compiler
+  if (renderRef.current === true) {
+    // eslint-disable-next-line react-compiler/react-compiler
+    renderRef.current = false;
+    first = true;
+  } else first = renderRef.current;
+
+  type Props = Record<string, unknown>;
+  const prevRef = useRef(empty);
+  useEffect(() => {
+    if (first) console.log(name, "First render");
+    else {
+      const prev = prevRef.current as Props;
+      const changedProps = { proto: null } as Props;
+
+      for (const k of [...Object.keys(props), ...Object.keys(prev)]) {
+        if (prev[k] !== (props as Props)[k]) {
+          changedProps[k] = [prev[k], (props as Props)[k]];
+        }
+      }
+
+      if (Object.keys(changedProps).length > 0)
+        console.log(name, "Changed props:", changedProps);
+      else console.log(name, "No props changed");
+    }
+
+    prevRef.current = props;
+  });
+}
+
+// export function useRenderCount() {
+//     const count = useRef(0);
+//     count.current++;
+//     return count.current;
+// }
+
+export const useRenderInfo =
+  process.env.NODE_ENV !== "development"
+    ? () => {}
+    : (name: string) => {
+        const count = useRef(0);
+        const lastRender = useRef<number>();
+        const now = Date.now();
+
+        count.current++;
+
+        useEffect(() => {
+          lastRender.current = Date.now();
+        });
+
+        const sinceLastRender = lastRender.current
+          ? now - lastRender.current
+          : 0;
+        const info = {
+          name,
+          renders: count.current,
+          sinceLastRender,
+          timestamp: now,
+        };
+
+        console.log(info);
+      };
