@@ -21,7 +21,7 @@ export const FormButtons: React.FC<FormButtonsProps> = memo((props) => {
   useTraceUpdate("FormButtons", props);
 
   const buttons = Object.groupBy(transitions, (b) =>
-    b.forward ? "forward" : "back",
+    b.forward ? "forward" : "back"
   );
 
   const onClick = (btn: ControlEventTransitionDto | null) => {
@@ -79,7 +79,7 @@ export const FormButtons: React.FC<FormButtonsProps> = memo((props) => {
 function createDropdownMenu(
   text: ReactNode,
   buttons: ControlEventTransitionDto[],
-  onClick: (btn: ControlEventTransitionDto | null) => void,
+  onClick: (btn: ControlEventTransitionDto | null) => void
 ) {
   return (
     <DropdownMenu

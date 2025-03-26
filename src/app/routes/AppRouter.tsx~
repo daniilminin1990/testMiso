@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from "react-router";
+import React from "react";
 // TODO EDIT -- лучше использовать react-router-dom, потому что он содержит больше полезных функций и компонент для маршрутизации.
 // ПРОВЕРИТЬ react-router-dom
 // TODO EDIT MININ QUESTION ПОЧЕМУ НЕ РАБОТАЕТ @ импорт???

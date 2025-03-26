@@ -31,7 +31,7 @@ import { modalConfirmClosedState } from "@shared/ui/ModalConfirmProps";
 import * as styles from "./ArrayField.module.scss";
 
 // interface ArrayFieldProps extends FormFieldProps {}
-type ArrayFieldProps = FormFieldProps; // Замена
+type ArrayFieldProps = FormFieldProps // Замена
 interface ArrayFieldInternalProps extends ArrayFieldProps {
   value: JsonObject[] | null;
 }

@@ -68,7 +68,7 @@
     "eslint-plugin-react": "7.33.2",
     "eslint-plugin-react-compiler": "^19.0.0-beta-27714ef-20250124",
     "eslint-plugin-react-hooks": "4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.19",
+    "eslint-plugin-react-refresh": "^0.2.0",
     "eslint-plugin-unicorn": "^56.0.1",
     "favicons-webpack-plugin": "^6.0.1",
     "filemanager-webpack-plugin": "^8.0.0",

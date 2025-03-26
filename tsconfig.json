@@ -3,15 +3,25 @@
   "compilerOptions": {
     "rootDirs": ["src" /* "jest" */],
     "baseUrl": "./src",
+    // "paths": {
+    //   "@shared/": ["./shared/"],
+    //   "@entities/": ["./entities/"],
+    //   "@features/": ["./features/"],
+    //   "@pages/": ["./pages/"],
+    //   "@widgets/": ["./widgets/"],
+    //   "@app/": ["./app/"],
+    //   "@server/*": ["./server/*"],
+    //   "@defs/*": ["./types/*"]
+    // },
     "paths": {
-      "@shared/": ["./shared/"],
-      "@entities/": ["./entities/"],
-      "@features/": ["./features/"],
-      "@pages/": ["./pages/"],
-      "@widgets/": ["./widgets/"],
-      "@app/": ["./app/"],
-      "@server/*": ["./server/*"],
-      "@defs/*": ["./types/*"]
+      "@shared/*": ["shared/*"],
+      "@entities/*": ["entities/*"],
+      "@features/*": ["features/*"],
+      "@pages/*": ["pages/*"],
+      "@widgets/*": ["widgets/*"],
+      "@app/*": ["app/*"],
+      "@server/*": ["server/*"],
+      "@defs/*": ["types/*"]
     },
     "outDir": "build",
     "lib": ["dom", "esnext"],

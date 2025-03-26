@@ -1,10 +1,12 @@
-import {
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Button,
-} from "@v-uik/base";
+// import {
+//   Modal,
+//   ModalHeader,
+//   ModalBody,
+//   ModalFooter,
+//   Button,
+// } from "@v-uik/base";
+import * as Dialog from "@radix-ui/react-dialog";
+import styles from "./ModalConfirm.module.scss";
 import { memo } from "react";
 import {
   modalConfirmClosedState,
@@ -26,26 +28,58 @@ export const ModalConfirm = memo(
       reset(state, setState);
       state.onReject?.(modaConfirmClosedReason);
     };
+
+    const confirm = (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      reset(state, setState);
+      state.onConfirm("user confirmed"); // Явно передаем строку
+    };
     return (
-      <Modal open={state.open} onClose={cancel}>
-        <ModalHeader showCloseButton={false}>{headerText}</ModalHeader>
-        <ModalBody>{state.content}</ModalBody>
-        <ModalFooter>
-          <Button kind="outlined" onClick={cancel}>
-            Отмена
-          </Button>
-          <Button
-            autoFocus={mainButtonAutoFocus}
-            color={mainButtonColor}
-            onClick={() => {
-              reset(state, setState);
-              state.onConfirm();
-            }}
-          >
-            {mainButtonText}
-          </Button>
-        </ModalFooter>
-      </Modal>
+      // <Modal open={state.open} onClose={cancel}>
+      //   <ModalHeader showCloseButton={false}>{headerText}</ModalHeader>
+      //   <ModalBody>{state.content}</ModalBody>
+      //   <ModalFooter>
+      //     <Button kind="outlined" onClick={cancel}>
+      //       Отмена
+      //     </Button>
+      //     <Button
+      //       autoFocus={mainButtonAutoFocus}
+      //       color={mainButtonColor}
+      //       onClick={() => {
+      //         reset(state, setState);
+      //         state.onConfirm();
+      //       }}
+      //     >
+      //       {mainButtonText}
+      //     </Button>
+      //   </ModalFooter>
+      // </Modal>
+      <Dialog.Root open={state.open} onOpenChange={(open) => !open && cancel()}>
+        <Dialog.Portal>
+          <Dialog.Overlay className={styles.overlay} />
+          <Dialog.Content className={styles.content}>
+            <Dialog.Title className={styles.header}>{headerText}</Dialog.Title>
+            <div className={styles.body}>{state.content}</div>
+            <div className={styles.footer}>
+              <button
+                className={`${styles.button} ${styles.cancelButton}`}
+                onClick={cancel}
+              >
+                Отмена
+              </button>
+              <button
+                autoFocus={mainButtonAutoFocus}
+                className={`${styles.button} ${styles.confirmButton} ${
+                  mainButtonColor === "primary" ? styles.primary : ""
+                }`}
+                onClick={confirm} // Теперь тип совместим
+              >
+                {mainButtonText}
+              </button>
+            </div>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
     );
   }
 );

@@ -32,6 +32,7 @@ const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const { TsconfigPathsPlugin } = require("tsconfig-paths-webpack-plugin");
 import FileManagerPlugin from "filemanager-webpack-plugin";
 // TODO EDIT MININ -- если вместо require использовать обычный импорт ESM, то ошибки с типами не будет
 // Можно было бы решить и другим способом -
@@ -107,16 +108,17 @@ module.exports = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".jsx", ".css", ".scss", ".d.ts"],
-    alias: {
-      "@shared": path.resolve(__dirname, "../src/shared"),
-      "@entities": path.resolve(__dirname, "../src/entities/"),
-      "@features": path.resolve(__dirname, "../src/features"),
-      "@pages": path.resolve(__dirname, "../src/pages"),
-      "@widgets": path.resolve(__dirname, "../src/widgets"),
-      "@app": path.resolve(__dirname, "../src/app"),
-      "@server": path.resolve(__dirname, "../src/server"),
-      "@defs": path.resolve(__dirname, "../src/types"),
-    },
+    // alias: {
+    //   "@shared": path.resolve(__dirname, "../src/shared"),
+    //   "@entities": path.resolve(__dirname, "../src/entities/"),
+    //   "@features": path.resolve(__dirname, "../src/features"),
+    //   "@pages": path.resolve(__dirname, "../src/pages"),
+    //   "@widgets": path.resolve(__dirname, "../src/widgets"),
+    //   "@app": path.resolve(__dirname, "../src/app"),
+    //   "@server": path.resolve(__dirname, "../src/server"),
+    //   "@defs": path.resolve(__dirname, "../src/types"),
+    // },
+    plugins: [new TsconfigPathsPlugin()],
   },
   module: {
     strictExportPresence: true,

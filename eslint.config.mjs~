@@ -22,10 +22,12 @@ export default tseslint.config({
     // eslintPluginUnicorn.configs['flat/recommended'],
     // eslintPluginPrettierRecommended,
     reactRefresh.configs.recommended,
+    reactHooks.configs.recommended, // Добавляем рекомендуемые правила прямо в extends
   ],
   plugins: {
     "react-compiler": reactCompiler,
-    // TODO: https://github.com/facebook/react/pull/38774
+    // TODO: https://github.com/facebook/react/pull/38774,
+    "react-hooks": reactHooks, // Явно добавляем плагин react-hooks
   },
   languageOptions: {
     globals: globals.browser,
@@ -44,10 +46,10 @@ export default tseslint.config({
     // TODO: https://github.com/facebook/react/pull/38774
     "react-compiler/react-compiler": "error",
 
-    // @ts-expect-error
-    .../** @type {Record<string, import('typescript-eslint').FlatConfig.Rule>} */ (
-      reactHooks.configs.recommended.rules
-    ),
+    // // @ts-expect-error
+    // .../** @type {Record<string, import('typescript-eslint').FlatConfig.Rule>} */ (
+    //   reactHooks.configs.recommended.rules
+    // ),
 
     "capitalized-comments": "off",
     // ****** Ошибка Object literal may only specify known properties, and 'capitalized-comments' does not exist in type 'InfiniteDepthConfigWithExtends'.ts(2353)
