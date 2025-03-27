@@ -1,0 +1,33 @@
+//.common {
+//  display: grid;
+//  grid-template:
+//    'header header' auto
+//    'sidebarLeft content' 1fr / 220px 1fr;
+//  height: 100vh;
+//}
+//
+//.header {
+//  grid-area: header;
+//}
+//
+//.sidebarLeft {
+//  grid-area: sidebarLeft;
+//}
+//
+//.content {
+//  overflow-y: auto;
+//  grid-area: content;
+//}
+//
+//.mainMargin {
+//  margin-top: 1.5rem;
+//  margin-bottom: 1.5rem;
+//}
+
+.common {
+  height: 100vh;
+}
+
+.content {
+  overflow-y: auto;
+}

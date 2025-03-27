@@ -5,34 +5,39 @@
 //   ModalFooter,
 //   Button,
 // } from "@v-uik/base";
-import * as Dialog from "@radix-ui/react-dialog";
-import styles from "./ModalConfirm.module.scss";
-import { memo } from "react";
+import * as Dialog from '@radix-ui/react-dialog';
+import * as styles from './ModalConfirm.module.scss';
+import { memo } from 'react';
 import {
   modalConfirmClosedState,
   modaConfirmClosedReason,
   type ModalConfirmProps,
-  type ModalConfirmState,
-} from "./ModalConfirmProps";
+  type ModalConfirmState
+} from './ModalConfirmProps';
 
 export const ModalConfirm = memo(
   ({
     headerText,
-    mainButtonText = "Подтвердить",
-    mainButtonColor = "primary",
+    mainButtonText = 'Подтвердить',
+    mainButtonColor = 'primary',
     mainButtonAutoFocus = true,
     state,
-    setState,
+    setState
   }: ModalConfirmProps) => {
     const cancel = () => {
       reset(state, setState);
       state.onReject?.(modaConfirmClosedReason);
     };
 
+    // const confirm = (e: React.MouseEvent<HTMLButtonElement>) => {
+    //   e.preventDefault();
+    //   reset(state, setState);
+    //   state.onConfirm('user confirmed'); // Явно передаем строку
+    // };
     const confirm = (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       reset(state, setState);
-      state.onConfirm("user confirmed"); // Явно передаем строку
+      state.onConfirm('user confirmed');
     };
     return (
       // <Modal open={state.open} onClose={cancel}>
@@ -61,16 +66,13 @@ export const ModalConfirm = memo(
             <Dialog.Title className={styles.header}>{headerText}</Dialog.Title>
             <div className={styles.body}>{state.content}</div>
             <div className={styles.footer}>
-              <button
-                className={`${styles.button} ${styles.cancelButton}`}
-                onClick={cancel}
-              >
+              <button className={`${styles.button} ${styles.cancelButton}`} onClick={cancel}>
                 Отмена
               </button>
               <button
                 autoFocus={mainButtonAutoFocus}
                 className={`${styles.button} ${styles.confirmButton} ${
-                  mainButtonColor === "primary" ? styles.primary : ""
+                  mainButtonColor === 'primary' ? styles.primary : ''
                 }`}
                 onClick={confirm} // Теперь тип совместим
               >
@@ -84,12 +86,9 @@ export const ModalConfirm = memo(
   }
 );
 
-function reset(
-  prev: ModalConfirmState,
-  setState: (state: ModalConfirmState) => void
-) {
+function reset(prev: ModalConfirmState, setState: (state: ModalConfirmState) => void) {
   setState({
     ...modalConfirmClosedState,
-    content: prev.content, // preserve previous content, otherwise modal would blink on close
+    content: prev.content // preserve previous content, otherwise modal would blink on close
   });
 }

@@ -1,0 +1,67 @@
+import './theme.css'
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: Roboto;
+  font-weight: 100;
+  font-display: fallback;
+  src: url("shared/fonts/Roboto-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: Roboto;
+  font-weight: 200;
+  font-display: fallback;
+  src: url("shared/fonts/Roboto-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: Roboto;
+  font-weight: 300;
+  font-display: fallback;
+  src: url("shared/fonts/Roboto-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: Roboto;
+  font-weight: 400 500;
+  font-display: fallback;
+  src: url("shared/fonts/Roboto-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: Roboto;
+  font-weight: 600;
+  font-display: fallback;
+  src: url("shared/fonts/Roboto-Black.ttf") format("truetype");
+}
+
+html,
+body {
+  box-sizing: border-box;
+
+  // min-width: 1200px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+* {
+  font-family: Roboto;
+  font-weight: 300;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+}

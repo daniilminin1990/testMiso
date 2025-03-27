@@ -1,0 +1,10 @@
+// type Cb<Method extends keyof ComboboxProps<DirectoryContent>> = NonNullable<ComboboxProps<DirectoryContent>[Method]>
+// // eslint-disable-next-line @typescript-eslint/no-explicit-any
+// type ExtractOverload<U, T> = U extends (arg1: T, ...args: any[]) => any ? U : never;
+
+export type UndoPartial<T> = T extends Partial<infer R> ? R : T;
+
+export function undoPartial<T>(x: T) {
+  return x as UndoPartial<T>;
+}
+ 

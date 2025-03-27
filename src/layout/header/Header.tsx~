@@ -1,5 +1,5 @@
 import { Finder, TFinderProps } from "@shared/ui/finderItem/finderItem";
-import * as styles from "./header.module.scss";
+import * as styles from "./Header.module.scss";
 import type { FC } from "react";
 import { AccountBadge, TAccountBadgeProps } from "./accountBadge/acBadge";
 import { Logo } from "./logo/logo";

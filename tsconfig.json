@@ -61,7 +61,6 @@
       }
     ]
   },
-  // ****** "include": ["./src"], // Добавил *mjs файл, и строка в eslint config mjs импорта eslint/js перестала ругаться
-  "include": ["./src", "*.mjs"],
+  "include": ["./src"],
   "exclude": ["node_modules", "build", "coverage", "webpack.js", ".config.js"]
 }

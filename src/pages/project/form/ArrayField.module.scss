@@ -12,13 +12,14 @@
 //   padding: 15px;
 // }
 
+/* Стили для текста (замена Text из @v-uik) */
 .text {
   font-family: inherit;
   font-size: 14px;
   line-height: 1.5;
-  // Добавлены стили для замены Text из @v-uik
 }
 
+/* Стили для кнопки (базовый стиль, но AntD уже имеет свои стили) */
 .button {
   padding: 8px 16px;
   border-radius: 4px;
@@ -35,9 +36,9 @@
   &:hover:not(:disabled) {
     background-color: #0056b3;
   }
-  // Добавлены базовые стили для PrimitiveButton
 }
 
+/* Стили для ghost-кнопки (опционально, если хочешь кастомизировать AntD) */
 .ghostButton {
   background-color: transparent;
   color: #6c757d;
@@ -46,5 +47,22 @@
     color: #495057;
     background-color: rgba(0, 0, 0, 0.1);
   }
-  // Добавлены стили для ghost-варианта кнопки
+}
+
+/* Недостающие стили */
+.fullRow {
+  width: 100%;
+}
+
+.cardContentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.expandedRowContainer {
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e8e8e8;
 }

@@ -5,12 +5,10 @@ export function useTraceUpdate(name: string, props: object) {
   const renderRef = useRef(true);
 
   let first;
-  // eslint-disable-next-line react-compiler/react-compiler
   if (renderRef.current === true) {
-    // eslint-disable-next-line react-compiler/react-compiler
     renderRef.current = false;
     first = true;
-  } else first = renderRef.current;
+  } else first = renderRef.current; 
 
   type Props = Record<string, unknown>;
   const prevRef = useRef(empty);

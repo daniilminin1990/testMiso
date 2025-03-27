@@ -14,16 +14,20 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
-    "plugin:react-hooks/recommended"
-//    "plugin:react-refresh/recommended"
+    "plugin:react-hooks/recommended",
+    // ++
+    "plugin:prettier/recommended"
+    // ++
+    //    "plugin:react-refresh/recommended"
   ],
   "plugins": [
     "react",
     "react-hooks",
     "react-refresh",
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "prettier"
   ],
-  "ignorePatterns": ["__jest__/**/*", "__test__/**/*", "__webpack__/**/*", "node_modules/**/*", "customTemplate.js", "webpack.config.js"],
+  "ignorePatterns": ["__jest__/**/*", "__tests__/**/*", "__webpack__/**/*", "node_modules/**/*", "customTemplate.js", "webpack.config.js"],
   "settings": {
     "react": {
       "version": "detect"
@@ -45,6 +49,13 @@
     "react/prop-types": "off",
     "react/display-name": "off",
     "react/no-unescaped-entities": "off",
+    // ++
+    //        "react/jsx-curly-spacing": ["error", "always"],
+    //        "object-curly-spacing": ["error", "always"],
+    "react/jsx-curly-spacing": "off", // Отключите, так как Prettier управляет этим
+    "object-curly-spacing": "off", // Отключите, так как Prettier управляет этим через bracketSpacing
+    "prettier/prettier": "error", // Убедитесь, что Prettier имеет приоритет
+    // ++
     "@typescript-eslint/consistent-type-imports": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-member-accessibility": "off",
@@ -67,7 +78,7 @@
     ],
     "@typescript-eslint/method-signature-style": "error",
     "@typescript-eslint/restrict-template-expressions": [
-      "error",
+      "warn",
       { "allowNumber": true, "allowBoolean": true }
     ]
   },

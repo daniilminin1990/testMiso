@@ -1,9 +1,11 @@
-import { Button } from "@v-uik/base";
-import { ProjectListContainer } from "./ProjectListContainer";
-import { useNavigate } from "react-router";
-import { projectPageApi } from "@pages/project/projectPageApi";
-import { showErrorNotification } from "@shared/ui/showErrorNotification";
-import PageTitle from "@shared/ui/PageTitle";
+// import { Button } from '@v-uik/base';
+import { Button as AntButton } from 'antd';
+import { ProjectListContainer } from './ProjectListContainer';
+import { useNavigate } from 'react-router';
+import { projectPageApi } from '@pages/project/projectPageApi';
+import { showErrorNotification } from '@shared/ui/showErrorNotification';
+import * as styles from './ProjectListPage.module.scss';
+import PageTitle from '@shared/ui/PageTitle';
 export const ProjectListPage = () => {
   const navigate = useNavigate();
   const redirectToProject = (projectId: string) => {
@@ -13,29 +15,34 @@ export const ProjectListPage = () => {
     <>
       <PageTitle title="Центр проектов" />
       {/* TODO EDIT styles one format */}
-      <div style={{ margin: "30px 0" }}>
+      <div style={{ margin: '30px 0' }}>
         <h2>Создание АП:</h2>
-        <div style={{ margin: "15px 0" }}>
-          <Button
-            size="lg"
+        <div style={{ margin: '15px 0' }}>
+          {/*<Button*/}
+          {/*  size="lg"*/}
+          {/*  onClick={() => {*/}
+          {/*    projectPageApi.createForm().then(redirectToProject).catch(showErrorNotification);*/}
+          {/*  }}*/}
+          {/*>*/}
+          {/*  Создать новый АП*/}
+          {/*</Button>*/}
+          <AntButton
+            size="large" // Аналог size="lg" из @v-uik/base
             onClick={() => {
-              projectPageApi
-                .createForm()
-                .then(redirectToProject)
-                .catch(showErrorNotification);
+              projectPageApi.createForm().then(redirectToProject).catch(showErrorNotification);
             }}
           >
             Создать новый АП
-          </Button>
+          </AntButton>
         </div>
       </div>
 
       {/* TODO EDIT styles one format */}
-      <div style={{ margin: "30px 0" }}>
+      <div style={{ margin: '30px 0' }}>
         <h2>АП:</h2>
         <div
           style={{
-            margin: "10px",
+            margin: '10px'
           }}
         >
           <ProjectListContainer

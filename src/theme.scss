@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// ДЛЯ ЗАМЕНЫ whiteInputTheme от v-uik/base
+:root {
+  --input-background: #ffffff; /* white */
+  --input-background-disabled: #f0f0f0; /* gray90 */
+  --comboBox-background: #ffffff;
+  --comboBox-background-disabled: #f0f0f0;
+  --table-header-background: #f0f0f0; /* gray90 */
+  --table-header-border: #d9d9d9; /* gray80 */
+}

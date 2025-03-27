@@ -1,7 +1,9 @@
-import { memo, ReactNode } from "react";
-import * as styles from "./FieldGroupWrapper.module.scss";
-import { FC } from "react";
-import { useTraceUpdate } from "@shared/hooks/debugHooks";
+import { memo, ReactNode } from 'react';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import * as styles from './FieldGroupWrapper.module.scss';
+import { FC } from 'react';
+import { useTraceUpdate } from '@shared/hooks/debugHooks';
 
 interface IGroupWrapper {
   children?: ReactNode;
@@ -10,7 +12,7 @@ interface IGroupWrapper {
 
 export const FieldGroupWrapper: FC<IGroupWrapper> = memo((props) => {
   const { children, name } = props;
-  useTraceUpdate("FieldGroupWrapper", props);
+  useTraceUpdate('FieldGroupWrapper', props);
   return (
     <div>
       <div className={styles.fieldGroupTitle}>{name}</div>

@@ -1,0 +1,91 @@
+html {
+  box-sizing: border-box;
+  min-width: 360px;
+  height: 100vh;
+
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+input,
+button,
+select,
+textarea,
+optgroup,
+option {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  color: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
+
+body {
+  overflow-x: hidden;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: var(--font-family-primary), sans-serif;
+  line-height: var(--line-height-m);
+  color: var(--color-light-100);
+
+  background-color: var(--color-dark-900);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: var(--color-accent-300);
+
+  &:hover {
+    background-color: var(--color-accent-100);
+  }
+}
+
+//html,
+//body {
+//  box-sizing: border-box;
+//
+//  // min-width: 1200px;
+//  font-family: Roboto;
+//  font-size: 16px;
+//  font-weight: 300;
+//}
+//
+//* {
+//  font-family: Roboto;
+//  font-weight: 300;
+//}
+//
+//*,
+//*::before,
+//*::after {
+//  box-sizing: inherit;
+//}
+//
+//a {
+//  text-decoration: none;
+//}

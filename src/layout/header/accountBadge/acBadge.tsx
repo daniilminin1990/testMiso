@@ -1,9 +1,9 @@
-import type { FC } from "react";
-import { FaBell, FaInfoCircle, FaTh, FaUser } from "react-icons/fa";
+import type { FC } from 'react';
+import { FaBell, FaInfoCircle, FaTh, FaUser } from 'react-icons/fa';
 // import { DropdownMenuItem } from "@v-uik/base";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { BadgeItem } from "@shared/ui/badgeItem/badgeItem";
-import * as styles from "./acBadge.module.scss";
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import { BadgeItem } from '@shared/ui/badgeItem/BadgeItem';
+import * as styles from './acBadge.module.scss';
 
 type TProfileBadge = {
   name: string;
@@ -22,11 +22,7 @@ export type TAccountBadgeProps = {
   onShowInfo: () => void;
 };
 
-export const AccountBadge: FC<TAccountBadgeProps> = ({
-  notice,
-  profile,
-  onShowInfo,
-}) => (
+export const AccountBadge: FC<TAccountBadgeProps> = ({ notice, profile, onShowInfo }) => (
   // <div className={styles.container}>
   //   {/* USER PROFILE */}
   //   <BadgeItem icon={<FaUser />} title={profile.name}>
@@ -57,20 +53,14 @@ export const AccountBadge: FC<TAccountBadgeProps> = ({
     <BadgeItem icon={<FaUser />} title={profile.name}>
       <DropdownMenu.Root>
         <DropdownMenu.Trigger asChild>
-          <button style={{ display: "none" }} /> {/* Скрытая кнопка триггера */}
+          <button style={{ display: 'none' }} /> {/* Скрытая кнопка триггера */}
         </DropdownMenu.Trigger>
         <DropdownMenu.Portal>
           <DropdownMenu.Content className={styles.dropdownContent}>
-            <DropdownMenu.Item
-              className={styles.dropdownItem}
-              onSelect={profile.onOpenSettings}
-            >
+            <DropdownMenu.Item className={styles.dropdownItem} onSelect={profile.onOpenSettings}>
               Настройки
             </DropdownMenu.Item>
-            <DropdownMenu.Item
-              className={styles.dropdownItem}
-              onSelect={profile.onLogOut}
-            >
+            <DropdownMenu.Item className={styles.dropdownItem} onSelect={profile.onLogOut}>
               Выход
             </DropdownMenu.Item>
           </DropdownMenu.Content>
@@ -79,11 +69,7 @@ export const AccountBadge: FC<TAccountBadgeProps> = ({
     </BadgeItem>
 
     {/* NOTIFICATIONS */}
-    <BadgeItem
-      icon={<FaBell />}
-      counter={notice.notificationsNumber}
-      onClick={notice.onShowNotifications}
-    />
+    <BadgeItem icon={<FaBell />} counter={notice.notificationsNumber} onClick={notice.onShowNotifications} />
 
     {/* INFO */}
     <BadgeItem icon={<FaInfoCircle />} onClick={onShowInfo} />
@@ -92,7 +78,7 @@ export const AccountBadge: FC<TAccountBadgeProps> = ({
     <BadgeItem icon={<FaTh />}>
       <DropdownMenu.Root>
         <DropdownMenu.Trigger asChild>
-          <button style={{ display: "none" }} /> {/* Скрытая кнопка триггера */}
+          <button style={{ display: 'none' }} /> {/* Скрытая кнопка триггера */}
         </DropdownMenu.Trigger>
         <DropdownMenu.Portal>
           <DropdownMenu.Content className={styles.dropdownContent}>

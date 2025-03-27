@@ -9,25 +9,25 @@ module.exports = {
     clean: true
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.js']
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
-        exclude: /node_modules/,
-      },
-    ],
+        exclude: /node_modules/
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
-    }),
+      template: './src/index.html'
+    })
   ],
   devServer: {
     static: path.join(__dirname, 'dist'),
     compress: true,
-    port: 9000,
-  },
+    port: 9000
+  }
 };

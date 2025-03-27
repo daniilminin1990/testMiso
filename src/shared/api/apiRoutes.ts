@@ -15,5 +15,5 @@ export const apiRoutes = {
   getDirectoriesBatch: () => `${base}/directory/batchForControlEvent`,
   getProjectListItems: () => `${base}/controlevent/list`,
   getProjectListMeta: () => `${base}/controlevent/list/meta`,
-  createProject: () => `${base}/controlevent/create`,
+  createProject: () => `${base}/controlevent/create`
 };

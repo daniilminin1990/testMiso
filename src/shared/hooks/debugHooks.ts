@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect } from 'react';
 
 const empty = {};
 export function useTraceUpdate(name: string, props: object) {
@@ -13,7 +13,7 @@ export function useTraceUpdate(name: string, props: object) {
   type Props = Record<string, unknown>;
   const prevRef = useRef(empty);
   useEffect(() => {
-    if (first) console.log(name, "First render");
+    if (first) console.log(name, 'First render');
     else {
       const prev = prevRef.current as Props;
       const changedProps = { proto: null } as Props;
@@ -24,9 +24,8 @@ export function useTraceUpdate(name: string, props: object) {
         }
       }
 
-      if (Object.keys(changedProps).length > 0)
-        console.log(name, "Changed props:", changedProps);
-      else console.log(name, "No props changed");
+      if (Object.keys(changedProps).length > 0) console.log(name, 'Changed props:', changedProps);
+      else console.log(name, 'No props changed');
     }
 
     prevRef.current = props;
@@ -40,7 +39,7 @@ export function useTraceUpdate(name: string, props: object) {
 // }
 
 export const useRenderInfo =
-  process.env.NODE_ENV !== "development"
+  process.env.NODE_ENV !== 'development'
     ? () => {}
     : (name: string) => {
         const count = useRef(0);
@@ -53,14 +52,12 @@ export const useRenderInfo =
           lastRender.current = Date.now();
         });
 
-        const sinceLastRender = lastRender.current
-          ? now - lastRender.current
-          : 0;
+        const sinceLastRender = lastRender.current ? now - lastRender.current : 0;
         const info = {
           name,
           renders: count.current,
           sinceLastRender,
-          timestamp: now,
+          timestamp: now
         };
 
         console.log(info);

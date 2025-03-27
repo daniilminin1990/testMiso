@@ -1,0 +1,35 @@
+import { Outlet } from 'react-router';
+import { Header } from './header/Header';
+import * as styles from './Layout.module.scss';
+export const Layout = () => {
+  return (
+    <>
+      {/*<Header className={ styles.header }*/}
+      <Header
+        // finder={{
+        //   messages: { loading: 'loading', notfound: 'notfound' },
+        //   onSelectItem: () => alert('onSelectItem'),
+        //   initialGetter: () => Promise.resolve([{ id: '1', value: 'ival1' }]),
+        //   dataGetter: (resp) => Promise.resolve([{ id: '1', value: 'val1' }, { id: '1', value: 'val2' }]),
+        // }}
+        userInfo={{
+          notice: {
+            notificationsNumber: 5,
+            onShowNotifications: () => alert('onShowNotifications')
+          },
+          onShowInfo: () => alert('onShowInfo'),
+          profile: {
+            name: 'Филимонов Арсений Денисович',
+            onOpenSettings: () => alert('onOpenSettings'),
+            onLogOut: () => alert('onLogOut')
+          }
+        }}
+      />
+      <main className={styles.content}>
+        <Outlet />
+        {/* Теперь это не нужно, потому что заменили notification от AntDesign*/}
+        {/*<NotificationContainer nextNotification position="top-right" autoClose={1500} limit={5} />*/}
+      </main>
+    </>
+  );
+};

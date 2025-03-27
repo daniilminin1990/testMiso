@@ -1,107 +1,123 @@
-import {
-  Card,
-  createUseStyles,
-  Divider,
-  clsx,
-  Labelled,
-  type LabelledProps,
-} from "@v-uik/base";
-import { useState, type FC, type ReactNode } from "react";
-
-const cardPadding = "2px 10px";
-const useStyles = createUseStyles((theme) => ({
-  card: {
-    padding: "0",
-  },
-  header: {
-    margin: 0,
-    borderRadius: theme.sys.shape.borderRadiusXl,
-    cursor: "pointer",
-    "& label": {
-      cursor: "pointer", // override label style
-    },
-    "&:hover": {
-      backgroundColor: theme.sys.color.onBackgroundOverlayHover,
-    },
-  },
-  headerContainer: {
-    padding: cardPadding,
-    display: "flex",
-    alignItems: "flex-end",
-  },
-  icon: {
-    margin: 8,
-    transition: "0.3s ease-in-out transform",
-  },
-  iconOpen: {
-    transform: "rotate(-180deg)",
-  },
-  foldContent: {
-    maxHeight: 0,
-    transition: "max-height ease-in-out 0.3s, padding step-end 0.3s", // show padding while collapsing
-    overflow: "hidden",
-  },
-  expanded: {
-    maxHeight: "1000px",
-    padding: cardPadding,
-    transition: "max-height ease-in-out 0.3s", // disable padding animations on expand
-  },
-  divider: {
-    marginBottom: 16,
-  },
-}));
-
-const ArrowIcon: FC<{ className?: string }> = ({ className }) => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className={className}
-  >
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M16.501 8L18 9.6L12.0005 16L6 9.6L7.50014 8L12.0005 12.8L16.501 8Z"
-      fill="currentColor"
-    />
-  </svg>
-);
+// ! Замена v-uik
+import * as Accordion from '@radix-ui/react-accordion';
+import { ChevronDownIcon } from '@radix-ui/react-icons'; // Иконка стрелки
+import { FC, ReactNode } from 'react';
+import * as styles from './ExpandableCard.module.scss'; // Стили подключим отдельно
 
 type ExpandableCardProps = {
-  labelProps: LabelledProps;
-  children: ReactNode;
+  labelProps: {
+    label: ReactNode;
+    labelProps?: { tooltipText?: string }; // Опциональное поле для tooltip
+    required?: boolean; // Опциональное поле для обязательности
+  }; // Заголовок карточки
+  children: ReactNode; // Контент внутри
 };
 
-export const ExpandableCard: FC<ExpandableCardProps> = ({
-  labelProps,
-  children,
-}) => {
-  const styles = useStyles();
-  const [expanded, setExpanded] = useState(false);
-
+export const ExpandableCard: FC<ExpandableCardProps> = ({ labelProps, children }) => {
   return (
-    <Card
-      classes={{ card: styles.card, header: styles.header }}
-      header={
-        <div
-          className={styles.headerContainer}
-          onClick={() => {
-            setExpanded((v) => !v);
-          }}
-        >
-          <Labelled {...labelProps} />
-          <ArrowIcon
-            className={clsx(styles.icon, expanded && styles.iconOpen)}
-          />
-        </div>
-      }
-    >
-      <div className={clsx(styles.foldContent, expanded && styles.expanded)}>
-        <Divider className={styles.divider} />
-        {children}
-      </div>
-    </Card>
+    <Accordion.Root type="single" collapsible>
+      <Accordion.Item value="item-1">
+        <Accordion.Header>
+          <Accordion.Trigger className={styles.accordionTrigger}>
+            {labelProps.label}
+            <ChevronDownIcon className={styles.accordionIcon} />
+          </Accordion.Trigger>
+        </Accordion.Header>
+        <Accordion.Content className={styles.accordionContent}>
+          <div className={styles.accordionDivider} />
+          {children}
+        </Accordion.Content>
+      </Accordion.Item>
+    </Accordion.Root>
   );
 };
+
+// ! Оригинал
+// import { Card, createUseStyles, Divider, clsx, Labelled, type LabelledProps } from '@v-uik/base';
+// import { useState, type FC, type ReactNode } from 'react';
+//
+// const cardPadding = '2px 10px';
+// const useStyles = createUseStyles((theme) => ({
+//   card: {
+//     padding: '0'
+//   },
+//   header: {
+//     margin: 0,
+//     borderRadius: theme.sys.shape.borderRadiusXl,
+//     cursor: 'pointer',
+//     '& label': {
+//       cursor: 'pointer' // override label style
+//     },
+//     '&:hover': {
+//       backgroundColor: theme.sys.color.onBackgroundOverlayHover
+//     }
+//   },
+//   headerContainer: {
+//     padding: cardPadding,
+//     display: 'flex',
+//     alignItems: 'flex-end'
+//   },
+//   icon: {
+//     margin: 8,
+//     transition: '0.3s ease-in-out transform'
+//   },
+//   iconOpen: {
+//     transform: 'rotate(-180deg)'
+//   },
+//   foldContent: {
+//     maxHeight: 0,
+//     transition: 'max-height ease-in-out 0.3s, padding step-end 0.3s', // show padding while collapsing
+//     overflow: 'hidden'
+//   },
+//   expanded: {
+//     maxHeight: '1000px',
+//     padding: cardPadding,
+//     transition: 'max-height ease-in-out 0.3s' // disable padding animations on expand
+//   },
+//   divider: {
+//     marginBottom: 16
+//   }
+// }));
+//
+// const ArrowIcon: FC<{ className?: string }> = ({ className }) => (
+//   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+//     <path
+//       fillRule="evenodd"
+//       clipRule="evenodd"
+//       d="M16.501 8L18 9.6L12.0005 16L6 9.6L7.50014 8L12.0005 12.8L16.501 8Z"
+//       fill="currentColor"
+//     />
+//   </svg>
+// );
+//
+// type ExpandableCardProps = {
+//   labelProps: LabelledProps;
+//   children: ReactNode;
+// };
+//
+// export const ExpandableCard: FC<ExpandableCardProps> = ({ labelProps, children }) => {
+//   const styles = useStyles();
+//   const [expanded, setExpanded] = useState(false);
+//
+//   return (
+//     <Card
+//       classes={{ card: styles.card, header: styles.header }}
+//       header={
+//         <div
+//           className={styles.headerContainer}
+//           onClick={() => {
+//             setExpanded((v) => !v);
+//           }}
+//         >
+//           <Labelled {...labelProps} />
+//           <ArrowIcon className={clsx(styles.icon, expanded && styles.iconOpen)} />
+//         </div>
+//       }
+//     >
+//       <div className={clsx(styles.foldContent, expanded && styles.expanded)}>
+//         <Divider className={styles.divider} />
+//         {children}
+//       </div>
+//     </Card>
+//   );
+// };

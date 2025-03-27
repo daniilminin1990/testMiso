@@ -1,12 +1,11 @@
-import { FC, ReactNode, useCallback, useRef, useState } from "react";
-import * as styles from "./finder.module.scss";
-import {
-  CircularProgress,
-  DropdownMenu,
-  DropdownMenuItem,
-  Input,
-} from "@v-uik/base";
-import { FaSearch } from "react-icons/fa";
+// import { FC, ReactNode, useCallback, useRef, useState } from 'react';
+// import * as styles from './finder.module.scss';
+// import { CircularProgress, DropdownMenu, DropdownMenuItem, Input } from '@v-uik/base';
+// import { FaSearch } from 'react-icons/fa';
+import { FC, ReactNode, useCallback, useRef, useState } from 'react';
+import * as styles from './finder.module.scss';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import { FaSearch } from 'react-icons/fa';
 
 export type TListItemFinderHOC = {
   value: string;
@@ -24,43 +23,40 @@ export type TFinderProps = {
   initialGetter?: () => Promise<TListItemFinderHOC[]>;
 };
 
-type TDisplaying = "loading" | "result" | "empty";
-export const Finder: FC<TFinderProps> = ({
-  messages,
-  onSelectItem,
-  dataGetter,
-  initialGetter,
-}) => {
+type TDisplaying = 'loading' | 'result' | 'empty';
+
+export const Finder: FC<TFinderProps> = ({ messages, onSelectItem, dataGetter, initialGetter }) => {
   const anchorRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const [inputValue, setInputValue] = useState<string>("");
+  const [inputValue, setInputValue] = useState<string>('');
   const [searchingData, setSearchingData] = useState<TListItemFinderHOC[]>([]);
-  const [displayingState, setDisplayingState] =
-    useState<TDisplaying>("loading");
+  const [displayingState, setDisplayingState] = useState<TDisplaying>('loading');
+
+  // ! Чтобы заменить v-uik, делаем состояние
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   // LAYOUT HANDLERS
   const getAnchor = useCallback(() => {
     return anchorRef.current || ({} as HTMLElement);
   }, [anchorRef]);
 
-  const getContainer = useCallback(
-    () => containerRef.current || document.body,
-    [containerRef]
-  );
+  const getContainer = useCallback(() => containerRef.current || document.body, [containerRef]);
 
   const displayingSetter = useCallback(
     (result: TListItemFinderHOC[]) => {
       if (!result) return;
-      switch (result.length) {
-        case 0:
-          setDisplayingState("empty");
-          break;
-        default:
-          setDisplayingState("result");
-          break;
-      }
+      // switch (result.length) {
+      //   case 0:
+      //     setDisplayingState('empty');
+      //     break;
+      //   default:
+      //     setDisplayingState('result');
+      //     break;
+      // }
+      // ! МОЖНО ЗАМЕНИТЬ НА
+      setDisplayingState(result.length === 0 ? 'empty' : 'result');
     },
     [setDisplayingState]
   );
@@ -74,7 +70,7 @@ export const Finder: FC<TFinderProps> = ({
 
   const handleFilledRequest = useCallback(
     (request: string, delay: number) => {
-      if (!dataGetter) throw new Error("dataGetter is required");
+      if (!dataGetter) throw new Error('dataGetter is required');
       if (timerRef.current) clearTimeout(timerRef.current);
 
       timerRef.current = setTimeout(() => {
@@ -90,44 +86,52 @@ export const Finder: FC<TFinderProps> = ({
   const handleSearching = useCallback(
     (currentValue: string) => {
       setInputValue(currentValue);
-      setDisplayingState("loading");
-      switch (currentValue.length) {
-        case 0:
-          handleInitialRequest();
-          break;
-        default:
-          handleFilledRequest(currentValue, 500);
+      setDisplayingState('loading');
+      // switch (currentValue.length) {
+      //   case 0:
+      //     handleInitialRequest();
+      //     break;
+      //   default:
+      //     handleFilledRequest(currentValue, 500);
+      // }
+      // ! МОЖНО ЗАМЕНИТЬ НА
+      if (currentValue.length === 0) {
+        handleInitialRequest();
+      } else {
+        handleFilledRequest(currentValue, 500);
       }
     },
-    [
-      setDisplayingState,
-      handleInitialRequest,
-      handleFilledRequest,
-      setInputValue,
-    ]
+    [setDisplayingState, handleInitialRequest, handleFilledRequest, setInputValue]
   );
 
   // DROPDOWN CONTENT
   // - Loader
   const getLoader = (loadingMessage: string | undefined) => {
     return (
-      <DropdownMenuItem>
-        <div className={styles.searchItem}>
-          <CircularProgress />
-          <span>{loadingMessage || "Loading..."}</span>
-        </div>
-      </DropdownMenuItem>
+      // <DropdownMenuItem>
+      //   <div className={styles.searchItem}>
+      //     <CircularProgress />
+      //     <span>{loadingMessage || 'Loading...'}</span>
+      //   </div>
+      // </DropdownMenuItem>
+      <DropdownMenu.Item className={styles.searchItem}>
+        <div className={styles.spinner} />
+        <span>{loadingMessage || 'Loading...'}</span>
+      </DropdownMenu.Item>
     );
   };
 
   // - Empty
   const getEmpty = (nfMessage: string | undefined) => {
     return (
-      <DropdownMenuItem>
-        <div className={styles.searchItem}>
-          <span>{nfMessage ?? "Not found"}</span>
-        </div>
-      </DropdownMenuItem>
+      // <DropdownMenuItem>
+      //   <div className={styles.searchItem}>
+      //     <span>{nfMessage ?? 'Not found'}</span>
+      //   </div>
+      // </DropdownMenuItem>
+      <DropdownMenu.Item className={styles.searchItem}>
+        <span>{nfMessage ?? 'Not found'}</span>
+      </DropdownMenu.Item>
     );
   };
   // - Not found
@@ -135,54 +139,92 @@ export const Finder: FC<TFinderProps> = ({
     return (
       <>
         {searchingData.map((item) => (
-          <DropdownMenuItem
+          // <DropdownMenuItem
+          //   key={item.id}
+          //   onClick={() => {
+          //     onSelectItem?.(item.id, item.value);
+          //   }}
+          // >
+          //   {item.value}
+          // </DropdownMenuItem>
+          <DropdownMenu.Item
             key={item.id}
-            onClick={() => {
-              onSelectItem?.(item.id, item.value);
-            }}
+            className={styles.searchItem}
+            onSelect={() => onSelectItem?.(item.id, item.value)}
           >
             {item.value}
-          </DropdownMenuItem>
+          </DropdownMenu.Item>
         ))}
       </>
     );
   }, [onSelectItem, searchingData]);
 
+  // ! ПОЧЕМУ ЭТО СДЕЛАНО КАК IIEF????
   const content = ((): ReactNode => {
     switch (displayingState) {
-      case "loading":
+      case 'loading':
         return getLoader(messages?.loading);
-      case "empty":
+      case 'empty':
         return getEmpty(messages?.notfound);
       default:
         return getFoundedList();
     }
   })();
+  // ! Можно же не IIEF
+  // const content = (): ReactNode => {
+  //   switch (displayingState) {
+  //     case 'loading':
+  //       return getLoader(messages?.loading);
+  //     case 'empty':
+  //       return getEmpty(messages?.notfound);
+  //     default:
+  //       return getFoundedList();
+  //   }
+  // };
 
   return (
     <div className={styles.container}>
       <div ref={containerRef} className={styles.searchResContainer}>
         <div ref={anchorRef} />
       </div>
-      <DropdownMenu
-        keepMounted
-        action="click"
-        placement="bottom-end"
-        content={content}
-        className={styles.dropDownContainer}
-        anchor={getAnchor}
-        container={getContainer}
-        onStateChange={(state) => {
-          if (state) handleSearching(inputValue);
-        }}
-      >
-        <Input
-          size="lg"
-          suffix={<FaSearch />}
-          onChange={handleSearching}
-          value={inputValue}
-        />
-      </DropdownMenu>
+      <DropdownMenu.Root open={isOpen} onOpenChange={setIsOpen}>
+        <DropdownMenu.Trigger asChild>
+          <div className={styles.inputWrapper}>
+            <input
+              type="text"
+              className={styles.searchInput}
+              value={inputValue}
+              onChange={(e) => handleSearching(e.target.value)}
+              onFocus={() => setIsOpen(true)}
+            />
+            <FaSearch className={styles.searchIcon} />
+          </div>
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Portal>
+          <DropdownMenu.Content className={styles.dropDownContainer} side="bottom" align="end">
+            {content}
+          </DropdownMenu.Content>
+        </DropdownMenu.Portal>
+      </DropdownMenu.Root>
     </div>
+    // <div className={styles.container}>
+    //   <div ref={containerRef} className={styles.searchResContainer}>
+    //     <div ref={anchorRef} />
+    //   </div>
+    //   <DropdownMenu
+    //     keepMounted
+    //     action="click"
+    //     placement="bottom-end"
+    //     content={content}
+    //     className={styles.dropDownContainer}
+    //     anchor={getAnchor}
+    //     container={getContainer}
+    //     onStateChange={(state) => {
+    //       if (state) handleSearching(inputValue);
+    //     }}
+    //   >
+    //     <Input size="lg" suffix={<FaSearch />} onChange={handleSearching} value={inputValue} />
+    //   </DropdownMenu>
+    // </div>
   );
 };

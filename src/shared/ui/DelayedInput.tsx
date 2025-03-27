@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from 'react';
+import * as styles from './DelayedInput.module.scss';
 
 // export type DelayedInputProps<TCanClear extends boolean> = {
 //   inputProps: InputProps<TCanClear>;
@@ -11,6 +12,7 @@ import { useState, useEffect, useCallback } from "react";
 // };
 
 type Props = {
+  label?: string; // Добавляем label как отдельный пропс
   inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
   onCommit: React.Dispatch<React.SetStateAction<string>>;
 };
@@ -70,8 +72,8 @@ const useDebounce = (callback: (value: string) => void, delay: number) => {
 //   return <Input {...inputProps} value={searchState} onChange={setVale} />;
 // };
 
-export const DelayedInput = ({ inputProps, onCommit }: Props) => {
-  const [value, setValue] = useState("");
+export const DelayedInput = ({ inputProps, onCommit, label }: Props) => {
+  const [value, setValue] = useState('');
 
   // Используем наш кастомный хук debounce
   const debouncedOnCommit = useDebounce(onCommit, 500);
@@ -83,11 +85,9 @@ export const DelayedInput = ({ inputProps, onCommit }: Props) => {
   };
 
   return (
-    <input
-      {...inputProps}
-      value={value}
-      onChange={handleChange}
-      type="text" // Тип по умолчанию
-    />
+    <div className={styles.container}>
+      {label && <label className={styles.label}>{label}</label>}
+      <input {...inputProps} value={value} onChange={handleChange} type="text" className={styles.input} />
+    </div>
   );
 };

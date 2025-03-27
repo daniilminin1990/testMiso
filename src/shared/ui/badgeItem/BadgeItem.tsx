@@ -1,5 +1,5 @@
 // import type { FC, ReactElement, ReactNode } from "react";
-// import * as styles from "./badgeItem.module.scss";
+// import * as styles from "./BadgeItem.module.scss";
 // import { DropdownMenu, Badge, Button } from "@v-uik/base";
 
 // type TBadgeItem = {
@@ -55,9 +55,11 @@
 //   );
 // };
 
-import type { FC, ReactElement, ReactNode } from "react";
-import * as styles from "./badgeItem.module.scss";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import type { FC, ReactElement, ReactNode } from 'react';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import * as styles from './BadgeItem.module.scss';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 type TBadgeItem = {
   icon: ReactElement;
@@ -68,15 +70,8 @@ type TBadgeItem = {
   disabled?: boolean;
 };
 
-export const BadgeItem: FC<TBadgeItem> = ({
-  icon,
-  title,
-  children,
-  counter,
-  onClick,
-  disabled,
-}) => {
-  const titled = title ? styles.titled : "";
+export const BadgeItem: FC<TBadgeItem> = ({ icon, title, children, counter, onClick, disabled }) => {
+  const titled = title ? styles.titled : '';
 
   // Компонент Badge реализован через div с числом
   const badgeContent = (
@@ -86,10 +81,10 @@ export const BadgeItem: FC<TBadgeItem> = ({
         onClick={onClick}
         className={styles.button} // Предполагается, что вы добавите стили для кнопки в SCSS
         style={{
-          fontSize: "24px",
-          height: "inherit",
-          minWidth: "100%",
-          width: "100%",
+          fontSize: '24px',
+          height: 'inherit',
+          minWidth: '100%',
+          width: '100%'
         }}
       >
         <div className={styles.iconContainer}>{icon || null}</div>
@@ -101,9 +96,7 @@ export const BadgeItem: FC<TBadgeItem> = ({
   const badge = (
     <div className={styles.badgeWrapper}>
       {badgeContent}
-      {counter !== undefined && counter > 0 && (
-        <span className={styles.badgeCounter}>{counter}</span>
-      )}
+      {counter !== undefined && counter > 0 && <span className={styles.badgeCounter}>{counter}</span>}
     </div>
   );
 

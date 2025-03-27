@@ -1,0 +1,8 @@
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.disabledTransition {
+  color: maroon;
+}
