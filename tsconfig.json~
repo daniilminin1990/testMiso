@@ -56,18 +56,11 @@
         "name": "typescript-plugin-css-modules",
         "options": {
           "goToDefinition": true,
-          "customTemplate": "./customTemplate.js"
+          "customTemplate": "./customTemplate.js" // ЭТО ЧТО???
         }
       }
     ]
   },
   "include": ["./src"],
-
-  "exclude": [
-    "node_modules",
-    "build",
-    "coverage",
-    "webpack.*.js",
-    "*.config.js"
-  ]
+  "exclude": ["node_modules", "build", "coverage", "webpack.js", ".config.js"]
 }

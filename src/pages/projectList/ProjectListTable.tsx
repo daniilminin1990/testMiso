@@ -6,15 +6,15 @@
 //   type RecordDataSource,
 //   type SortOrderProp
 // } from '@v-uik/base';
-import { Table, Pagination, TablePaginationConfig } from 'antd'; // Import AntD components
-import { FieldType, PropertyDescriptor, type ControlEventListDto } from '@shared/types/apiTypes';
-import { useEffect, useState, type FC } from 'react';
-import { projectListApi } from './projectListApi';
-import { DirectoryValue } from '@shared/ui/DirectoryValue';
-import { showErrorNotification } from '@shared/ui/showErrorNotification';
-import * as styles from './ProjectListTable.module.css';
-import type { ColumnsType } from 'antd/lib/table';
-import { FilterValue, SorterResult } from 'antd/es/table/interface';
+import { Table, Pagination, TablePaginationConfig } from "antd"; // Import AntD components
+import { FieldType, PropertyDescriptor, type ControlEventListDto } from "@shared/types/apiTypes";
+import { useEffect, useState, type FC } from "react";
+import { projectListApi } from "./projectListApi";
+import { DirectoryValue } from "@shared/ui/DirectoryValue";
+import { showErrorNotification } from "@shared/ui/showErrorNotification";
+import * as styles from "./ProjectListTable.module.css";
+import type { ColumnsType } from "antd/lib/table";
+import { FilterValue, SorterResult } from "antd/es/table/interface";
 
 type Props = {
   onSelect: (projectId: string) => void;
@@ -30,7 +30,9 @@ type Props = {
 // TODO EDIT
 // Эти 2 функции оч похожи, код дублируется лучше сделать одну, которая будет работать для всех
 function toUpperCase(string: string | undefined) {
-  if (!string) return '';
+  if (!string) {
+    return "";
+  }
   return string[0].toUpperCase() + string.slice(1);
 }
 
@@ -40,7 +42,9 @@ function lcFirst(string: string) {
 
 // TODO EDIT лучше писать так, вместо ! в том месте где используется эта функцция.
 function ucFirst(string: string | undefined) {
-  if (!string) return '';
+  if (!string) {
+    return "";
+  }
   return string[0].toUpperCase() + string.slice(1);
 }
 
@@ -51,7 +55,7 @@ function metaToColumn(meta: PropertyDescriptor): ColumnsType<ControlEventListDto
     key: id,
     dataIndex: id,
     title: meta.title,
-    align: 'center',
+    align: "center",
     // sorter: meta.type === FieldType.String ? (a, b) => a[id].localeCompare(b[id]) : undefined,
     // render:
     //   meta.type === FieldType.Directory
@@ -111,7 +115,7 @@ export const ProjectListTable = (props: Props) => {
   const [totalItemsNumber, setTotalItemsNumber] = useState(0);
 
   const [orderBy, setOrderBy] = useState<string>();
-  const [orderDesc, setOrderDesc] = useState<'asc' | 'desc' | undefined>(undefined);
+  const [orderDesc, setOrderDesc] = useState<"asc" | "desc" | undefined>(undefined);
 
   // const [records, setRecords] = useState<RecordDataSource<ControlEventListDto>[]>([]);
   // const [columns, setColumns] = useState<ColumnProps<ControlEventListDto>[]>([]);
@@ -123,7 +127,7 @@ export const ProjectListTable = (props: Props) => {
     projectListApi
       .fetchMeta()
       .then((meta) => {
-        console.log('dfsdfs', meta);
+        console.log("dfsdfs", meta);
         setColumns(meta.map((x) => metaToColumn(x)));
       })
       .catch(showErrorNotification);
@@ -139,10 +143,10 @@ export const ProjectListTable = (props: Props) => {
         page: currentPage - 1,
         pageSize,
         orderBy,
-        orderDesc: orderDesc === 'desc'
+        orderDesc: orderDesc === "desc"
       })
       .then((data) => {
-        console.log('data fetchResult, records', data);
+        console.log("data fetchResult, records", data);
         setRecords(data.items);
         setTotalItemsNumber(data.total);
       })
@@ -166,13 +170,15 @@ export const ProjectListTable = (props: Props) => {
     // if (sorter.field) {
     //   setOrderBy(ucFirst(sorter.field));
     //   setOrderDesc(sorter.order);
+
+    const getOrderBy = (value: string | undefined) => (value === "ascend" ? "asc" : "desc");
     if (Array.isArray(sorter)) {
       // If sorter is an array, you can't access its field property directly.
       // You might want to loop through the array and handle each item individually.
     } else if (sorter.field) {
       const field = sorter.field.toString(); // Convert the field to a string
       setOrderBy(ucFirst(field));
-      setOrderDesc(sorter.order === null ? undefined : sorter.order === 'ascend' ? 'asc' : 'desc');
+      setOrderDesc(sorter.order === null ? undefined : getOrderBy(sorter.order));
     } else {
       setOrderBy(undefined);
       setOrderDesc(undefined);

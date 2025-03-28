@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback } from 'react';
-import * as styles from './DelayedInput.module.scss'
+import * as styles from "./DelayedInput.module.scss";
+import { useState, useEffect, useCallback } from "react";
 
 // export type DelayedInputProps<TCanClear extends boolean> = {
 //   inputProps: InputProps<TCanClear>;
@@ -73,7 +73,7 @@ const useDebounce = (callback: (value: string) => void, delay: number) => {
 // };
 
 export const DelayedInput = ({ inputProps, onCommit, label }: Props) => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
 
   // Используем наш кастомный хук debounce
   const debouncedOnCommit = useDebounce(onCommit, 500);

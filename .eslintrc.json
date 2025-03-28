@@ -15,9 +15,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    // ++
     "plugin:prettier/recommended"
-    // ++
     //    "plugin:react-refresh/recommended"
   ],
   "plugins": [
@@ -25,7 +23,8 @@
     "react-hooks",
     "react-refresh",
     "@typescript-eslint",
-    "prettier"
+    "prettier",
+    "import"
   ],
   "ignorePatterns": ["__jest__/**/*", "__tests__/**/*", "__webpack__/**/*", "node_modules/**/*", "customTemplate.js", "webpack.config.js"],
   "settings": {
@@ -34,11 +33,24 @@
     }
   },
   "rules": {
+    "allow-parens": "off",
     "capitalized-comments": "off",
-    "curly": "off",
+    "curly": ["error", "all"],
+    "import/extensions": ["error", { "css": "always", "json": "always", "scss": "always", "svg": "always" }],
+    "import/no-duplicates": "off",
+    "import/order": "off",
+    "import/prefer-default-export": "off",
+    "max-lines": ["error", 500],
     "id-length": "off",
     "new-cap": "off",
-    "no-console": "off",
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "no-debugger": "off",
+    "no-duplicate-imports": "off",
+    "no-empty-pattern": "off",
+    "no-nested-ternary": "error",
+    "no-undef": "warn",
+    "no-unused-vars": "off",
+    "no-var": "error",
     "no-inline-comments": "off",
     "no-undefined": "off",
     "prefer-template": "off",
@@ -49,13 +61,10 @@
     "react/prop-types": "off",
     "react/display-name": "off",
     "react/no-unescaped-entities": "off",
-    // ++
-    //        "react/jsx-curly-spacing": ["error", "always"],
-    //        "object-curly-spacing": ["error", "always"],
-    "react/jsx-curly-spacing": "off", // Отключите, так как Prettier управляет этим
-    "object-curly-spacing": "off", // Отключите, так как Prettier управляет этим через bracketSpacing
-    "prettier/prettier": "error", // Убедитесь, что Prettier имеет приоритет
-    // ++
+    //    "react/jsx-curly-spacing": ["error", "always"],
+    //    "object-curly-spacing": ["error", "always"],
+    "react/jsx-curly-spacing": "off", // Теперь этим управляет prettier. Раньше было ["error", "always"]
+    "object-curly-spacing": "off", // Теперь этим управляет prettier. Раньше было ["error", "always"]
     "@typescript-eslint/consistent-type-imports": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-member-accessibility": "off",
