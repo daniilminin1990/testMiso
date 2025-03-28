@@ -59,7 +59,7 @@ function metaToColumn(meta: PropertyDescriptor): ColumnsType<ControlEventListDto
     //     : undefined
     sorter:
       meta.type === FieldType.String
-        ? (a: ControlEventListDto, b: ControlEventListDto) => a[id].localeCompare(b[id])
+        ? (a: ControlEventListDto, b: ControlEventListDto) => (a[id] as string).localeCompare(b[id] as string)
         : undefined,
     render:
       meta.type === FieldType.Directory
@@ -163,9 +163,16 @@ export const ProjectListTable = (props: Props) => {
     filters: Record<string, FilterValue | null>,
     sorter: SorterResult<ControlEventListDto> | SorterResult<ControlEventListDto>[]
   ) => {
-    if (sorter.field) {
-      setOrderBy(ucFirst(sorter.field));
-      setOrderDesc(sorter.order);
+    // if (sorter.field) {
+    //   setOrderBy(ucFirst(sorter.field));
+    //   setOrderDesc(sorter.order);
+    if (Array.isArray(sorter)) {
+      // If sorter is an array, you can't access its field property directly.
+      // You might want to loop through the array and handle each item individually.
+    } else if (sorter.field) {
+      const field = sorter.field.toString(); // Convert the field to a string
+      setOrderBy(ucFirst(field));
+      setOrderDesc(sorter.order === null ? undefined : sorter.order === 'ascend' ? 'asc' : 'desc');
     } else {
       setOrderBy(undefined);
       setOrderDesc(undefined);
