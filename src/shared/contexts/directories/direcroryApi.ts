@@ -1,6 +1,6 @@
-import axios from 'axios';
-import { apiRoutes } from '@shared/api/apiRoutes';
-import type { DirectoryContent, DirectoryContentBatch } from '@shared/types/apiTypes';
+import axios from "axios";
+import { apiRoutes } from "@shared/api/apiRoutes";
+import type { DirectoryContent, DirectoryContentBatch } from "@shared/types/apiTypes";
 
 export const directoryApi = {
   // TODO: unused

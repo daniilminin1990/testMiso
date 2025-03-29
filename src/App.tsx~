@@ -10,8 +10,7 @@ import type { DirectoryContent } from '@shared/types/apiTypes';
 import { DirectoriesContext } from '@shared/contexts/directories/DirectoriesContext';
 import { showErrorNotification } from '@shared/ui/showErrorNotification';
 import { router } from '@app/routes/router';
-import { directoryApi } from '@shared/contexts/directories/direcroryApi';
-
+import { directoryApi } from '@shared/contexts/directories/direcroryApi'; 
 
 // Глобальная настройка уведомлений
 notification.config({

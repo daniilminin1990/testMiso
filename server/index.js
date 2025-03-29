@@ -1,10 +1,11 @@
 // import jsonServer from "json-server/index.js";
 const jsonServer = require("json-server");
-import db from "./db.json" assert { type: "json" }; // Импорт данных из db.json
-
+// import db from "./db.json" assert { type: "json" }; // Импорт данных из db.json
+const db = require("./db.json");
 const server = jsonServer.create();
 const middlewares = jsonServer.defaults();
 
+console.log("Скрипт запущен");
 // Применяем стандартные middleware (CORS, logging и т.д.)
 server.use(middlewares);
 

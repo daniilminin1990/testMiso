@@ -4,7 +4,7 @@
 // </auto-generated>
 //----------------------
 
-import type { Json, JsonObject } from './json';
+import type { Json, JsonObject } from "./json";
 
 /* tslint:disable */
 /* eslin t-disable */
@@ -57,36 +57,36 @@ export interface ControlEventListDtoPagedResult {
 }
 
 export const enum ControlEventStage {
-  Draft = 'Draft',
-  Prepare = 'Prepare',
-  Proceeding = 'Proceeding',
-  Realization = 'Realization'
+  Draft = "Draft",
+  Prepare = "Prepare",
+  Proceeding = "Proceeding",
+  Realization = "Realization"
 }
 
 export const enum ControlEventStatus {
-  Draft = 'Draft',
-  Prepare_Registration = 'Prepare_Registration',
-  Prepare_Registered = 'Prepare_Registered',
-  Prepare_CheckConflictOfInterest = 'Prepare_CheckConflictOfInterest',
-  Prepare_Completion = 'Prepare_Completion',
-  Prepare_Completed = 'Prepare_Completed',
-  Prepare_CompletedNoProceeding = 'Prepare_CompletedNoProceeding',
-  Prepare_Archive = 'Prepare_Archive',
-  Proceeding_Registration = 'Proceeding_Registration',
-  Proceeding_Registered = 'Proceeding_Registered',
-  Proceeding_CheckConflictOfInterest = 'Proceeding_CheckConflictOfInterest',
-  Proceeding_PazCreate = 'Proceeding_PazCreate',
-  Proceeding_PazNegotation = 'Proceeding_PazNegotation',
-  Proceeding_PazApproved = 'Proceeding_PazApproved',
-  Proceeding_PazCompleteion = 'Proceeding_PazCompleteion',
-  Proceeding_PazCompleted = 'Proceeding_PazCompleted',
-  Proceeding_Completion = 'Proceeding_Completion',
-  Proceeding_Completed = 'Proceeding_Completed',
-  Proceeding_CompletedNoRealization = 'Proceeding_CompletedNoRealization',
-  Proceeding_Archive = 'Proceeding_Archive',
-  Realization_Completion = 'Realization_Completion',
-  Realization_Completed = 'Realization_Completed',
-  Realization_Archive = 'Realization_Archive'
+  Draft = "Draft",
+  Prepare_Registration = "Prepare_Registration",
+  Prepare_Registered = "Prepare_Registered",
+  Prepare_CheckConflictOfInterest = "Prepare_CheckConflictOfInterest",
+  Prepare_Completion = "Prepare_Completion",
+  Prepare_Completed = "Prepare_Completed",
+  Prepare_CompletedNoProceeding = "Prepare_CompletedNoProceeding",
+  Prepare_Archive = "Prepare_Archive",
+  Proceeding_Registration = "Proceeding_Registration",
+  Proceeding_Registered = "Proceeding_Registered",
+  Proceeding_CheckConflictOfInterest = "Proceeding_CheckConflictOfInterest",
+  Proceeding_PazCreate = "Proceeding_PazCreate",
+  Proceeding_PazNegotation = "Proceeding_PazNegotation",
+  Proceeding_PazApproved = "Proceeding_PazApproved",
+  Proceeding_PazCompleteion = "Proceeding_PazCompleteion",
+  Proceeding_PazCompleted = "Proceeding_PazCompleted",
+  Proceeding_Completion = "Proceeding_Completion",
+  Proceeding_Completed = "Proceeding_Completed",
+  Proceeding_CompletedNoRealization = "Proceeding_CompletedNoRealization",
+  Proceeding_Archive = "Proceeding_Archive",
+  Realization_Completion = "Realization_Completion",
+  Realization_Completed = "Realization_Completed",
+  Realization_Archive = "Realization_Archive"
 }
 
 export interface ControlEventStatusDescription {
@@ -123,8 +123,8 @@ export interface DirectoryDescriptor {
 }
 
 export const enum DirectoryType {
-  Fixed = 'Fixed',
-  Dynamic = 'Dynamic'
+  Fixed = "Fixed",
+  Dynamic = "Dynamic"
 }
 
 export interface DocumentDto {
@@ -141,13 +141,13 @@ export interface EditControlEventCommand {
 }
 
 export const enum FieldType {
-  Number = 'Number',
-  String = 'String',
-  Bool = 'Bool',
-  Date = 'Date',
-  Complex = 'Complex',
-  Hidden = 'Hidden',
-  Directory = 'Directory'
+  Number = "Number",
+  String = "String",
+  Bool = "Bool",
+  Date = "Date",
+  Complex = "Complex",
+  Hidden = "Hidden",
+  Directory = "Directory"
 }
 
 export interface FieldValidations {
@@ -161,10 +161,10 @@ export interface FormFieldDescriptor {
 }
 
 export const enum FormFieldEdit {
-  Readonly = 'Readonly',
-  Editable = 'Editable',
-  Required = 'Required',
-  RequiredNew = 'RequiredNew'
+  Readonly = "Readonly",
+  Editable = "Editable",
+  Required = "Required",
+  RequiredNew = "RequiredNew"
 }
 
 export interface FormFieldValue {
@@ -189,10 +189,10 @@ export interface HttpValidationProblemDetails {
 }
 
 export const enum PazAction {
-  Negotation = 'Negotation',
-  Approved = 'Approved',
-  Completeion = 'Completeion',
-  Completed = 'Completed'
+  Negotation = "Negotation",
+  Approved = "Approved",
+  Completeion = "Completeion",
+  Completed = "Completed"
 }
 
 export interface PropertyDescriptor {
@@ -220,21 +220,21 @@ export interface ResultDocumentInfo {
 }
 
 export const enum ResultDocumentType {
-  ОРДподготовку = 'ОРДподготовку',
-  ОРДпроведение = 'ОРДпроведение',
-  ОРДпродление = 'ОРДпродление',
-  Сопроводительная = 'Сопроводительная',
-  Финальная = 'Финальная',
-  Разделы = 'Разделы',
-  Заключение = 'Заключение',
-  Служебная = 'Служебная',
-  Файлы = 'Файлы',
-  АктВозражений = 'АктВозражений',
-  ЗаключениеАктВозражений = 'ЗаключениеАктВозражений',
-  АктОтказа = 'АктОтказа',
-  АктПротиводействии = 'АктПротиводействии',
-  Презентационные = 'Презентационные',
-  Аудиторские = 'Аудиторские'
+  ОРДподготовку = "ОРДподготовку",
+  ОРДпроведение = "ОРДпроведение",
+  ОРДпродление = "ОРДпродление",
+  Сопроводительная = "Сопроводительная",
+  Финальная = "Финальная",
+  Разделы = "Разделы",
+  Заключение = "Заключение",
+  Служебная = "Служебная",
+  Файлы = "Файлы",
+  АктВозражений = "АктВозражений",
+  ЗаключениеАктВозражений = "ЗаключениеАктВозражений",
+  АктОтказа = "АктОтказа",
+  АктПротиводействии = "АктПротиводействии",
+  Презентационные = "Презентационные",
+  Аудиторские = "Аудиторские"
 }
 
 export interface ResultDocumentsDto {

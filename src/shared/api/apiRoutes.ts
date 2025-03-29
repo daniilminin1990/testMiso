@@ -8,6 +8,8 @@ export interface GetProjectListParams {
 
 const base = process.env.REACT_APP_BASE_ROUTE as string;
 
+console.log({ base });
+
 export const apiRoutes = {
   getProject: (id: string) => `${base}/controlevent/${id}`,
   updateProject: (id: string) => `${base}/controlevent/${id}`,

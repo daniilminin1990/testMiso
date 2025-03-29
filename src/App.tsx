@@ -1,20 +1,20 @@
-import './App.scss';
-import * as styles from './App.module.scss';
+import "./App.scss";
+import * as styles from "./App.module.scss";
 
-import { useEffect, useState } from 'react';
-import { RouterProvider } from 'react-router';
-import { ConfigProvider } from 'antd'; // Если используешь Ant Design
+import { useEffect, useState } from "react";
+import { RouterProvider } from "react-router";
+import { ConfigProvider } from "antd"; // Если используешь Ant Design
 // Для уведомлений. Вместо тех, которые от v-uik
-import { notification } from 'antd';
-import type { DirectoryContent } from '@shared/types/apiTypes';
-import { DirectoriesContext } from '@shared/contexts/directories/DirectoriesContext';
-import { showErrorNotification } from '@shared/ui/showErrorNotification';
-import { router } from '@app/routes/router';
-import { directoryApi } from '@shared/contexts/directories/direcroryApi';
+import { notification } from "antd";
+import type { DirectoryContent } from "@shared/types/apiTypes";
+import { DirectoriesContext } from "@shared/contexts/directories/DirectoriesContext";
+import { showErrorNotification } from "@shared/ui/showErrorNotification";
+import { router } from "@app/routes/router";
+import { directoryApi } from "@shared/contexts/directories/direcroryApi";
 
 // Глобальная настройка уведомлений
 notification.config({
-  placement: 'topRight',
+  placement: "topRight",
   duration: 1.5,
   maxCount: 5
 });
@@ -28,7 +28,7 @@ export default function App() {
 
   return (
     <ConfigProvider>
-      {' '}
+      {" "}
       {/* Опционально, если используешь Ant Design */}
       <DirectoriesContext.Provider value={directories}>
         <div className={styles.container}>
