@@ -1,37 +1,4 @@
 {
-  "directories": {
-    "batchForControlEvent": {
-      "batch": {
-        "users": [
-          { "value": "00000001-0000-0000-0000-000000000000", "code": "user1", "label": "User One" },
-          { "value": "00000002-0000-0000-0000-000000000000", "code": "user2", "label": "User Two" },
-          { "value": "00000003-0000-0000-0000-000000000000", "code": "user3", "label": "User Three" }
-        ],
-        "departments": [
-          { "value": "00000004-0000-0000-0000-000000000000", "code": "dept1", "label": "Department One" },
-          { "value": "00000005-0000-0000-0000-000000000000", "code": "dept2", "label": "Department Two" },
-          { "value": "00000007-0000-0000-0000-000000000000", "code": "dept3", "label": "Department Three" },
-          { "value": "00000009-0000-0000-0000-000000000000", "code": "dept4", "label": "Department Four" },
-          { "value": "0000000a-0000-0000-0000-000000000000", "code": "dept5", "label": "Department Five" },
-          { "value": "0000000b-0000-0000-0000-000000000000", "code": "dept6", "label": "Department Six" },
-          { "value": "0000000c-0000-0000-0000-000000000000", "code": "dept7", "label": "Department Seven" }
-        ],
-        "planPoints": [
-          { "value": "00000001-0000-0000-0000-000000000000", "code": "plan1", "label": "Plan Point One" },
-          { "value": "00000002-0000-0000-0000-000000000000", "code": "plan2", "label": "Plan Point Two" }
-        ],
-        "risks": [
-          { "value": "0000000c-0000-0000-0000-000000000000", "code": "risk1", "label": "Risk One" },
-          { "value": "0000000d-0000-0000-0000-000000000000", "code": "risk2", "label": "Risk Two" },
-          { "value": "0000000e-0000-0000-0000-000000000000", "code": "risk3", "label": "Risk Three" },
-          { "value": "0000000f-0000-0000-0000-000000000000", "code": "risk4", "label": "Risk Four" }
-        ],
-        "esg": [
-          { "value": "00000003-0000-0000-0000-000000000000", "code": "esg1", "label": "ESG One" }
-        ]
-      }
-    }
-  },
   "list": {
     "total": 23,
     "items": [

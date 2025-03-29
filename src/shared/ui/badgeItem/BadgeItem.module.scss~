@@ -17,26 +17,76 @@ $badgeDefaultSize: 48px;
 .acBadgeContent {
   width: $badgeDefaultSize;
   height: $badgeDefaultSize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.titled {
+    width: fit-content;
+  }
 
   .title {
     width: min-content;
     padding-left: 10px;
-
     color: var(--color-white);
     font-size: 23px;
     text-align: left;
     line-height: 115%;
     white-space: break-spaces;
-    //@include rfs.font-size(1rem);
-    //@include textTransform.ellipsing($lines: 2);
+    // @include rfs.font-size(1rem); // Раскомментируйте для адаптивного шрифта
+    // @include textTransform.ellipsing($lines: 2); // Раскомментируйте для усечения текста
   }
 
   .iconContainer {
-    //@include rfs.font-size(1.25rem);
-    color: red;
+    color: red; // Настройте цвет под ваш дизайн
+    font-size: 1.25rem; // Настройте размер под ваш дизайн
+    // @include rfs.font-size(1.25rem); // Раскомментируйте для адаптивности
   }
+}
 
-  &.titled {
-    width: fit-content;
-  }
+.button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 24px; // Перезаписывается через inline-стили, если нужно
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.badgeWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.badgeCounter {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red; // Настройте цвет под ваш дизайн
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.dropdownContent {
+  background-color: white; // Настройте цвет под ваш дизайн
+  border-radius: 4px;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  min-width: 150px;
 }

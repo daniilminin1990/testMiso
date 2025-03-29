@@ -10,7 +10,7 @@ console.log("Скрипт запущен");
 server.use(middlewares);
 
 // Кастомный маршрут для /list с поддержкой фильтрации, сортировки и пагинации
-server.get("/controlevent/list", (req, res) => {
+server.get("controlevent/list", (req, res) => {
   console.log("Запрос к /controlevent/list получен", req.query);
   const { filter, page = 0, pageSize = 10, orderBy, orderDesc } = req.query;
 

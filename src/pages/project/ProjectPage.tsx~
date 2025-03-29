@@ -59,7 +59,7 @@ const ProjectPage = memo(() => {
 
   const submit = useCallback<ControlEventFormProps['handleSubmit']>(
     async (values, btn) => {
-      if (!data) return; // unexpected
+      if (!data) return; // unexpected 
 
       if (btn) {
         const message = (
@@ -194,15 +194,16 @@ const ProjectPage = memo(() => {
   return data ? (
     <>
       {/* TODO EDIT MININ PageTitle это не компонента, а просто функция => мелкая буква, вытащить из JSX и сделать в useEffect */}
-      <PageTitle
-        title={
-          'Проект ' +
-          data.fields.find((x) => {
-            const id = x.descriptor.propDescriptor.id;
-            return id === 'TempNumber' || id === 'Number';
-          })?.value
-        }
-      />
+      {/*<PageTitle*/}
+      {/*  title={*/}
+      {/*    'Проект ' +*/}
+      {/*    data.fields.find((x) => {*/}
+      {/*      const id = x.descriptor.propDescriptor.id;*/}
+      {/*      return id === 'TempNumber' || id === 'Number';*/}
+      {/*    })?.value*/}
+      {/*  }*/}
+      {/*/>*/}
+      <PageTitle title={pageTitle} />
       <ControlEventForm data={data} handleSubmit={submit} />
       <ModalConfirm headerText="Переход на статус" state={modal} setState={setModal} />
     </>
