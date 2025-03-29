@@ -1,4 +1,5 @@
-import './theme.css'
+@use './colors';
+@use './theme';
 
 * {
   margin: 0;

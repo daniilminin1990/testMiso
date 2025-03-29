@@ -1,5 +1,5 @@
 // import jsonServer from "json-server/index.js";
-const jsonServer = require("json-server");
+const jsonServer = require('json-server')
 import db from "./db.json" assert { type: "json" }; // Импорт данных из db.json
 
 const server = jsonServer.create();

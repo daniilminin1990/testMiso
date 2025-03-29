@@ -1,17 +1,11 @@
-import {
-  FormFieldEdit,
-  type DirectoryContent,
-  type PropertyDescriptor,
-} from "@shared/types/apiTypes";
+import { FormFieldEdit, type DirectoryContent, type PropertyDescriptor } from "@shared/types/apiTypes";
 import { useTraceUpdate } from "../../../shared/hooks/debugHooks";
 import { type FormFieldProps } from "./FormFieldProps";
-import { ComboBox, type ComboboxProps } from "@v-uik/base";
+// import { ComboBox, type ComboboxProps } from "@v-uik/base";
+import { Select } from "antd"; // Новый импорт AntD Select
 import { memo, useContext, useMemo, useRef } from "react";
 import { Field, getIn, type FieldProps, type FormikHandlers } from "formik";
-import {
-  DirectoriesContext,
-  type Directory,
-} from "@shared/contexts/directories/DirectoriesContext";
+import { DirectoriesContext, type Directory } from "@shared/contexts/directories/DirectoriesContext";
 import type { JsonObject } from "@shared/types/json";
 
 interface DirectoryContentModel extends DirectoryContent {
@@ -19,7 +13,6 @@ interface DirectoryContentModel extends DirectoryContent {
 }
 
 interface DirectoryModel extends Map<string, DirectoryContentModel> {}
-// type DirectoryModel = Map<string, DirectoryContentModel>;
 
 function groupBy(option: DirectoryContentModel): string {
   return option.group ?? "";
@@ -52,10 +45,7 @@ export const DirectoryField = memo((props: DirectoryFieldProps) => {
       {(formik: FieldProps<DirectoryFieldValue, JsonObject>) => {
         const pd = props.fieldDescriptor.propDescriptor;
         const directory = directories.get(pd.directoryDescriptor!.id);
-        const options =
-          pd.valuesFrom && directory
-            ? getValuesFromOptions(formik, pd, directory)
-            : directory;
+        const options = pd.valuesFrom && directory ? getValuesFromOptions(formik, pd, directory) : directory;
 
         return (
           <DirectoryFieldInternal
@@ -76,37 +66,30 @@ export const DirectoryField = memo((props: DirectoryFieldProps) => {
 function getValuesFromOptions(
   formik: FieldProps<DirectoryFieldValue, JsonObject>,
   pd: PropertyDescriptor,
-  directory: Directory,
+  directory: Directory
 ): DirectoryModel {
-  const valuesFrom =
-    (getIn(formik.form.values, pd.valuesFrom!) as string[] | null) ?? [];
+  const valuesFrom = (getIn(formik.form.values, pd.valuesFrom!) as string[] | null) ?? [];
   const cur = formik.field.value ?? [];
-  const map = new Map<string, DirectoryContentModel>(
-    valuesFrom.map((x) => [x, directory.get(x)!] as const),
-  );
-  for (const v of cur)
-    if (!map.has(v)) map.set(v, { ...directory.get(v)!, unavailable: true });
+  const map = new Map<string, DirectoryContentModel>(valuesFrom.map((x) => [x, directory.get(x)!] as const));
+  for (const v of cur) {
+    if (!map.has(v)) {
+      map.set(v, { ...directory.get(v)!, unavailable: true });
+    }
+  }
   return map;
 }
 
-function getFilteredItemsByInput(
-  directory: DirectoryModel,
-  inputValue: string,
-) {
+function getFilteredItemsByInput(directory: DirectoryModel, inputValue: string) {
   const input = inputValue.toLowerCase();
   const values = Array.from(directory.values());
   const matchingItems = values.filter(
-    (x) =>
-      x.label.toLowerCase().includes(input) ||
-      x.code.toLowerCase().includes(input),
+    (x) => x.label.toLowerCase().includes(input) || x.code.toLowerCase().includes(input)
   );
 
   matchingItems.push(
     ...values.filter((directoryItem) =>
-      matchingItems.some((item) =>
-        directoryItem.code.startsWith(item.code.replace(/^0+/, "")),
-      ),
-    ),
+      matchingItems.some((item) => directoryItem.code.startsWith(item.code.replace(/^0+/, "")))
+    )
   );
 
   return { inputValue, matchingItems };
@@ -114,16 +97,7 @@ function getFilteredItemsByInput(
 
 const DirectoryFieldInternal = memo((props: DirectoryFieldInternalProps) => {
   // TODO EDIT MININ Убрано FC
-  const {
-    fieldDescriptor: fd,
-    inputId,
-    value,
-    directory,
-    setFieldValue,
-    onBlur,
-    touched,
-    error,
-  } = props;
+  const { fieldDescriptor: fd, inputId, value, directory, setFieldValue, onBlur, touched, error } = props;
   useTraceUpdate("DirectoryField " + inputId, props);
 
   const pd = fd.propDescriptor;
@@ -131,14 +105,12 @@ const DirectoryFieldInternal = memo((props: DirectoryFieldInternalProps) => {
 
   const filterCacheRef = useRef({
     inputValue: "",
-    matchingItems: [] as DirectoryContentModel[],
+    matchingItems: [] as DirectoryContentModel[]
   });
 
   const comboBoxProps = useMemo(() => {
     const disabled = fd.edit === FormFieldEdit.Readonly;
-    const required =
-      fd.edit === FormFieldEdit.Required ||
-      fd.edit === FormFieldEdit.RequiredNew;
+    const required = fd.edit === FormFieldEdit.Required || fd.edit === FormFieldEdit.RequiredNew;
 
     return {
       options: directory && Array.from(directory.values()),
@@ -152,16 +124,13 @@ const DirectoryFieldInternal = memo((props: DirectoryFieldInternalProps) => {
       filterOption: !directory
         ? undefined
         : (option: DirectoryContentModel, inputValue: string) => {
-            if (!inputValue) return true;
-            if (filterCacheRef.current.inputValue !== inputValue) {
-              filterCacheRef.current = getFilteredItemsByInput(
-                directory,
-                inputValue,
-              );
+            if (!inputValue) {
+              return true;
             }
-            return filterCacheRef.current.matchingItems.some(
-              (x) => x.value === option.value,
-            );
+            if (filterCacheRef.current.inputValue !== inputValue) {
+              filterCacheRef.current = getFilteredItemsByInput(directory, inputValue);
+            }
+            return filterCacheRef.current.matchingItems.some((x) => x.value === option.value);
           },
       onBlur,
       label: pd.title,
@@ -169,7 +138,7 @@ const DirectoryFieldInternal = memo((props: DirectoryFieldInternalProps) => {
       disabled,
       required,
       error: touched && Boolean(error),
-      helperText: touched && error ? String(error) : "",
+      helperText: touched && error ? String(error) : ""
     } satisfies ComboboxProps<DirectoryContentModel>;
   }, [directory, fd, inputId, touched, error, onBlur]);
 
@@ -204,7 +173,7 @@ const MyComboSingle = memo(
     setFieldValue,
     inputId,
     directory,
-    comboBoxProps,
+    comboBoxProps
   }: ComboCommonProps & {
     value: string | null;
     comboBoxProps: ComboboxProps<DirectoryContentModel>;
@@ -213,12 +182,10 @@ const MyComboSingle = memo(
       <ComboBox
         {...comboBoxProps}
         value={directory && value ? directory.get(value) : undefined}
-        onChange={(v: DirectoryContentModel | null) =>
-          setFieldValue(inputId, v?.value ?? null)
-        }
+        onChange={(v: DirectoryContentModel | null) => setFieldValue(inputId, v?.value ?? null)}
       />
     );
-  },
+  }
 );
 
 const MyComboMultiple = memo(
@@ -227,7 +194,7 @@ const MyComboMultiple = memo(
     setFieldValue,
     inputId,
     directory,
-    comboBoxProps,
+    comboBoxProps
   }: ComboCommonProps & {
     value: string[] | null;
     comboBoxProps: ComboboxProps<DirectoryContentModel> & { multiple: true };
@@ -242,12 +209,12 @@ const MyComboMultiple = memo(
         onChange={(v: DirectoryContentModel[]) =>
           setFieldValue(
             inputId,
-            v.map((x) => x.value),
+            v.map((x) => x.value)
           )
         }
       />
     );
-  },
+  }
 );
 
 /**

@@ -12,7 +12,8 @@ import { useEffect, useState, type FC } from "react";
 import { projectListApi } from "./projectListApi";
 import { DirectoryValue } from "@shared/ui/DirectoryValue";
 import { showErrorNotification } from "@shared/ui/showErrorNotification";
-import * as styles from "./ProjectListTable.module.css";
+// import * as styles from "./ProjectListTable.module.css";
+import * as styles from "./ProjectListTable.module.scss";
 import type { ColumnsType } from "antd/lib/table";
 import { FilterValue, SorterResult } from "antd/es/table/interface";
 

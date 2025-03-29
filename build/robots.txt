@@ -1,4 +1,0 @@
-# Block all crawlers except AdsBot (AdsBot crawlers must be named explicitly)
-# полностью запретить индексацию сайта всеми роботами (включая AdsBot)
-User-agent: *
-Disallow: /

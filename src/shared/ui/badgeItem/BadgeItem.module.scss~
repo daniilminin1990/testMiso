@@ -1,6 +1,6 @@
-@use "../../../shared/styles/mixins/textTransform.scss";
-@use "../../../shared/styles/variables.scss";
-@use "../../../shared/styles/mixins/rfs.scss";
+//@use "../../../shared/styles/mixins/textTransform.scss";
+//@use "../../../shared/styles/variables.scss";
+//@use "../../../shared/styles/mixins/rfs.scss";
 
 $badgeDefaultSize: 48px;
 
@@ -22,17 +22,18 @@ $badgeDefaultSize: 48px;
     width: min-content;
     padding-left: 10px;
 
-    color: variables.$white;
+    color: var(--color-white);
     font-size: 23px;
     text-align: left;
     line-height: 115%;
     white-space: break-spaces;
-    @include rfs.font-size(1rem);
-    @include textTransform.ellipsing($lines: 2);
+    //@include rfs.font-size(1rem);
+    //@include textTransform.ellipsing($lines: 2);
   }
 
   .iconContainer {
-    @include rfs.font-size(1.25rem);
+    //@include rfs.font-size(1.25rem);
+    color: red;
   }
 
   &.titled {

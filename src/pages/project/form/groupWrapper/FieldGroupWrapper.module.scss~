@@ -8,9 +8,9 @@
 }
 
 .fieldGroupTitle {
-  //@include rfs.font-size(1rem);
+  @include rfs.font-size(1rem);
   position: absolute;
   padding: 0 10px;
   transform: translate(15px, -50%);
-  background: var(--color-white);
+  background: variables.$white;
 }

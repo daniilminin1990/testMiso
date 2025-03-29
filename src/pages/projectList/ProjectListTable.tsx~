@@ -171,14 +171,14 @@ export const ProjectListTable = (props: Props) => {
     //   setOrderBy(ucFirst(sorter.field));
     //   setOrderDesc(sorter.order);
 
-    const getOrderBy = (value: string) => (value === "ascend" ? "asc" : "desc");
+    const getOrderBy = (value: string | undefined) => (value === "ascend" ? "asc" : "desc");
     if (Array.isArray(sorter)) {
       // If sorter is an array, you can't access its field property directly.
       // You might want to loop through the array and handle each item individually.
     } else if (sorter.field) {
       const field = sorter.field.toString(); // Convert the field to a string
       setOrderBy(ucFirst(field));
-      setOrderDesc(sorter.order === null ? undefined : orderBy);
+      setOrderDesc(sorter.order === null ? undefined : getOrderBy(sorter.order));
     } else {
       setOrderBy(undefined);
       setOrderDesc(undefined);

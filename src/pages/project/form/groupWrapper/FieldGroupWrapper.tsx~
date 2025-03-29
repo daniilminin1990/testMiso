@@ -1,8 +1,9 @@
 import { memo, ReactNode } from 'react';
-// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 import * as styles from './FieldGroupWrapper.module.scss';
 import { FC } from 'react';
-import { useTraceUpdate } from '@shared/hooks/debugHooks';
+import { useTraceUpdate } from '@shared/hooks/debugHooks'; 
 
 interface IGroupWrapper {
   children?: ReactNode;

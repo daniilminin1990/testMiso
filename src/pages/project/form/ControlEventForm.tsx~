@@ -11,7 +11,6 @@ import { FieldsLayout } from "./FieldsLayout";
 import { useTraceUpdate } from "../../../shared/hooks/debugHooks";
 import { undoPartial } from "../../../shared/types/utils";
 // import { Text } from "@v-uik/base";
-import { Typography } from "antd"; // Новый импорт
 export interface ControlEventFormProps {
   data: ControlEventDto;
   handleSubmit: (values: JsonObject, goToStatus: ControlEventTransitionDto | null) => Promise<void>;
@@ -81,14 +80,12 @@ const DynamicForm = memo((props: { data: ControlEventDto }): ReactNode => {
   return (
     <>
       <div className={styles.title}>
-        {/*<Text as="div" kind="headline5">*/}
-        {/*  {data.status.stageDescription}*/}
-        {/*</Text>*/}
-        {/*<Text as="div" kind="titleMd">*/}
-        {/*  Статус: {data.status.description}*/}
-        {/*</Text>*/}
-        <Typography.Title level={3}>{data.status.stageDescription}</Typography.Title>
-        <Typography.Title level={4}>Статус: {data.status.description}</Typography.Title>
+        <Text as="div" kind="headline5">
+          {data.status.stageDescription}
+        </Text>
+        <Text as="div" kind="titleMd">
+          Статус: {data.status.description}
+        </Text>
       </div>
       <div className={styles.groups}>
         {groups.map(([name, ffv]) => (

@@ -118,18 +118,16 @@ const DirectoryFieldInternal = memo((props: DirectoryFieldInternalProps) => {
       onBlur,
       placeholder: pd.title,
       filterOption: (input: string, option?: { label: string; value: string }) =>
-        option?.label.toLowerCase().includes(input.toLowerCase()) || false
+        option?.label.toLowerCase().includes(input.toLowerCase()) || false,
     };
   }, [fd, inputId, touched, error, onBlur]);
 
   const options = useMemo(() => {
-    if (!directory) {
-      return [];
-    }
+    if (!directory) return []; 
     return Array.from(directory.values()).map((item) => ({
       value: item.value,
       label: getOptionLabel(item),
-      group: groupBy(item)
+      group: groupBy(item),
     }));
   }, [directory]);
 
@@ -161,7 +159,14 @@ interface SelectCommonProps {
 
 const MySelectSingle = memo(
   ({ value, setFieldValue, inputId, options, selectProps }: SelectCommonProps & { value: string | null }) => {
-    return <Select {...selectProps} value={value} onChange={(v) => setFieldValue(inputId, v)} options={options} />;
+    return (
+      <Select
+        {...selectProps}
+        value={value}
+        onChange={(v) => setFieldValue(inputId, v)}
+        options={options}
+      />
+    );
   }
 );
 

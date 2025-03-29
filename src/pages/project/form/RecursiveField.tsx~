@@ -4,7 +4,7 @@ import { type FormFieldProps } from './FormFieldProps';
 import { ComplexField } from './ComplexField';
 import { ArrayField } from './ArrayField';
 import { PlainField } from './PlainField';
-import { DirectoryField } from './DirectoryField';
+import { DirectoryField } from './DirectoryField'; 
 // import { createUseStyles } from '@v-uik/base';
 import * as styles from './RecursiveField.module.scss';
 import { memo } from 'react';
@@ -21,7 +21,7 @@ interface RecursiveFieldProps extends FormFieldProps {
 
 export const RecursiveField: React.FC<RecursiveFieldProps> = memo((props) => {
   const { fieldDescriptor: fd, inputId, inline } = props;
-  const styles = useStyles();
+  // const styles = useStyles();
   const pd = fd.propDescriptor;
 
   useTraceUpdate('RecursiveField ' + props.inputId, props);
