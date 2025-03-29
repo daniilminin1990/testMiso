@@ -26,7 +26,7 @@
     "prettier",
     "import"
   ],
-  "ignorePatterns": ["__jest__/**/*", "__tests__/**/*", "__webpack__/**/*", "node_modules/**/*", "customTemplate.js", "webpack.config.js"],
+  "ignorePatterns": ["__jest__/**/*", "__tests__/**/*", "__webpack__/**/*", "server/**/*", "node_modules/**/*", "customTemplate.js", "webpack.config.js"],
   "settings": {
     "react": {
       "version": "detect"

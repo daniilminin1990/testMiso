@@ -5,6 +5,7 @@
     "dev": "--config __webpack__/dev.config.js",
     "prod": "--config __webpack__/prod.config.js"
   },
+  "type": "module",
   "version": "1.0.0",
   "description": "proj management system (copy). Web application",
   "scripts": {
@@ -16,7 +17,7 @@
     "build:dev": "cross-env-shell webpack ${npm_package_config_dev}",
     "tsc": "tsc --noEmit",
     "test": "cross-env jest --config __jest__/jest.config.js",
-    "start:server": "node ./server/index.mjs",
+    "start:server": "node server/index.js",
     "mock": "concurrently \"npm run start:mock\" \"npm run start:server\"",
     "lint": "npm run check-types && eslint .",
     "lint:fix": "eslint . --fix",
@@ -71,6 +72,7 @@
     "babel-jest": "^29.7.0",
     "babel-loader": "^9.2.1",
     "clsx": "^2.1.1",
+    "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
     "css-loader": "^7.1.2",
     "css-modules-typescript-loader": "^4.0.1",
@@ -124,4 +126,4 @@
       "mobx-react-lite": "^4.1.0"
     }
   }
-},
+}

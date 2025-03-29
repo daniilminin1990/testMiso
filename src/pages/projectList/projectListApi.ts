@@ -1,6 +1,6 @@
-import axios from 'axios';
-import { apiRoutes, type GetProjectListParams } from '@shared/api/apiRoutes';
-import type { PropertyDescriptor, ControlEventListDtoPagedResult } from '@shared/types/apiTypes';
+import axios from "axios";
+import { apiRoutes, type GetProjectListParams } from "@shared/api/apiRoutes";
+import type { PropertyDescriptor, ControlEventListDtoPagedResult } from "@shared/types/apiTypes";
 export const projectListApi = {
   fetchRecords: async (options: GetProjectListParams) => {
     const response = await axios.get<ControlEventListDtoPagedResult>(apiRoutes.getProjectListItems(), {

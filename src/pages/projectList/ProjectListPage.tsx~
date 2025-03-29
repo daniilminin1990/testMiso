@@ -15,7 +15,7 @@ export const ProjectListPage = () => {
     <>
       <PageTitle title="Центр проектов" />
       {/* TODO EDIT styles one format */}
-      <div style={{ margin: '30px 0' }}>
+      <div style={{ margin: '30px 0' }}> 
         <h2>Создание АП:</h2>
         <div style={{ margin: '15px 0' }}>
           {/*<Button*/}
@@ -26,6 +26,14 @@ export const ProjectListPage = () => {
           {/*>*/}
           {/*  Создать новый АП*/}
           {/*</Button>*/}
+          <AntButton
+            size="large" // Аналог size="lg" из @v-uik/base
+            onClick={() => {
+              projectPageApi.createForm().then(redirectToProject).catch(showErrorNotification);
+            }}
+          >
+            Создать новый АП
+          </AntButton>
         </div>
       </div>
 

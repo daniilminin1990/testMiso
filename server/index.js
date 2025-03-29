@@ -1,0 +1,57 @@
+import jsonServer from "json-server/index.js";
+import db from "./db.json" assert { type: "json" }; // Импорт данных из db.json
+
+const server = jsonServer.create();
+const middlewares = jsonServer.defaults();
+
+// Применяем стандартные middleware (CORS, logging и т.д.)
+server.use(middlewares);
+
+// Кастомный маршрут для /list с поддержкой фильтрации, сортировки и пагинации
+server.get("/list", (req, res) => {
+  const { filter, page = 0, pageSize = 10, orderBy, orderDesc } = req.query;
+
+  let items = [...db.list.items]; // Копируем массив для манипуляций
+
+  // Фильтрация по имени (можно расширить на другие поля)
+  if (filter) {
+    items = items.filter((item) => item.name && item.name.toLowerCase().includes(filter.toLowerCase()));
+  }
+
+  // Сортировка
+  if (orderBy) {
+    const orderKey = orderBy.toLowerCase(); // Приводим к нижнему регистру, т.к. ключи в данных — lowercase
+    items.sort((a, b) => {
+      const aValue = a[orderKey];
+      const bValue = b[orderKey];
+      if (aValue < bValue) return orderDesc === "true" ? 1 : -1;
+      if (aValue > bValue) return orderDesc === "true" ? -1 : 1;
+      return 0;
+    });
+  }
+
+  // Пагинация
+  const start = parseInt(page) * parseInt(pageSize);
+  const end = start + parseInt(pageSize);
+  const paginatedItems = items.slice(start, end);
+
+  // Ответ в формате, ожидаемом приложением
+  res.json({
+    total: items.length, // Общее количество после фильтрации
+    items: paginatedItems
+  });
+});
+
+// Маршрут для /meta (просто возвращает массив метаданных)
+server.get("/meta", (req, res) => {
+  res.json(db.meta);
+});
+
+// Используем router для остальных маршрутов (если понадобится)
+const router = jsonServer.router(db);
+server.use(router);
+
+// Запуск сервера на порту 3001
+server.listen(3001, () => {
+  console.log("JSON Server is running on port 3001");
+});
