@@ -1,6 +1,10 @@
 @use './colors';
 @use './theme';
 
+:root {
+  --header-height: 170px;
+}
+
 * {
   margin: 0;
   padding: 0;

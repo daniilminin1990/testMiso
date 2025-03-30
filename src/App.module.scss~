@@ -1,0 +1,11 @@
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+
+  //padding-left: 10px;
+  //padding-right: 10px;
+  // min-width: 800px;
+  // max-width: 1200px;
+  // width: 100%;
+}

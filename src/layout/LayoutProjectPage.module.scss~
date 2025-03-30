@@ -1,7 +1,8 @@
 .common {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+  position: relative;
+  //display: flex;
+  //flex-direction: column;
+  //height: 100vh;
 }
 
 .layout {
@@ -15,30 +16,34 @@
   background-color: var(--color-white);
 }
 
+.container {
+  display: flex;
+  align-items: start;
+}
 
 .content {
-  //overflow-y: auto;
-  overflow-y: hidden;
+  //overflow-y: unset;
   flex: 1;
   padding: 20px;
 }
 
-.container {
-  display: grid;
-  grid-template-columns: 200px 1fr 200px; // Фиксированная ширина для 1 и 3 колонок, основная для 2
-  gap: 16px;
-  height: calc(100vh - 60px); // Учитываем высоту Header
-}
-
 .sidebar {
+  width: 200px;
   padding: 20px;
   background-color: lightseagreen;
+  top: var(--header-height);
+  position: sticky;
+  height: calc(100vh - var(--header-height));
+}
+
+.leftSide {
+  color: blue
 }
 
 .block {
   background-color: lightgreen;
 }
 
-.info {
-  background-color: lightseagreen;
+.rightSide {
+  color: green
 }

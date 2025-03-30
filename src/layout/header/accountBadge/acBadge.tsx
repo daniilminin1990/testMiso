@@ -1,9 +1,9 @@
-import type { FC } from 'react';
-import { FaBell, FaInfoCircle, FaTh, FaUser } from 'react-icons/fa';
+import type { FC } from "react";
+import { FaBell, FaInfoCircle, FaTh, FaUser } from "react-icons/fa";
 // import { DropdownMenuItem } from "@v-uik/base";
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { BadgeItem } from '@shared/ui/badgeItem/BadgeItem';
-import * as styles from './acBadge.module.scss';
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import { BadgeItem } from "@shared/ui/badgeItem/BadgeItem";
+import * as styles from "./acBadge.module.scss";
 
 type TProfileBadge = {
   name: string;
@@ -53,7 +53,7 @@ export const AccountBadge: FC<TAccountBadgeProps> = ({ notice, profile, onShowIn
     <BadgeItem icon={<FaUser />} title={profile.name}>
       <DropdownMenu.Root>
         <DropdownMenu.Trigger asChild>
-          <button style={{ display: 'none' }} /> {/* Скрытая кнопка триггера */}
+          <button style={{ display: "none" }} /> {/* Скрытая кнопка триггера */}
         </DropdownMenu.Trigger>
         <DropdownMenu.Portal>
           <DropdownMenu.Content className={styles.dropdownContent}>
@@ -78,7 +78,7 @@ export const AccountBadge: FC<TAccountBadgeProps> = ({ notice, profile, onShowIn
     <BadgeItem icon={<FaTh />}>
       <DropdownMenu.Root>
         <DropdownMenu.Trigger asChild>
-          <button style={{ display: 'none' }} /> {/* Скрытая кнопка триггера */}
+          <button style={{ display: "none" }} /> {/* Скрытая кнопка триггера */}
         </DropdownMenu.Trigger>
         <DropdownMenu.Portal>
           <DropdownMenu.Content className={styles.dropdownContent}>

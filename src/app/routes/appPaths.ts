@@ -1,6 +1,6 @@
 export const appPaths = {
-  '*': '*',
-  '/*': '/*',
-  base: '/',
-  projects: '/projects'
+  "*": "*",
+  "/*": "/*",
+  base: "/",
+  projects: "/projects"
 } as const;

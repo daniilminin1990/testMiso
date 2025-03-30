@@ -3,6 +3,7 @@
 .header {
   top: 0;
   width: 100%;
+  height: var(--header-height);
   z-index: 1000;
   background: variables.$white;
   border-bottom: solid 2px variables.$grey;

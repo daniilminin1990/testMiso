@@ -6,7 +6,7 @@ import { BadgeItem } from '@shared/ui/badgeItem/BadgeItem';
 import * as styles from './acBadge.module.scss';
 
 type TProfileBadge = {
-  name: string; 
+  name: string;
   onLogOut: () => void;
   onOpenSettings: () => void;
 };
@@ -76,7 +76,7 @@ export const AccountBadge: FC<TAccountBadgeProps> = ({ notice, profile, onShowIn
 
     {/* MENU */}
     <BadgeItem icon={<FaTh />}>
-      <DropdownMenu.Root>
+      <DropdownMenu.Root> 
         <DropdownMenu.Trigger asChild>
           <button style={{ display: 'none' }} /> {/* Скрытая кнопка триггера */}
         </DropdownMenu.Trigger>

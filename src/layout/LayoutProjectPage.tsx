@@ -5,6 +5,7 @@ import AppRouter from "@app/routes/AppRouter";
 // import { NotificationContainer } from '@v-uik/base';
 import { useRef, useState } from "react";
 import { UIEvent } from "react";
+import clsx from "clsx";
 
 export const LayoutProjectPage = () => {
   const [activeBlock, setActiveBlock] = useState<string | null>(null);
@@ -45,7 +46,6 @@ export const LayoutProjectPage = () => {
 
   return (
     <div className={styles.common}>
-      {/*<Header className={ styles.header }*/}
       <Header
         // finder={{
         //   messages: { loading: 'loading', notfound: 'notfound' },
@@ -68,7 +68,7 @@ export const LayoutProjectPage = () => {
       />
       <div className={styles.container}>
         {/* Левая колонна (навигационная)*/}
-        <aside className={styles.sidebar}>
+        <aside className={clsx(styles.sidebar, styles.leftSide)}>
           {blocks.map((blockId) => {
             return (
               <div key={blockId} className={styles.block} onClick={() => handleBlockClick(blockId)}>
@@ -86,7 +86,7 @@ export const LayoutProjectPage = () => {
         </main>
 
         {/* Правая колонна (справа от основного контента) */}
-        <aside className={styles.info}>Hello World!</aside>
+        <aside className={clsx(styles.sidebar, styles.rightSide)}>Hello World!</aside>
       </div>
     </div>
   );
