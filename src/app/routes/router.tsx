@@ -20,6 +20,10 @@ const simpleRoutes: RouteObject[] = [
   {
     element: <Page404 />,
     path: `${appPaths["*"]}`
+  },
+  {
+    element: <ProjectPage />,
+    path: `${appPaths.projects}/:projectId`
   }
 ];
 
@@ -36,10 +40,10 @@ export const router = createBrowserRouter([
     element: <Layout />,
     path: `${appPaths.base}`,
     children: [...simpleRoutes]
-  },
-  {
-    element: <LayoutProjectPage />, // Layout для одного проекта
-    path: `${appPaths.projects}`,
-    children: [...projectRoutes]
   }
+  // {
+  //   element: <LayoutProjectPage />, // Layout для одного проекта
+  //   path: `${appPaths.projects}`,
+  //   children: [...projectRoutes]
+  // }
 ]);

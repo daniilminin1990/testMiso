@@ -78,6 +78,8 @@ const DynamicForm = memo((props: { data: ControlEventDto }): ReactNode => {
     [data]
   );
 
+  console.log({ groupsControlEventForm: groups });
+
   return (
     <>
       <div className={styles.title}>
@@ -91,8 +93,8 @@ const DynamicForm = memo((props: { data: ControlEventDto }): ReactNode => {
         <Typography.Title level={4}>Статус: {data.status.description}</Typography.Title>
       </div>
       <div className={styles.groups}>
-        {groups.map(([name, ffv]) => (
-          <FieldGroupWrapper key={name} name={name}>
+        {groups.map(([name, ffv], index) => (
+          <FieldGroupWrapper key={name} name={name} index={index}>
             <FieldsLayout>
               {ffv.map((fv) => {
                 const fd = fv.descriptor;

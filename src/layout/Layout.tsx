@@ -1,6 +1,6 @@
-import { Outlet } from 'react-router';
-import { Header } from './header/Header';
-import * as styles from './Layout.module.scss';
+import { Outlet } from "react-router";
+import { Header } from "./header/Header";
+import * as styles from "./Layout.module.scss";
 export const Layout = () => {
   return (
     <>
@@ -15,17 +15,18 @@ export const Layout = () => {
         userInfo={{
           notice: {
             notificationsNumber: 5,
-            onShowNotifications: () => alert('onShowNotifications')
+            onShowNotifications: () => alert("onShowNotifications")
           },
-          onShowInfo: () => alert('onShowInfo'),
+          onShowInfo: () => alert("onShowInfo"),
           profile: {
-            name: 'Филимонов Арсений Денисович',
-            onOpenSettings: () => alert('onOpenSettings'),
-            onLogOut: () => alert('onLogOut')
+            name: "Филимонов Арсений Денисович",
+            onOpenSettings: () => alert("onOpenSettings"),
+            onLogOut: () => alert("onLogOut")
           }
         }}
       />
-      <main className={styles.content}>
+      {/*<main className={styles.content}>*/}
+      <main>
         <Outlet />
         {/* Теперь это не нужно, потому что заменили notification от AntDesign*/}
         {/*<NotificationContainer nextNotification position="top-right" autoClose={1500} limit={5} />*/}
