@@ -61,18 +61,18 @@ const plugins = [
   new FileManagerPlugin({
     events: {
       onStart: { delete: [BUILD_DIR] },
-      onEnd: { copy: [{ source: STATIC_DIR, destination: BUILD_DIR }] },
-    },
+      onEnd: { copy: [{ source: STATIC_DIR, destination: BUILD_DIR }] }
+    }
   }),
   new HtmlWebpackPlugin({
     template: path.join(PUBLIC_DIR, "index.html"),
-    filename: "index.html",
+    filename: "index.html"
   }),
   new Dotenv({
-    path: `./${envfile}`,
+    path: `./${envfile}`
   }),
   !devMode && new MiniCssExtractPlugin(),
-  devMode && new ReactRefreshWebpackPlugin(),
+  devMode && new ReactRefreshWebpackPlugin()
 ];
 
 /** @type {webpack.Configuration["devServer"]} */
@@ -85,14 +85,14 @@ const devServer = {
   client: {
     overlay: {
       errors: true,
-      warnings: true,
-    },
+      warnings: true
+    }
   },
   port: 3000,
   devMiddleware: {
     // writeToDisk: true
   },
-  static: [],
+  static: []
 };
 
 /** @type {webpack.Configuration} */
@@ -102,10 +102,10 @@ module.exports = {
   entry: path.join(__dirname, "..", "src", "index.tsx"),
   output: {
     path: BUILD_DIR,
-    publicPath: "/",
+    publicPath: "/"
   },
   performance: {
-    hints: false,
+    hints: false
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".jsx", ".css", ".scss", ".d.ts"],
@@ -119,7 +119,7 @@ module.exports = {
     //   "@server": path.resolve(__dirname, "../src/server"),
     //   "@defs": path.resolve(__dirname, "../src/types"),
     // },
-    plugins: [new TsconfigPathsPlugin()],
+    plugins: [new TsconfigPathsPlugin()]
   },
   module: {
     strictExportPresence: true,
@@ -133,14 +133,12 @@ module.exports = {
             presets: [
               "@babel/preset-env",
               ["@babel/preset-react", { runtime: "automatic" }],
-              "@babel/preset-typescript",
+              "@babel/preset-typescript"
             ],
-            plugins: [devMode && require.resolve("react-refresh/babel")].filter(
-              Boolean
-            ),
-            cacheDirectory: true,
-          },
-        },
+            plugins: [devMode && require.resolve("react-refresh/babel")].filter(Boolean),
+            cacheDirectory: true
+          }
+        }
       },
       { test: /\.html$/, use: ["html-loader"] },
       {
@@ -148,30 +146,30 @@ module.exports = {
         use: [
           { loader: devMode ? "style-loader" : MiniCssExtractPlugin.loader },
           { loader: "css-loader", options: { sourceMap: true } },
-          { loader: "sass-loader" },
-        ],
+          { loader: "sass-loader" }
+        ]
       },
       {
         test: /\.(?:png|jpe?g|gif|webp|ico)$/i,
         type: "asset/resource",
         generator: {
-          filename: "assets/img/[name].[hash:8].[ext]",
-        },
+          filename: "assets/img/[name].[hash:8].[ext]"
+        }
       },
       {
         test: /\.svg$/,
-        use: ["@svgr/webpack"],
+        use: ["@svgr/webpack"]
       },
       {
         test: /\.(?:woff2?|eot|ttf|otf)$/i,
         exclude: /node_modules/,
         type: "asset/resource",
         generator: {
-          filename: "assets/fonts/[name].[hash:8].[ext]",
-        },
-      },
-    ],
-  },
+          filename: "assets/fonts/[name].[hash:8].[ext]"
+        }
+      }
+    ]
+  }
 };
 
 /**

@@ -4,13 +4,13 @@ import { ChevronDownIcon } from '@radix-ui/react-icons'; // Иконка стр�
 import { FC, ReactNode } from 'react';
 import * as styles from './ExpandableCard.module.scss'; // Стили подключим отдельно
 
-type ExpandableCardProps = {
+type ExpandableCardProps = { 
   labelProps: {
     label: ReactNode;
     labelProps?: { tooltipText?: string }; // Опциональное поле для tooltip
+    required?: boolean; // Опциональное поле для обязательности
   }; // Заголовок карточки
   children: ReactNode; // Контент внутри
-  required?: boolean; // Опциональное поле для обязательности
 };
 
 export const ExpandableCard: FC<ExpandableCardProps> = ({ labelProps, children }) => {

@@ -1,20 +1,20 @@
 // import { notification, Text } from '@v-uik/base';
-import { notification } from 'antd'; // Замена notification из @v-uik/base
-import { memo, MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { projectPageApi } from '@pages/project/projectPageApi';
-import { ControlEventForm, type ControlEventFormProps } from '@pages/project/form/ControlEventForm';
-import type { ControlEventDto, FormFieldDescriptor } from '@shared/types/apiTypes';
-import { showErrorNotification } from '@shared/ui/showErrorNotification';
-import { ModalConfirm } from '@shared/ui/ModalConfirm';
-import { modalConfirmClosedState, modalConfirmPromise } from '@shared/ui/ModalConfirmProps';
-import PageTitle from '@shared/ui/PageTitle';
-import { useOutletContext } from 'react-router';
+import { notification } from "antd"; // Замена notification из @v-uik/base
+import { memo, MutableRefObject, useCallback, useEffect, useRef, useState } from "react";
+import { useParams } from "react-router-dom";
+import { projectPageApi } from "@pages/project/projectPageApi";
+import { ControlEventForm, type ControlEventFormProps } from "@pages/project/form/ControlEventForm";
+import type { ControlEventDto, FormFieldDescriptor } from "@shared/types/apiTypes";
+import { showErrorNotification } from "@shared/ui/showErrorNotification";
+import { ModalConfirm } from "@shared/ui/ModalConfirm";
+import { modalConfirmClosedState, modalConfirmPromise } from "@shared/ui/ModalConfirmProps";
+import PageTitle from "@shared/ui/PageTitle";
+import { useOutletContext } from "react-router";
 
 function translateError(key: string) {
   switch (key) {
-    case 'is required':
-      return 'не заполнено';
+    case "is required":
+      return "не заполнено";
     default:
       return key;
   }
@@ -25,15 +25,18 @@ const ProjectPage = memo(() => {
   const [data, setData] = useState<ControlEventDto>();
   const [modal, setModal] = useState(modalConfirmClosedState);
   const prevEditNotificationIdRef = useRef<string | null>(null);
+
+  // ФУНКЦИЯ ДЛЯ ЛОВЛИ КОНТЕКСТА ОТ OUTLET
+  const refs = useHookFOrRefs();
   // ++
-  const [pageTitle, setPageTitle] = useState<string>(''); // Состояние для заголовка
+  const [pageTitle, setPageTitle] = useState<string>(""); // Состояние для заголовка
   // ++
 
   const { contentRefs } = useOutletContext<{
     contentRefs: MutableRefObject<{ [key: string]: HTMLDivElement | null }>;
   }>();
 
-  const blocks = ['block1', 'block2', 'block3', 'block4'];
+  const blocks = ["block1", "block2", "block3", "block4"];
 
   // ПОЛУЧЕНИЕ ДАННЫХ
   const fetchProject = useCallback(
@@ -49,17 +52,19 @@ const ProjectPage = memo(() => {
   // Устанавливаем заголовок страницы при получении данных
   useEffect(() => {
     if (data) {
-      const tempNumberField = data.fields.find((x) => x.descriptor.propDescriptor.id === 'TempNumber');
-      const numberField = data.fields.find((x) => x.descriptor.propDescriptor.id === 'Number');
-      const title = tempNumberField?.value || numberField?.value || 'Проект';
+      const tempNumberField = data.fields.find((x) => x.descriptor.propDescriptor.id === "TempNumber");
+      const numberField = data.fields.find((x) => x.descriptor.propDescriptor.id === "Number");
+      const title = tempNumberField?.value || numberField?.value || "Проект";
       setPageTitle(`Проект ${title}`);
     }
   }, [data]);
   // ++
 
-  const submit = useCallback<ControlEventFormProps['handleSubmit']>(
+  const submit = useCallback<ControlEventFormProps["handleSubmit"]>(
     async (values, btn) => {
-      if (!data) return; // unexpected 
+      if (!data) {
+        return;
+      } // unexpected
 
       if (btn) {
         const message = (
@@ -69,7 +74,9 @@ const ProjectPage = memo(() => {
             Текущий статус: <b>"{data.status.description}"</b>.
           </span>
         );
-        if (!(await modalConfirmPromise(message, setModal))) return;
+        if (!(await modalConfirmPromise(message, setModal))) {
+          return;
+        }
       }
 
       const res = await projectPageApi.updateForm(projectId, {
@@ -80,7 +87,7 @@ const ProjectPage = memo(() => {
 
       // TODO EDIT MININ думаю это можно было бы упростить, все что касается наполнения для notification вынести в отдельную функцию, иначе тут дублируется код.
       switch (res.status) {
-        case 'ok':
+        case "ok":
           // if (prevEditNotificationIdRef.current !== null) notification.close(prevEditNotificationIdRef.current);
           // prevEditNotificationIdRef.current = notification('Данные обновлены.', {
           //   title: 'Успешное сохранение',
@@ -91,17 +98,17 @@ const ProjectPage = memo(() => {
 
           // ! ЗАМЕНА ПОШЛА
           notification.success({
-            message: 'Успешное сохранение',
-            description: 'Данные обновлены.',
-            placement: 'topRight'
+            message: "Успешное сохранение",
+            description: "Данные обновлены.",
+            placement: "topRight"
           });
           void fetchProject(projectId); // Обновляем данные
 
           break;
 
-        case 'validation': {
+        case "validation": {
           const text = Object.entries(res.errorData).map(([pathStr, errors]) => {
-            const path = pathStr.split('.');
+            const path = pathStr.split(".");
             path.shift(); // '$'
             let ffd: FormFieldDescriptor[] | undefined = data.fields.map((x) => x.descriptor);
             let fd: FormFieldDescriptor | undefined;
@@ -110,8 +117,8 @@ const ProjectPage = memo(() => {
 
             for (let segment of path) {
               let index;
-              if (segment.endsWith(']')) {
-                const ind = segment.indexOf('[');
+              if (segment.endsWith("]")) {
+                const ind = segment.indexOf("[");
                 index = (1 + Number(segment.substring(ind + 1, segment.length - 1))).toString();
                 segment = segment.substring(0, ind);
               }
@@ -122,12 +129,14 @@ const ProjectPage = memo(() => {
               } // unexpected
               title.push(fd.propDescriptor.title);
               ffd = fd.children;
-              if (index) title.push(index);
+              if (index) {
+                title.push(index);
+              }
             }
 
             return (
               <div key={pathStr}>
-                {title?.join(' ➤ ') ?? pathStr}: {errors.map(translateError).join(', ')}.
+                {title?.join(" ➤ ") ?? pathStr}: {errors.map(translateError).join(", ")}.
               </div>
             );
           });
@@ -142,15 +151,15 @@ const ProjectPage = memo(() => {
 
           // ! Замена пошла
           notification.error({
-            message: 'Ошибка при сохранении',
+            message: "Ошибка при сохранении",
             description: <div>{text}</div>,
-            placement: 'topRight',
+            placement: "topRight",
             duration: 0 // Не закрывать автоматически
           });
 
           break;
         }
-        case 'conflict':
+        case "conflict":
           // if (prevEditNotificationIdRef.current !== null) notification.close(prevEditNotificationIdRef.current);
           // prevEditNotificationIdRef.current = notification('Данные устарели, обновите форму.', {
           //   title: 'Ошибка при сохранении',
@@ -161,14 +170,14 @@ const ProjectPage = memo(() => {
 
           // ! Замена пошла
           notification.error({
-            message: 'Ошибка при сохранении',
-            description: 'Данные устарели, обновите форму.',
-            placement: 'topRight',
+            message: "Ошибка при сохранении",
+            description: "Данные устарели, обновите форму.",
+            placement: "topRight",
             duration: 0
           });
 
           break;
-        case 'error':
+        case "error":
           // if (prevEditNotificationIdRef.current !== null) notification.close(prevEditNotificationIdRef.current);
           // prevEditNotificationIdRef.current = notification('Неизвестная ошибка.', {
           //   title: 'Ошибка при сохранении',
@@ -179,9 +188,9 @@ const ProjectPage = memo(() => {
 
           // ! Замена пошла
           notification.error({
-            message: 'Ошибка при сохранении',
-            description: 'Неизвестная ошибка.',
-            placement: 'topRight',
+            message: "Ошибка при сохранении",
+            description: "Неизвестная ошибка.",
+            placement: "topRight",
             duration: 0
           });
           break;
@@ -208,7 +217,7 @@ const ProjectPage = memo(() => {
       <ModalConfirm headerText="Переход на статус" state={modal} setState={setModal} />
     </>
   ) : (
-    'Loading...'
+    "Loading..."
   );
 });
 

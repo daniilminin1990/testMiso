@@ -1,23 +1,23 @@
-import { FieldType, FormFieldEdit } from '@shared/types/apiTypes';
+import { FieldType, FormFieldEdit } from "@shared/types/apiTypes";
 // import { DatePicker, Input, type DatePickerProps, type InputProps } from '@v-uik/base';
-import { Input as AntInput, DatePicker as AntDatePicker } from 'antd'; // Импорт из AntD
-import dayjs from 'dayjs'; // Для работы с датами
-import { memo, useMemo } from 'react';
-import { useTraceUpdate } from '../../../shared/hooks/debugHooks';
-import { type FormFieldProps } from './FormFieldProps';
-import type { JsonPrimative } from '@shared/types/json';
-import { Field, type FormikHandlers, type FieldProps } from 'formik';
+import { Input as AntInput, DatePicker as AntDatePicker } from "antd"; // Импорт из AntD
+import dayjs from "dayjs"; // Для работы с датами
+import { memo, useMemo } from "react";
+import { useTraceUpdate } from "../../../shared/hooks/debugHooks";
+import { type FormFieldProps } from "./FormFieldProps";
+import type { JsonPrimative } from "@shared/types/json";
+import { Field, type FormikHandlers, type FieldProps } from "formik";
 interface PlainFieldProps extends FormFieldProps {}
 interface PlainFieldInternalProps extends PlainFieldProps {
   value: JsonPrimative;
-  setFieldValue: FieldProps<JsonPrimative>['form']['setFieldValue'];
-  onBlur: FormikHandlers['handleBlur'];
+  setFieldValue: FieldProps<JsonPrimative>["form"]["setFieldValue"];
+  onBlur: FormikHandlers["handleBlur"];
   touched: boolean;
   error?: string;
 }
 
 export const PlainField: React.FC<PlainFieldProps> = memo((props) => {
-  useTraceUpdate('PlainField[Field] ' + props.inputId, props);
+  useTraceUpdate("PlainField[Field] " + props.inputId, props);
 
   return (
     <Field name={props.inputId}>
@@ -39,7 +39,7 @@ const PlainFieldInternal: React.FC<PlainFieldInternalProps> = memo((props) => {
   const { fieldDescriptor: fd, inputId, value, setFieldValue, onBlur, touched, error } = props;
   const pd = fd.propDescriptor;
 
-  useTraceUpdate('Plain ' + inputId, props);
+  useTraceUpdate("Plain " + inputId, props);
 
   // if (pd.type === FieldType.Hidden) {
   //   // return <div color='grey'>[{pd.title}]: <code>[{value as string}]</code></div>
@@ -70,7 +70,7 @@ const PlainFieldInternal: React.FC<PlainFieldInternalProps> = memo((props) => {
       label: pd.title,
       disabled,
       required,
-      status: touched && error ? 'error' : undefined, // Для AntD: статус ошибки
+      status: touched && error ? "error" : undefined, // Для AntD: статус ошибки
       onBlur
     };
   }, [fd, inputId, touched, error, onBlur]);
@@ -115,7 +115,7 @@ function MyInput({
   fieldProps
 }: {
   value: string | null;
-  setFieldValue: FieldProps<JsonPrimative>['form']['setFieldValue'];
+  setFieldValue: FieldProps<JsonPrimative>["form"]["setFieldValue"];
   inputId: string;
   fieldProps: any;
 }) {
@@ -131,9 +131,9 @@ function MyInput({
     //   {...fieldProps}
     // />
     <AntInput
-      style={{ width: '100%' }} // Аналог fullWidth
+      style={{ width: "100%" }} // Аналог fullWidth
       allowClear // Аналог canClear
-      value={value ?? ''} // Null в пустую строку
+      value={value ?? ""} // Null в пустую строку
       onChange={(e) => setFieldValue(inputId, e.target.value)} // Обработка события
       id={inputId}
       name={inputId}
@@ -149,21 +149,21 @@ function MyDatePicker({
   fieldProps
 }: {
   value: string | null;
-  setFieldValue: FieldProps<JsonPrimative>['form']['setFieldValue'];
+  setFieldValue: FieldProps<JsonPrimative>["form"]["setFieldValue"];
   inputId: string;
   fieldProps: any; // Можно уточнить тип, если нужно;
 }) {
   const dateValue = value ? dayjs(value) : null; // Преобразование строки в dayjs
   return (
-    <div style={{ width: '100%' }}>
+    <div style={{ width: "100%" }}>
       <AntDatePicker
         value={dateValue} // Значение в формате dayjs
         onChange={(date) => {
-          const formattedValue = date ? date.format('YYYY-MM-DD') : null; // Форматирование в строку
+          const formattedValue = date ? date.format("YYYY-MM-DD") : null; // Форматирование в строку
           setFieldValue(inputId, formattedValue);
         }}
         format="DD.MM.YYYY" // Отображение даты (аналог mask)
-        style={{ width: '100%' }} // Аналог fullWidth
+        style={{ width: "100%" }} // Аналог fullWidth
         id={inputId}
         name={inputId}
         {...fieldProps}

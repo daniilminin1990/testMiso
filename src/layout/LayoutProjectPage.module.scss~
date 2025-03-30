@@ -18,7 +18,7 @@
 
 .content {
   //overflow-y: auto;
-  overflow-y: unset;
+  overflow-y: hidden;
   flex: 1;
   padding: 20px;
 }

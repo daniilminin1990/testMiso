@@ -2,7 +2,7 @@ import { Outlet } from 'react-router';
 import { Header } from './header/Header';
 import * as styles from './LayoutProjectPage.module.scss';
 import AppRouter from '@app/routes/AppRouter';
-import { NotificationContainer } from '@v-uik/base';
+// import { NotificationContainer } from '@v-uik/base';
 import { useRef, useState } from 'react';
 import { UIEvent } from 'react';
 
@@ -11,7 +11,7 @@ export const LayoutProjectPage = () => {
   const contentRefs = useRef<{ [key: string]: HTMLDivElement | null }>({}); // Объект для хранения ссылок на элементы в виде объекта где ключ - это ID блока, а значение - ссылка на элемент
 
   // Пример списка блоков для левой колонки (навигационная панель)
-
+ 
   const blocks = ['block1', 'block2', 'block3', 'block4'];
 
   // Обработчик клика по блоку
@@ -82,7 +82,7 @@ export const LayoutProjectPage = () => {
         <main className={styles.content} onScroll={handleScroll}>
           {/* Кидаем ref-ы в ProjectPage */}
           <Outlet context={contentRefs} />
-          <NotificationContainer nextNotification position="top-right" autoClose={1500} limit={5} />
+          {/*<NotificationContainer nextNotification position="top-right" autoClose={1500} limit={5} />*/}
         </main>
 
         {/* Правая колонна (справа от основного контента) */}

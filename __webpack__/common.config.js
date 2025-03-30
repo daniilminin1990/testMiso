@@ -145,7 +145,17 @@ module.exports = {
         test: /\.(?:s[ac]|c)ss$/i,
         use: [
           { loader: devMode ? "style-loader" : MiniCssExtractPlugin.loader },
-          { loader: "css-loader", options: { sourceMap: true } },
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+              modules: {
+                // Включаем CSS-модули (если вы их используете)
+                auto: true, // Автоматическое включение модулей только для файлов с .module. в имени
+                localIdentName: devMode ? "[name]__[local]__[hash:base64:5]" : "[hash:base64:8]"
+              }
+            }
+          },
           { loader: "sass-loader" }
         ]
       },

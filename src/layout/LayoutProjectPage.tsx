@@ -1,10 +1,10 @@
-import { Outlet } from 'react-router';
-import { Header } from './header/Header';
-import * as styles from './LayoutProjectPage.module.scss';
-import AppRouter from '@app/routes/AppRouter';
+import { Outlet } from "react-router";
+import { Header } from "./header/Header";
+import * as styles from "./LayoutProjectPage.module.scss";
+import AppRouter from "@app/routes/AppRouter";
 // import { NotificationContainer } from '@v-uik/base';
-import { useRef, useState } from 'react';
-import { UIEvent } from 'react';
+import { useRef, useState } from "react";
+import { UIEvent } from "react";
 
 export const LayoutProjectPage = () => {
   const [activeBlock, setActiveBlock] = useState<string | null>(null);
@@ -12,7 +12,7 @@ export const LayoutProjectPage = () => {
 
   // Пример списка блоков для левой колонки (навигационная панель)
 
-  const blocks = ['block1', 'block2', 'block3', 'block4'];
+  const blocks = ["block1", "block2", "block3", "block4"];
 
   // Обработчик клика по блоку
   const handleBlockClick = (blockId: string) => {
@@ -21,7 +21,7 @@ export const LayoutProjectPage = () => {
     if (target) {
       target.scrollIntoView({
         // Плавно прокручиваем до эл-та
-        behavior: 'smooth'
+        behavior: "smooth"
       });
       // Специальный метод, который прокручивает до элемента, чтобы он стал видимым.
     }
@@ -56,13 +56,13 @@ export const LayoutProjectPage = () => {
         userInfo={{
           notice: {
             notificationsNumber: 5,
-            onShowNotifications: () => alert('onShowNotifications')
+            onShowNotifications: () => alert("onShowNotifications")
           },
-          onShowInfo: () => alert('onShowInfo'),
+          onShowInfo: () => alert("onShowInfo"),
           profile: {
-            name: 'Филимонов Арсений Денисович',
-            onOpenSettings: () => alert('onOpenSettings'),
-            onLogOut: () => alert('onLogOut')
+            name: "Филимонов Арсений Денисович",
+            onOpenSettings: () => alert("onOpenSettings"),
+            onLogOut: () => alert("onLogOut")
           }
         }}
       />

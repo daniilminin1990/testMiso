@@ -47,7 +47,7 @@ export const FormButtons: React.FC<FormButtonsProps> = memo((props) => {
       </div>
       <AntButton disabled={isSubmitting} onClick={() => onClick(null)}>
         Сохранить
-      </AntButton>
+      </AntButton> 
     </div>
     // <div className={styles.buttonsContainer}>
     //   <ButtonGroup
@@ -94,33 +94,53 @@ function createDropdownMenu(
   onClick: (btn: ControlEventTransitionDto | null) => void
 ) {
   return (
-    <DropdownMenu
-      keepMounted
-      action="hover"
-      placement="top-start"
-      content={buttons.map((btn) => (
-        <DropdownMenuItem
-          key={btn.goToStatus}
-          classes={{
-            text: !btn.active ? styles.disabledTransition : undefined
-          }}
-          // not disabled to show tooltip
-          onClick={
-            !btn.active
-              ? undefined
-              : () => {
-                  onClick(btn);
-                }
-          }
-        >
-          <Tooltip dropdownProps={{ placement: 'right', content: btn.note }}>
-            <div>{btn.label}</div>
-          </Tooltip>
-        </DropdownMenuItem>
-      ))}
-    >
-      <Button>{text}</Button>
-    </DropdownMenu>
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger asChild>
+        <AntButton>{text}</AntButton>
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content className={styles.dropdownContent}>
+          {buttons.map((btn) => (
+            <DropdownMenu.Item
+              key={btn.goToStatus}
+              className={!btn.active ? styles.disabledTransition : undefined}
+              onSelect={() => btn.active && onClick(btn)} // Выполняется только если активна
+            >
+              <AntTooltip title={btn.note}>
+                <div>{btn.label}</div>
+              </AntTooltip>
+            </DropdownMenu.Item>
+          ))}
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
+    </DropdownMenu.Root>
+    // <DropdownMenu
+    //   keepMounted
+    //   action="hover"
+    //   placement="top-start"
+    //   content={buttons.map((btn) => (
+    //     <DropdownMenuItem
+    //       key={btn.goToStatus}
+    //       classes={{
+    //         text: !btn.active ? styles.disabledTransition : undefined
+    //       }}
+    //       // not disabled to show tooltip
+    //       onClick={
+    //         !btn.active
+    //           ? undefined
+    //           : () => {
+    //               onClick(btn);
+    //             }
+    //       }
+    //     >
+    //       <Tooltip dropdownProps={{ placement: 'right', content: btn.note }}>
+    //         <div>{btn.label}</div>
+    //       </Tooltip>
+    //     </DropdownMenuItem>
+    //   ))}
+    // >
+    //   <Button>{text}</Button>
+    // </DropdownMenu>
   );
 }
 

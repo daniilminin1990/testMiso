@@ -1,21 +1,428 @@
 {
+  "directories": {
+    "batchForControlEvent": {
+      "batch": {
+        "users": [
+          { "value": "00000001-0000-0000-0000-000000000000", "code": "user1", "label": "User One" },
+          { "value": "00000002-0000-0000-0000-000000000000", "code": "user2", "label": "User Two" },
+          { "value": "00000003-0000-0000-0000-000000000000", "code": "user3", "label": "User Three" }
+        ],
+        "departments": [
+          { "value": "00000004-0000-0000-0000-000000000000", "code": "dept1", "label": "Department One" },
+          { "value": "00000005-0000-0000-0000-000000000000", "code": "dept2", "label": "Department Two" },
+          { "value": "00000007-0000-0000-0000-000000000000", "code": "dept3", "label": "Department Three" },
+          { "value": "00000009-0000-0000-0000-000000000000", "code": "dept4", "label": "Department Four" },
+          { "value": "0000000a-0000-0000-0000-000000000000", "code": "dept5", "label": "Department Five" },
+          { "value": "0000000b-0000-0000-0000-000000000000", "code": "dept6", "label": "Department Six" },
+          { "value": "0000000c-0000-0000-0000-000000000000", "code": "dept7", "label": "Department Seven" }
+        ],
+        "planPoints": [
+          { "value": "00000001-0000-0000-0000-000000000000", "code": "plan1", "label": "Plan Point One" },
+          { "value": "00000002-0000-0000-0000-000000000000", "code": "plan2", "label": "Plan Point Two" }
+        ],
+        "risks": [
+          { "value": "0000000c-0000-0000-0000-000000000000", "code": "risk1", "label": "Risk One" },
+          { "value": "0000000d-0000-0000-0000-000000000000", "code": "risk2", "label": "Risk Two" },
+          { "value": "0000000e-0000-0000-0000-000000000000", "code": "risk3", "label": "Risk Three" },
+          { "value": "0000000f-0000-0000-0000-000000000000", "code": "risk4", "label": "Risk Four" }
+        ],
+        "esg": [
+          { "value": "00000003-0000-0000-0000-000000000000", "code": "esg1", "label": "ESG One" }
+        ]
+      }
+    }
+  },
   "list": {
     "total": 23,
     "items": [
       {
         "id": "037008fc-9736-4c2a-ab01-5bb8381d2b8a",
-        "tempNumber": null,
+        "name": "tatat",
+        "administratorId": "12341234-1234-1234-1234-000000000000",
         "number": "КМ-1-9",
-        "name": "White Lines",
-        "status": "Prepare_Registered",
+        "status": {
+          "stage": "Prepare",
+          "stageDescription": "Подготовка",
+          "status": "Prepare_Registered",
+          "description": "Зарегистрировано"
+        },
+        "fields": [
+          {
+            "value": "КМ-1-9",
+            "descriptor": {
+              "propDescriptor": {
+                "type": "String",
+                "id": "Number",
+                "title": "Номер КМ",
+                "description": "Number Description",
+                "group": "Общая информация",
+                "isCollection": false
+              },
+              "edit": "Readonly"
+            }
+          },
+          {
+            "value": "White Lines",
+            "descriptor": {
+              "propDescriptor": {
+                "type": "String",
+                "id": "Name",
+                "title": "Наименование АП",
+                "description": "Name Description",
+                "group": "Общая информация",
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": "00000002-0000-0000-0000-000000000000",
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "AdministratorId",
+                "title": "Администратор проекта",
+                "description": "AdministratorId Description",
+                "group": "Общая информация",
+                "directoryDescriptor": {
+                  "id": "10000000-0000-0000-0000-000000000000",
+                  "name": "Пользователь",
+                  "type": "Fixed"
+                },
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "CuratorId",
+                "title": "Куратор АП",
+                "description": "CuratorId Description",
+                "group": "Данные КМ",
+                "directoryDescriptor": {
+                  "id": "10000000-0000-0000-0000-000000000000",
+                  "name": "Пользователь",
+                  "type": "Fixed"
+                },
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": "00000002-0000-0000-0000-000000000000",
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "HeadId",
+                "title": "Руководитель АП",
+                "description": "HeadId Description",
+                "group": "Данные КМ",
+                "directoryDescriptor": {
+                  "id": "10000000-0000-0000-0000-000000000000",
+                  "name": "Пользователь",
+                  "type": "Fixed"
+                },
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "HeadDepartmentId",
+                "title": "Подразделение руководителя",
+                "description": "HeadDepartmentId Description",
+                "group": "Данные КМ",
+                "directoryDescriptor": {
+                  "id": "20000000-0000-0000-0000-000000000000",
+                  "name": "Департамент",
+                  "type": "Fixed"
+                },
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": ["0000000b-0000-0000-0000-000000000000"],
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "CheckDepartmentId",
+                "title": "Проверяемое подразделение",
+                "description": "CheckDepartmentId Description",
+                "group": "Общая информация",
+                "directoryDescriptor": {
+                  "id": "20000000-0000-0000-0000-000000000000",
+                  "name": "Департамент",
+                  "type": "Fixed"
+                },
+                "isCollection": true
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": "00000004-0000-0000-0000-000000000000",
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "ReviewDepartmentId",
+                "title": "Проверяющее подразделение",
+                "description": "ReviewDepartmentId Description",
+                "group": "Общая информация",
+                "directoryDescriptor": {
+                  "id": "20000000-0000-0000-0000-000000000000",
+                  "name": "Департамент",
+                  "type": "Fixed"
+                },
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": "2025-01-30",
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Date",
+                "id": "PrepareStartDate",
+                "title": "Дата начала подготовки к АП",
+                "description": "PrepareStartDate Description",
+                "group": "Даты подготовки к АП",
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Date",
+                "id": "PrepareEndDate",
+                "title": "Дата окончания подготовки к АП",
+                "description": "PrepareEndDate Description",
+                "group": "Даты подготовки к АП",
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Date",
+                "id": "StartDate",
+                "title": "Дата начала проведения АП",
+                "description": "StartDate Description",
+                "group": "Данные КМ",
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Date",
+                "id": "EndDate",
+                "title": "Дата окончания проведения к АП",
+                "description": "EndDate Description",
+                "group": "Данные КМ",
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": [],
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "PlanPoint",
+                "title": "Пункт плана",
+                "description": "PlanPoint Description",
+                "group": "Данные КМ",
+                "directoryDescriptor": {
+                  "id": "80000000-0000-0000-0000-000000000000",
+                  "name": "Пункт плана",
+                  "type": "Fixed"
+                },
+                "isCollection": true
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "String",
+                "id": "Goal",
+                "title": "Цель АП",
+                "description": "Goal Description",
+                "group": "Данные КМ",
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "FunctionalBlock",
+                "title": "Функциональный блок",
+                "description": "FunctionalBlock Description",
+                "group": "Данные КМ",
+                "directoryDescriptor": {
+                  "id": "30000000-0000-0000-0000-000000000000",
+                  "name": "Функциональный блок",
+                  "type": "Fixed"
+                },
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "CustomerJourney",
+                "title": "Бизнесы-процессы и клиентские пути (БП и КП)",
+                "description": "CustomerJourney Description",
+                "group": "Данные КМ",
+                "directoryDescriptor": {
+                  "id": "40000000-0000-0000-0000-000000000000",
+                  "name": "П и КП",
+                  "type": "Fixed"
+                },
+                "isCollection": true
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "String",
+                "id": "Sprint",
+                "title": "ID спринта",
+                "description": "Sprint Description",
+                "group": "Данные КМ",
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": [],
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "Risk",
+                "title": "Риск",
+                "description": "Risk Description",
+                "group": "Данные КМ",
+                "directoryDescriptor": {
+                  "id": "50000000-0000-0000-0000-000000000000",
+                  "name": "Риски",
+                  "type": "Fixed"
+                },
+                "isCollection": true
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "Esg",
+                "title": "ESG",
+                "description": "Esg Description",
+                "group": "Данные КМ",
+                "directoryDescriptor": {
+                  "id": "60000000-0000-0000-0000-000000000000",
+                  "name": "ESG",
+                  "type": "Fixed"
+                },
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "String",
+                "id": "Comment",
+                "title": "Комментарий",
+                "description": "Comment Description",
+                "group": "Данные КМ",
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "ParentId",
+                "title": "Родительская АП",
+                "description": "ParentId Description",
+                "group": "Данные КМ",
+                "directoryDescriptor": {
+                  "id": "70000000-0000-0000-0000-000000000000",
+                  "name": "Parent",
+                  "type": "Fixed"
+                },
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          }
+        ],
+        "transitions": [
+          {
+            "label": "Перейти на следующий статус",
+            "goToStatus": "Prepare_CheckConflictOfInterest",
+            "active": true,
+            "forward": true
+          }
+        ],
+        "timestamp": "2023-10-25T10:00:00Z",
         "stage": "Prepare",
-        "administratorId": "00000002-0000-0000-0000-000000000000",
         "curatorId": null,
         "headId": "00000002-0000-0000-0000-000000000000",
         "headDepartmentId": null,
-        "checkDepartmentId": ["0000000b-0000-0000-0000-000000000000"],
+        "checkDepartmentId": [
+          "0000000b-0000-0000-0000-000000000000",
+          "00000004-0000-0000-0000-000000000000",
+          "00000005-0000-0000-0000-000000000000",
+          "00000007-0000-0000-0000-000000000000"
+        ],
         "reviewDepartmentId": "00000004-0000-0000-0000-000000000000",
-        "prepareStartDate": "2025-01-30",
+        "prepareStartDate": "2024-12-13",
         "prepareEndDate": null,
         "startDate": null,
         "endDate": null,
@@ -62,40 +469,383 @@
         "parentId": null
       },
       {
-        "id": "0b426920-6c9f-4149-b4d4-d2acf4439b8e",
-        "tempNumber": null,
-        "number": "КМ-1-11",
-        "name": "dasfasdfasdf",
-        "status": "Prepare_CheckConflictOfInterest",
-        "stage": "Prepare",
-        "administratorId": "00000001-0000-0000-0000-000000000000",
-        "curatorId": "00000002-0000-0000-0000-000000000000",
-        "headId": "00000002-0000-0000-0000-000000000000",
-        "headDepartmentId": "00000009-0000-0000-0000-000000000000",
-        "checkDepartmentId": [
-          "00000005-0000-0000-0000-000000000000",
-          "00000007-0000-0000-0000-000000000000"
+        "id": "0aaf9b36-69ed-4125-8cb1-fa80d1677545",
+        "status": {
+          "stage": "Prepare",
+          "stageDescription": "Подготовка",
+          "status": "Prepare_CheckConflictOfInterest",
+          "description": "Проверка конфликта интересов"
+        },
+        "fields": [
+          {
+            "value": "КМ-1-8",
+            "descriptor": {
+              "propDescriptor": {
+                "type": "String",
+                "id": "Number",
+                "title": "Номер КМ",
+                "description": "Number Description",
+                "group": "Общая информация",
+                "isCollection": false
+              },
+              "edit": "Readonly"
+            }
+          },
+          {
+            "value": "o4ko",
+            "descriptor": {
+              "propDescriptor": {
+                "type": "String",
+                "id": "Name",
+                "title": "Наименование АП",
+                "description": "Name Description",
+                "group": "Общая информация",
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": "00000003-0000-0000-0000-000000000000",
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "AdministratorId",
+                "title": "Администратор проекта",
+                "description": "AdministratorId Description",
+                "group": "Общая информация",
+                "directoryDescriptor": {
+                  "id": "10000000-0000-0000-0000-000000000000",
+                  "name": "Пользователь",
+                  "type": "Fixed"
+                },
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "CuratorId",
+                "title": "Куратор АП",
+                "description": "CuratorId Description",
+                "group": "Данные КМ",
+                "directoryDescriptor": {
+                  "id": "10000000-0000-0000-0000-000000000000",
+                  "name": "Пользователь",
+                  "type": "Fixed"
+                },
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": "00000002-0000-0000-0000-000000000000",
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "HeadId",
+                "title": "Руководитель АП",
+                "description": "HeadId Description",
+                "group": "Данные КМ",
+                "directoryDescriptor": {
+                  "id": "10000000-0000-0000-0000-000000000000",
+                  "name": "Пользователь",
+                  "type": "Fixed"
+                },
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "HeadDepartmentId",
+                "title": "Подразделение руководителя",
+                "description": "HeadDepartmentId Description",
+                "group": "Данные КМ",
+                "directoryDescriptor": {
+                  "id": "20000000-0000-0000-0000-000000000000",
+                  "name": "Департамент",
+                  "type": "Fixed"
+                },
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": [
+              "0000000b-0000-0000-0000-000000000000",
+              "00000004-0000-0000-0000-000000000000",
+              "00000005-0000-0000-0000-000000000000",
+              "00000007-0000-0000-0000-000000000000"
+            ],
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "CheckDepartmentId",
+                "title": "Проверяемое подразделение",
+                "description": "CheckDepartmentId Description",
+                "group": "Общая информация",
+                "directoryDescriptor": {
+                  "id": "20000000-0000-0000-0000-000000000000",
+                  "name": "Департамент",
+                  "type": "Fixed"
+                },
+                "isCollection": true
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": "00000004-0000-0000-0000-000000000000",
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "ReviewDepartmentId",
+                "title": "Проверяющее подразделение",
+                "description": "ReviewDepartmentId Description",
+                "group": "Общая информация",
+                "directoryDescriptor": {
+                  "id": "20000000-0000-0000-0000-000000000000",
+                  "name": "Департамент",
+                  "type": "Fixed"
+                },
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": "2024-12-13",
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Date",
+                "id": "PrepareStartDate",
+                "title": "Дата начала подготовки к АП",
+                "description": "PrepareStartDate Description",
+                "group": "Даты подготовки к АП",
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Date",
+                "id": "PrepareEndDate",
+                "title": "Дата окончания подготовки к АП",
+                "description": "PrepareEndDate Description",
+                "group": "Даты подготовки к АП",
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Date",
+                "id": "StartDate",
+                "title": "Дата начала проведения АП",
+                "description": "StartDate Description",
+                "group": "Данные КМ",
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Date",
+                "id": "EndDate",
+                "title": "Дата окончания проведения к АП",
+                "description": "EndDate Description",
+                "group": "Данные КМ",
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": [],
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "PlanPoint",
+                "title": "Пункт плана",
+                "description": "PlanPoint Description",
+                "group": "Данные КМ",
+                "directoryDescriptor": {
+                  "id": "80000000-0000-0000-0000-000000000000",
+                  "name": "Пункт плана",
+                  "type": "Fixed"
+                },
+                "isCollection": true
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "String",
+                "id": "Goal",
+                "title": "Цель АП",
+                "description": "Goal Description",
+                "group": "Данные КМ",
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "FunctionalBlock",
+                "title": "Функциональный блок",
+                "description": "FunctionalBlock Description",
+                "group": "Данные КМ",
+                "directoryDescriptor": {
+                  "id": "30000000-0000-0000-0000-000000000000",
+                  "name": "Функциональный блок",
+                  "type": "Fixed"
+                },
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "CustomerJourney",
+                "title": "Бизнесы-процессы и клиентские пути (БП и КП)",
+                "description": "CustomerJourney Description",
+                "group": "Данные КМ",
+                "directoryDescriptor": {
+                  "id": "40000000-0000-0000-0000-000000000000",
+                  "name": "П и КП",
+                  "type": "Fixed"
+                },
+                "isCollection": true
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "String",
+                "id": "Sprint",
+                "title": "ID спринта",
+                "description": "Sprint Description",
+                "group": "Данные КМ",
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": [],
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "Risk",
+                "title": "Риск",
+                "description": "Risk Description",
+                "group": "Данные КМ",
+                "directoryDescriptor": {
+                  "id": "50000000-0000-0000-0000-000000000000",
+                  "name": "Риски",
+                  "type": "Fixed"
+                },
+                "isCollection": true
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "Esg",
+                "title": "ESG",
+                "description": "Esg Description",
+                "group": "Данные КМ",
+                "directoryDescriptor": {
+                  "id": "60000000-0000-0000-0000-000000000000",
+                  "name": "ESG",
+                  "type": "Fixed"
+                },
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "String",
+                "id": "Comment",
+                "title": "Комментарий",
+                "description": "Comment Description",
+                "group": "Данные КМ",
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "ParentId",
+                "title": "Родительская АП",
+                "description": "ParentId Description",
+                "group": "Данные КМ",
+                "directoryDescriptor": {
+                  "id": "70000000-0000-0000-0000-000000000000",
+                  "name": "Parent",
+                  "type": "Fixed"
+                },
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          }
         ],
-        "reviewDepartmentId": "0000000a-0000-0000-0000-000000000000",
-        "prepareStartDate": "2025-01-07",
-        "prepareEndDate": null,
-        "startDate": "2025-01-15",
-        "endDate": null,
-        "planPoint": [
-          "00000002-0000-0000-0000-000000000000",
-          "00000001-0000-0000-0000-000000000000"
+        "transitions": [
+          {
+            "label": "Перейти на следующий статус",
+            "goToStatus": "Prepare_Completion",
+            "active": true,
+            "forward": true
+          }
         ],
-        "goal": null,
-        "functionalBlock": null,
-        "custmerJourney": null,
-        "sprint": null,
-        "risk": [
-          "0000000e-0000-0000-0000-000000000000",
-          "00000009-0000-0000-0000-000000000000"
-        ],
-        "esg": "00000003-0000-0000-0000-000000000000",
-        "comment": null,
-        "parentId": "00000002-0000-0000-0000-000000000000"
+        "timestamp": "2023-10-26T10:00:00Z"
       },
       {
         "id": "183fecf5-d3a0-42d5-b466-17248aa11ed9",

@@ -25,6 +25,7 @@ const ProjectPage = memo(() => {
   const [data, setData] = useState<ControlEventDto>();
   const [modal, setModal] = useState(modalConfirmClosedState);
   const prevEditNotificationIdRef = useRef<string | null>(null);
+
   // ++
   const [pageTitle, setPageTitle] = useState<string>(""); // Состояние для заголовка
   // ++

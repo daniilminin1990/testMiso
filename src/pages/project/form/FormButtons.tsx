@@ -1,10 +1,10 @@
-import type { ControlEventTransitionDto } from '@shared/types/apiTypes';
+import type { ControlEventTransitionDto } from "@shared/types/apiTypes";
 // import { ButtonGroup, DropdownMenu, DropdownMenuItem, Tooltip, Button } from '@v-uik/base';
-import { Button as AntButton, Tooltip as AntTooltip } from 'antd'; // Button и Tooltip из AntD
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu'; // DropdownMenu из Radix UI
-import * as styles from './FormButtons.module.scss';
-import { memo, type MutableRefObject, type ReactNode } from 'react';
-import { useTraceUpdate } from '../../../shared/hooks/debugHooks';
+import { Button as AntButton, Tooltip as AntTooltip } from "antd"; // Button и Tooltip из AntD
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu"; // DropdownMenu из Radix UI
+import * as styles from "./FormButtons.module.scss";
+import { memo, type MutableRefObject, type ReactNode } from "react";
+import { useTraceUpdate } from "../../../shared/hooks/debugHooks";
 export interface FormButtonsProps {
   transitions: ControlEventTransitionDto[];
   isSubmitting: boolean;
@@ -14,9 +14,9 @@ export interface FormButtonsProps {
 
 export const FormButtons: React.FC<FormButtonsProps> = memo((props) => {
   const { transitions, onSubmit, buttonValueRef, isSubmitting } = props;
-  useTraceUpdate('FormButtons', props);
+  useTraceUpdate("FormButtons", props);
 
-  const buttons = Object.groupBy(transitions, (b) => (b.forward ? 'forward' : 'back'));
+  const buttons = Object.groupBy(transitions, (b) => (b.forward ? "forward" : "back"));
 
   const onClick = (btn: ControlEventTransitionDto | null) => {
     buttonValueRef.current = btn;
@@ -29,12 +29,12 @@ export const FormButtons: React.FC<FormButtonsProps> = memo((props) => {
     <div className={styles.buttonsContainer}>
       {/* Замена ButtonGroup на div */}
       <div className={styles.buttonGroup}>
-        {buttons.back && buttons.back.length > 0 && createDropdownMenu('Вернуться к шагу...', buttons.back, onClick)}
+        {buttons.back && buttons.back.length > 0 && createDropdownMenu("Вернуться к шагу...", buttons.back, onClick)}
 
         {forwardButton && (
           <AntTooltip title={forwardButton.note}>
             <AntButton
-              type={forwardButton.active ? 'primary' : 'default'} // Основная кнопка выделяется
+              type={forwardButton.active ? "primary" : "default"} // Основная кнопка выделяется
               disabled={!forwardButton.active || isSubmitting}
               onClick={() => onClick(forwardButton)}
             >
@@ -43,7 +43,7 @@ export const FormButtons: React.FC<FormButtonsProps> = memo((props) => {
           </AntTooltip>
         )}
 
-        {forwardSkipButtons.length > 0 && createDropdownMenu('▼', forwardSkipButtons, onClick)}
+        {forwardSkipButtons.length > 0 && createDropdownMenu("▼", forwardSkipButtons, onClick)}
       </div>
       <AntButton disabled={isSubmitting} onClick={() => onClick(null)}>
         Сохранить

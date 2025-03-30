@@ -123,6 +123,8 @@ export const ProjectListTable = (props: Props) => {
   const [records, setRecords] = useState<ControlEventListDto[]>([]);
   const [columns, setColumns] = useState<ColumnsType<ControlEventListDto>>([]);
 
+  console.log({ records });
+
   // Fetch metadata once on mount
   useEffect(() => {
     projectListApi

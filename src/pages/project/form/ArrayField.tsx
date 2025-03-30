@@ -1,21 +1,21 @@
-import { FieldType, FormFieldEdit, type FormFieldDescriptor } from '@shared/types/apiTypes';
-import { useTraceUpdate } from '../../../shared/hooks/debugHooks';
-import { type FormFieldProps } from './FormFieldProps';
-import type { JsonObject } from '@shared/types/json';
-import { RecursiveField } from './RecursiveField';
-import { Field, FieldArray, type FieldProps } from 'formik';
+import { FieldType, FormFieldEdit, type FormFieldDescriptor } from "@shared/types/apiTypes";
+import { useTraceUpdate } from "../../../shared/hooks/debugHooks";
+import { type FormFieldProps } from "./FormFieldProps";
+import type { JsonObject } from "@shared/types/json";
+import { RecursiveField } from "./RecursiveField";
+import { Field, FieldArray, type FieldProps } from "formik";
 // import { Button, Text, type ColumnProps, type Key } from '@v-uik/base';
-import { Typography, Button as AntButton } from 'antd'; // Замена Text и Button
+import { Typography, Button as AntButton } from "antd"; // Замена Text и Button
 // import { ColumnProps } from 'antd/es/table'; // Замена ColumnProps, от AntD таблицы
-import { ExpandableCard } from '../../../shared/ui/ExpandableCard';
+import { ExpandableCard } from "../../../shared/ui/ExpandableCard";
 import {
   ExpandableTable,
   type ControTableRef,
   type DataSourceWithKey,
   ColumnProps
-} from '../../../shared/ui/ExpandableTable';
-import { IoTrash } from 'react-icons/io5';
-import { DirectoryValue } from '@shared/ui/DirectoryValue';
+} from "../../../shared/ui/ExpandableTable";
+import { IoTrash } from "react-icons/io5";
+import { DirectoryValue } from "@shared/ui/DirectoryValue";
 import {
   memo,
   useCallback,
@@ -25,10 +25,10 @@ import {
   type MouseEventHandler,
   type MutableRefObject,
   Key
-} from 'react';
-import { ModalConfirm } from '../../../shared/ui/ModalConfirm';
-import { modalConfirmClosedState } from '@shared/ui/ModalConfirmProps';
-import * as styles from './ArrayField.module.scss';
+} from "react";
+import { ModalConfirm } from "../../../shared/ui/ModalConfirm";
+import { modalConfirmClosedState } from "@shared/ui/ModalConfirmProps";
+import * as styles from "./ArrayField.module.scss";
 
 // interface ArrayFieldProps extends FormFieldProps {}
 type ArrayFieldProps = FormFieldProps; // Замена
@@ -43,7 +43,7 @@ export const ArrayField: React.FC<ArrayFieldProps> = (props) => (
 );
 
 const ArrayFieldInternal: React.FC<ArrayFieldInternalProps> = memo((props) => {
-  useTraceUpdate('ArrayFieldInternal', props);
+  useTraceUpdate("ArrayFieldInternal", props);
   const { fieldDescriptor: fd, inputId, value } = props;
 
   const pd = fd.propDescriptor;
@@ -83,7 +83,7 @@ type ArrayTableControlProps = {
 };
 
 const ArrayTableControl = memo((props: ArrayTableControlProps) => {
-  useTraceUpdate('ArrayTableControl', props);
+  useTraceUpdate("ArrayTableControl", props);
   const { fd, inputId, value, onRemove, onAdd } = props;
   const disabled = fd.edit === FormFieldEdit.Readonly;
 
@@ -130,7 +130,7 @@ const ArrayTableControl = memo((props: ArrayTableControlProps) => {
     const idx = dataSource?.length ?? 0;
     setTimeout(() => {
       document
-        .querySelector<HTMLLabelElement>('#' + CSS.escape(`${inputId}[${idx}].${firstField.propDescriptor.id}-label`))
+        .querySelector<HTMLLabelElement>("#" + CSS.escape(`${inputId}[${idx}].${firstField.propDescriptor.id}-label`))
         ?.click();
     });
 
@@ -148,7 +148,7 @@ const ArrayTableControl = memo((props: ArrayTableControlProps) => {
       {/*</Button>*/}
       {/* Замена Button от v-uik */}
       <AntButton disabled={disabled} onClick={onAddHandler}>
-        {fd.propDescriptor.addButtonLabel ?? 'Добавить'}
+        {fd.propDescriptor.addButtonLabel ?? "Добавить"}
       </AntButton>
       <ArrayTable
         controTableRef={controTableRef}
@@ -180,7 +180,7 @@ type ArrayTableProps = {
 
 const ArrayTable = memo((props: ArrayTableProps) => {
   const { onRemove, dataSource, fd, inputId, controTableRef } = props;
-  useTraceUpdate('ArrayTable', props);
+  useTraceUpdate("ArrayTable", props);
 
   const columns = useMemo(() => {
     const columns = fd
@@ -205,14 +205,14 @@ const ArrayTable = memo((props: ArrayTableProps) => {
     const disabled = fd.edit === FormFieldEdit.Readonly;
 
     columns.push({
-      title: '',
-      key: '_delete',
+      title: "",
+      key: "_delete",
       width: 1,
       renderCellContent: ({ row, rowIndex }) => (
         <RemoveRowButton
           disabled={disabled}
           onClick={() => {
-            const warn = Object.keys(row).some((x) => x !== 'key' && x !== fd.propDescriptor.idPropertyName);
+            const warn = Object.keys(row).some((x) => x !== "key" && x !== fd.propDescriptor.idPropertyName);
             onRemove(rowIndex, row.key, warn);
           }}
         />

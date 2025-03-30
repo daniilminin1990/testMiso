@@ -205,9 +205,10 @@ const ArrayTable = memo((props: ArrayTableProps) => {
     const disabled = fd.edit === FormFieldEdit.Readonly;
 
     columns.push({
+      title: '',
       key: '_delete',
       width: 1,
-      renderCellContent: ({ row, rowIndex }) => (
+      renderCellContent: ({ row, rowIndex }) => ( 
         <RemoveRowButton
           disabled={disabled}
           onClick={() => {

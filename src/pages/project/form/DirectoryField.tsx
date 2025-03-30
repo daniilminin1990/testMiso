@@ -161,7 +161,16 @@ interface SelectCommonProps {
 
 const MySelectSingle = memo(
   ({ value, setFieldValue, inputId, options, selectProps }: SelectCommonProps & { value: string | null }) => {
-    return <Select {...selectProps} value={value} onChange={(v) => setFieldValue(inputId, v)} options={options} />;
+    return (
+      <Select
+        {...selectProps}
+        // size={"large"}
+        value={value}
+        style={{ width: "100%" }}
+        onChange={(v) => setFieldValue(inputId, v)}
+        options={options}
+      />
+    );
   }
 );
 
@@ -170,7 +179,9 @@ const MySelectMultiple = memo(
     return (
       <Select
         mode="multiple"
+        size={"large"}
         {...selectProps}
+        style={{ width: "100%" }}
         value={value}
         onChange={(v) => setFieldValue(inputId, v)}
         options={options}

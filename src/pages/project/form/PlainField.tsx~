@@ -13,7 +13,7 @@ interface PlainFieldInternalProps extends PlainFieldProps {
   setFieldValue: FieldProps<JsonPrimative>['form']['setFieldValue'];
   onBlur: FormikHandlers['handleBlur'];
   touched: boolean;
-  error?: string;
+  error?: string; 
 }
 
 export const PlainField: React.FC<PlainFieldProps> = memo((props) => {
@@ -108,7 +108,7 @@ const PlainFieldInternal: React.FC<PlainFieldInternalProps> = memo((props) => {
   }
 });
 
-function MyInput<T extends InputProps>({
+function MyInput({
   value,
   setFieldValue,
   inputId,
@@ -117,17 +117,26 @@ function MyInput<T extends InputProps>({
   value: string | null;
   setFieldValue: FieldProps<JsonPrimative>['form']['setFieldValue'];
   inputId: string;
-  fieldProps: T;
+  fieldProps: any;
 }) {
   return (
-    <Input //<true>
-      fullWidth
-      canClear
-      value={value}
-      onChange={(v, _event, _r) => {
-        setFieldValue(inputId, v);
-      }}
-      inputProps={{ id: inputId, name: inputId }}
+    // <Input //<true>
+    //   fullWidth
+    //   canClear
+    //   value={value}
+    //   onChange={(v, _event, _r) => {
+    //     setFieldValue(inputId, v);
+    //   }}
+    //   inputProps={{ id: inputId, name: inputId }}
+    //   {...fieldProps}
+    // />
+    <AntInput
+      style={{ width: '100%' }} // Аналог fullWidth
+      allowClear // Аналог canClear
+      value={value ?? ''} // Null в пустую строку
+      onChange={(e) => setFieldValue(inputId, e.target.value)} // Обработка события
+      id={inputId}
+      name={inputId}
       {...fieldProps}
     />
   );
@@ -142,26 +151,43 @@ function MyDatePicker({
   value: string | null;
   setFieldValue: FieldProps<JsonPrimative>['form']['setFieldValue'];
   inputId: string;
-  fieldProps: DatePickerProps<Date>;
+  fieldProps: any; // Можно уточнить тип, если нужно;
 }) {
+  const dateValue = value ? dayjs(value) : null; // Преобразование строки в dayjs
   return (
-    <div
-      style={{
-        width: '100%'
-      }}
-    >
-      <DatePicker<Date>
-        value={value ? new Date(value) : null}
-        onChange={(v) => {
-          const value = v?.toISOString().split('T')[0] ?? null;
-          setFieldValue(inputId, value);
+    <div style={{ width: '100%' }}>
+      <AntDatePicker
+        value={dateValue} // Значение в формате dayjs
+        onChange={(date) => {
+          const formattedValue = date ? date.format('YYYY-MM-DD') : null; // Форматирование в строку
+          setFieldValue(inputId, formattedValue);
         }}
-        mask="11.11.1111"
-        inputProps={{
-          inputProps: { id: inputId, name: inputId }
-        }}
+        format="DD.MM.YYYY" // Отображение даты (аналог mask)
+        style={{ width: '100%' }} // Аналог fullWidth
+        id={inputId}
+        name={inputId}
         {...fieldProps}
       />
     </div>
   );
+  // return (
+  //   <div
+  //     style={{
+  //       width: '100%'
+  //     }}
+  //   >
+  //     <DatePicker<Date>
+  //       value={value ? new Date(value) : null}
+  //       onChange={(v) => {
+  //         const value = v?.toISOString().split('T')[0] ?? null;
+  //         setFieldValue(inputId, value);
+  //       }}
+  //       mask="11.11.1111"
+  //       inputProps={{
+  //         inputProps: { id: inputId, name: inputId }
+  //       }}
+  //       {...fieldProps}
+  //     />
+  //   </div>
+  // );
 }
