@@ -17,32 +17,33 @@ interface IGroupWrapper {
 const Component: FC<IGroupWrapper> = observer((props) => {
   const { children, name, index } = props;
   // Для слайдинга
-  // ++
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const groupRef = useRef<HTMLDivElement | null>(null);
+  const uniqueId = `${name}_${index}`;
   // Обработчик клика по блоку
-  const handleGroupClick = useHandleClickNavigation(index);
-
-  const borderStyle = projectPageNavigationStore.activeGroupId === index ? "1px solid red" : "1px solid blue";
-  // ++
+  const handleGroupClick = useHandleClickNavigation(uniqueId);
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useTraceUpdate("FieldGroupWrapper", props);
   return (
     <div
       ref={groupRef ? (groupRef as MutableRefObject<HTMLDivElement>) : null}
-      id={index.toString()}
+      id={uniqueId}
       onClick={() => handleGroupClick()}
     >
       <div
         className={clsx(
           styles.fieldGroupTitle,
-          projectPageNavigationStore.activeGroupIndex === index && styles.activeText
+          projectPageNavigationStore.activeGroupNameAndIndex === uniqueId && styles.activeText
         )}
       >
         {name}
       </div>
-      <div className={clsx(styles.fieldGroup, projectPageNavigationStore.activeGroupIndex === index && styles.active)}>
+      <div
+        className={clsx(
+          styles.fieldGroup,
+          projectPageNavigationStore.activeGroupNameAndIndex === uniqueId && styles.active
+        )}
+      >
         {children}
       </div>
     </div>

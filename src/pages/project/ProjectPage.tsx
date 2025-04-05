@@ -236,9 +236,9 @@ const ProjectPage = observer(() => {
     return [];
   }, [data]);
 
-  const arrayOfFormFieldsFromGroup = projectPageNavigationStore.activeGroupIndex
-    ? groups[projectPageNavigationStore.activeGroupIndex]?.[1]
-    : [];
+  const activeGroupName = projectPageNavigationStore.activeGroupNameAndIndex;
+  const groupIndexCalculated = activeGroupName ? activeGroupName.split("_")[1] : 0;
+  const arrayOfFormFieldsFromGroup = groups[groupIndexCalculated]?.[1];
 
   return data ? (
     <>
@@ -255,14 +255,17 @@ const ProjectPage = observer(() => {
       <div className={styles.container}>
         {/* Левая колонна (навигационная)*/}
         <nav className={clsx(styles.side, styles.navigation)}>
-          {groups.map((group, index) => {
+          {groups.map((group, groupIndex) => {
             const [groupName, groupItems] = group;
+            const groupNameAndIndex = `${groupName}_${groupIndex}`;
             return (
               <div
-                key={index}
-                className={clsx(styles.group, projectPageNavigationStore.activeGroupIndex === index && styles.active)}
-                onClick={useHandleClickNavigation(index)}
-                rel="noreferrer"
+                key={groupName}
+                className={clsx(
+                  styles.group,
+                  projectPageNavigationStore.activeGroupNameAndIndex?.includes(groupName) && styles.active
+                )}
+                onClick={useHandleClickNavigation(groupNameAndIndex)}
               >
                 {groupName}
               </div>
@@ -286,7 +289,21 @@ const ProjectPage = observer(() => {
         </div>
 
         {/* Правая колонна (справа от основного контента) */}
-        <aside className={clsx(styles.side, styles.additional)}>Additional info</aside>
+        <aside className={clsx(styles.side, styles.additional)}>
+          <h3>Fields to fill</h3>
+          <h3>{data.status.description}</h3>
+          {arrayOfFormFieldsFromGroup.length > 0 ? (
+            arrayOfFormFieldsFromGroup.map((formFromGroup, formFromGroupIndex) => {
+              return (
+                <div className={styles.additionalTextWrapper} key={`additional_${formFromGroupIndex}`}>
+                  <p className={styles.additionalText}>{formFromGroup.descriptor.propDescriptor.title}</p>
+                </div>
+              );
+            })
+          ) : (
+            <h3>Нет полей для заполнения</h3>
+          )}
+        </aside>
         <ModalConfirm headerText="Переход на статус" state={modal} setState={setModal} />
       </div>
     </>

@@ -2,16 +2,14 @@
 import { makeAutoObservable } from "mobx";
 
 class ProjectPageNavigationStore {
-  activeGroupIndex: number | null = 0; // Сделаем активынм 1 блок
-  // isScrolling: boolean = false;
-  // isInitialLoad: boolean = true; // Флаг начальной загрузки
+  activeGroupNameAndIndex: string | null = null;
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  setActiveGroupIndex(id: number) {
-    this.activeGroupIndex = id;
+  setActiveGroupNameAndIndex(groupNameWithIndex: string | null) {
+    this.activeGroupNameAndIndex = groupNameWithIndex;
   }
 
   // setIsScrolling(scrolling: boolean) {

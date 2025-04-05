@@ -22,7 +22,7 @@ export const useHandleClickNavigation = (groupNameAndIndex: string | null) => {
 
     const groupElement = groupNameAndIndex ? document.getElementById(groupNameAndIndex) : null;
     const headerHeight = document.getElementsByTagName("header").item(0)?.offsetHeight;
-    const index = groupNameAndIndex ? Number(groupNameAndIndex.split("_")[1]) : 0;
+    const index = groupNameAndIndex ? parseInt(groupNameAndIndex) : 0;
 
     if (groupElement && headerHeight) {
       const groupPosition =
