@@ -6,16 +6,18 @@
 //   type RecordDataSource,
 //   type SortOrderProp
 // } from '@v-uik/base';
-import { Table, Pagination, TablePaginationConfig } from "antd"; // Import AntD components
-import { FieldType, PropertyDescriptor, type ControlEventListDto } from "@shared/types/apiTypes";
 import { useEffect, useState, type FC } from "react";
-import { projectListApi } from "./projectListApi";
+import { Table, Pagination, TablePaginationConfig } from "antd"; // Import AntD components
+import { FilterValue, SorterResult } from "antd/es/table/interface";
+import type { ColumnsType } from "antd/lib/table";
+
+import { FieldType, PropertyDescriptor, type ControlEventListDto } from "@shared/types/apiTypes";
 import { DirectoryValue } from "@shared/ui/DirectoryValue";
 import { showErrorNotification } from "@shared/ui/showErrorNotification";
+
+import { projectListApi } from "./projectListApi";
 // import * as styles from "./ProjectListTable.module.css";
 import * as styles from "./ProjectListTable.module.scss";
-import type { ColumnsType } from "antd/lib/table";
-import { FilterValue, SorterResult } from "antd/es/table/interface";
 
 type Props = {
   onSelect: (projectId: string) => void;

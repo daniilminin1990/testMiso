@@ -5,21 +5,22 @@
 //   ModalFooter,
 //   Button,
 // } from "@v-uik/base";
-import * as Dialog from '@radix-ui/react-dialog';
-import * as styles from './ModalConfirm.module.scss';
-import { memo } from 'react';
+import { memo } from "react";
+import * as Dialog from "@radix-ui/react-dialog";
+
 import {
   modalConfirmClosedState,
   modaConfirmClosedReason,
   type ModalConfirmProps,
   type ModalConfirmState
-} from './ModalConfirmProps';
+} from "./ModalConfirmProps";
+import * as styles from "./ModalConfirm.module.scss";
 
 export const ModalConfirm = memo(
   ({
     headerText,
-    mainButtonText = 'Подтвердить',
-    mainButtonColor = 'primary',
+    mainButtonText = "Подтвердить",
+    mainButtonColor = "primary",
     mainButtonAutoFocus = true,
     state,
     setState
@@ -37,7 +38,7 @@ export const ModalConfirm = memo(
     const confirm = (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       reset(state, setState);
-      state.onConfirm('user confirmed');
+      state.onConfirm("user confirmed");
     };
     return (
       // <Modal open={state.open} onClose={cancel}>
@@ -72,7 +73,7 @@ export const ModalConfirm = memo(
               <button
                 autoFocus={mainButtonAutoFocus}
                 className={`${styles.button} ${styles.confirmButton} ${
-                  mainButtonColor === 'primary' ? styles.primary : ''
+                  mainButtonColor === "primary" ? styles.primary : ""
                 }`}
                 onClick={confirm} // Теперь тип совместим
               >

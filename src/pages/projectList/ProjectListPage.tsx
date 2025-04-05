@@ -1,11 +1,13 @@
 // import { Button } from '@v-uik/base';
-import { Button as AntButton } from "antd";
-import { ProjectListContainer } from "./ProjectListContainer";
 import { useNavigate } from "react-router";
+import { Button as AntButton } from "antd";
+
 import { projectPageApi } from "@pages/project/projectPageApi";
-import { showErrorNotification } from "@shared/ui/showErrorNotification";
-import * as styles from "./ProjectListPage.module.scss";
 import PageTitle from "@shared/ui/PageTitle";
+import { showErrorNotification } from "@shared/ui/showErrorNotification";
+
+import { ProjectListContainer } from "./ProjectListContainer";
+import * as styles from "./ProjectListPage.module.scss";
 export const ProjectListPage = () => {
   const navigate = useNavigate();
   const redirectToProject = (projectId: string) => {

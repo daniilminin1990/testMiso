@@ -1,8 +1,9 @@
 import { Finder, TFinderProps } from "@shared/ui/finderItem/finderItem";
-import * as styles from "./Header.module.scss";
+
 import { AccountBadge, TAccountBadgeProps } from "./accountBadge/acBadge";
 import { Logo } from "./logo/logo";
 import { NavMenu } from "./nav/NavMenu";
+import * as styles from "./Header.module.scss";
 
 type THeaderProps = {
   finder?: TFinderProps;

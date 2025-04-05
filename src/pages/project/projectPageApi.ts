@@ -1,10 +1,12 @@
 import axios from "axios";
+
+import { apiRoutes } from "@shared/api/apiRoutes";
+
 import {
   ControlEventDto,
   EditControlEventCommand,
   type HttpValidationProblemDetails
 } from "../../shared/types/apiTypes";
-import { apiRoutes } from "@shared/api/apiRoutes";
 
 function isValidationProblem(data: unknown): data is HttpValidationProblemDetails {
   return (

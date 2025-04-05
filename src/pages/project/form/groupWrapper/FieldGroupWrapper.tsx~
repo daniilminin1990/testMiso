@@ -46,7 +46,7 @@ export const FieldGroupWrapper: FC<IGroupWrapper> = memo(
     return (
       <div id={index.toString()} ref={groupRef} onClick={handleGroupClick} style={{ border: borderStyle }}>
         <div className={styles.fieldGroupTitle}>{name}</div>
-        <div className={styles.fieldGroup}>{children}</div>
+        <div className={styles.fieldGroup}>{children}</div> 
       </div>
     );
   })

@@ -24,54 +24,112 @@
     "react-refresh",
     "@typescript-eslint",
     "prettier",
-    "import"
+    "import",
+    "react-compiler"
   ],
-  "ignorePatterns": ["__jest__/**/*", "__tests__/**/*", "__webpack__/**/*", "server/**/*", "node_modules/**/*", "customTemplate.js", "webpack.config.js"],
+  "ignorePatterns": ["__jest__/**/*", "__test__/**/*", "server/**/*", "__webpack__/**/*", "node_modules/**/*", "customTemplate.js", "webpack.config.js"],
   "settings": {
+    "import/resolver": {
+      //      "alias": {
+      //        "map": [["@", "./src"]],
+      //        "extensions": [".ts", ".tsx", ".js", ".jsx", ".json"]
+      //      }
+      "typescript": {
+        "project": "./tsconfig.json"
+      }
+    },
     "react": {
       "version": "detect"
     }
   },
   "rules": {
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-    "allow-parens": "off",
+    //    "allow-parens": "off",
     "capitalized-comments": "off",
     "curly": ["error", "all"],
     "import/extensions": ["error", { "css": "always", "json": "always", "scss": "always", "svg": "always" }],
-    "import/no-duplicates": "off",
-    "import/order": "off",
+    "import/no-duplicates": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", ["parent", "sibling"]],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "react-**",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "@/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "./**/*.{css,scss}",
+            "group": "sibling",
+            "position": "after"
+          },
+          {
+            "pattern": "../**/*.{css,scss}",
+            "group": "parent",
+            "position": "after"
+          },
+          {
+            "pattern": "./**/*.module{css,scss}",
+            "group": "sibling",
+            "position": "after"
+          },
+          {
+            "pattern": "../**/*.module{css,scss}",
+            "group": "parent",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "distinctGroup": false,
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+//        "prettier/prettier": "off",
+    "import/first": "error",
     "import/prefer-default-export": "off",
-    "max-lines": ["error", 500],
-    "id-length": "off",
+    "max-lines": ["error", 500], // Установим 500 строк максмум в файле
+    //    "id-length": "off",
     "new-cap": "off",
     "no-console": ["warn", { "allow": ["warn", "error"] }],
-    "no-debugger": "off",
-    "no-duplicate-imports": "off",
+    //    "no-debugger": "off",
+    //    "no-duplicate-imports": "off",
     "no-empty-pattern": "off",
     "no-nested-ternary": "error",
     "no-undef": "warn",
-    "no-unused-vars": "off",
+    //    "no-unused-vars": "off",
     "no-var": "error",
-    "no-inline-comments": "off",
+    "no-inline-comments": "off", // Хотя можно поставить и в "warn
     "no-undefined": "off",
-    "prefer-template": "off",
-    "react/react-in-jsx-scope": "off",
-    "sort-imports": "off",
-    "sort-keys": "off",
-    "func-style": "off",
-    "react/prop-types": "off",
+    "prefer-template": "off", // По умолчанию "error"
+    "react/react-in-jsx-scope": "off", // Для React 17+ уже не актуально, т.к. по умолчанию используется импорт без React
+    //    "sort-imports": "off", // Лишнее, так как "import/order" уже управляет сортировкой
+    //    "sort-keys": "off", // По умолчанию "off", поэтому можно убрать
+    //    "func-style": "off", // По умолчанию "off", поэтому можно убрать
+    "react/prop-types": "off", // При использовании TS не нужно
     "react/display-name": "off",
     "react/no-unescaped-entities": "off",
-    //    "react/jsx-curly-spacing": ["error", "always"],
-    //    "object-curly-spacing": ["error", "always"],
-    "react/jsx-curly-spacing": "off", // Теперь этим управляет prettier. Раньше было ["error", "always"]
-    "object-curly-spacing": "off", // Теперь этим управляет prettier. Раньше было ["error", "always"]
+//    "react/jsx-curly-spacing": ["error", "always"],
+//    "object-curly-spacing": ["error", "always"],
+//        "react/jsx-curly-spacing": "off", // Теперь этим управляет prettier. Раньше было ["error", "always"]
+//        "object-curly-spacing": "off", // Теперь этим управляет prettier. Раньше было ["error", "always"]
     "@typescript-eslint/consistent-type-imports": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/explicit-member-accessibility": "off",
+    //    "@typescript-eslint/explicit-member-accessibility": "off", // По умолчанию "off", поэтому можно убрать
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "@typescript-eslint/no-empty-object-type": "off",
+    "@typescript-eslint/no-empty-object-type": "warn", // По умолчанию "off". Будет предупреждать о местах, где пустые объекты в типе.
     "@typescript-eslint/naming-convention": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-explicit-any" : "off",
@@ -88,17 +146,16 @@
       }
     ],
     "@typescript-eslint/method-signature-style": "error",
-    "@typescript-eslint/restrict-template-expressions": [
-      "warn",
-      { "allowNumber": true, "allowBoolean": true }
-    ]
-  },
-  "overrides": [
-    {
-      "files": ["*.ts", "*.tsx"],
-      "rules": {
-        "@typescript-eslint/explicit-function-return-type": "off"
-      }
-    }
-  ]
+    // Отключаем, потому что хотим использовать что угодно в шаблонной строке
+    "@typescript-eslint/restrict-template-expressions": "off"
+  }
+  //  "overrides": [
+  //    {
+  //      "files": ["*.ts", "*.tsx"]
+  //      // Нижние правила отключаем, потому что уже указано глобально в "rules"
+  ////      "rules": {
+  ////        "@typescript-eslint/explicit-function-return-type": "off"
+  ////      }
+  //    }
+  //  ]
 }

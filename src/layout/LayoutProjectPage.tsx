@@ -1,11 +1,12 @@
+import { useRef, useState, UIEvent } from "react";
 import { Outlet } from "react-router";
+import clsx from "clsx";
+
+import AppRouter from "@app/routes/AppRouter";
+
 import { Header } from "./header/Header";
 import * as styles from "./LayoutProjectPage.module.scss";
-import AppRouter from "@app/routes/AppRouter";
 // import { NotificationContainer } from '@v-uik/base';
-import { useRef, useState } from "react";
-import { UIEvent } from "react";
-import clsx from "clsx";
 
 export const LayoutProjectPage = () => {
   const [activeBlock, setActiveBlock] = useState<string | null>(null);

@@ -6,16 +6,18 @@
 //   type RecordDataSource,
 //   type SortOrderProp
 // } from '@v-uik/base';
-import { Table, Pagination, TablePaginationConfig } from "antd"; // Import AntD components
-import { FieldType, PropertyDescriptor, type ControlEventListDto } from "@shared/types/apiTypes";
 import { useEffect, useState, type FC } from "react";
-import { projectListApi } from "./projectListApi";
+import { Table, Pagination, TablePaginationConfig } from "antd"; // Import AntD components
+import { FilterValue, SorterResult } from "antd/es/table/interface";
+import type { ColumnsType } from "antd/lib/table";
+
+import { FieldType, PropertyDescriptor, type ControlEventListDto } from "@shared/types/apiTypes";
 import { DirectoryValue } from "@shared/ui/DirectoryValue";
 import { showErrorNotification } from "@shared/ui/showErrorNotification";
+
+import { projectListApi } from "./projectListApi";
 // import * as styles from "./ProjectListTable.module.css";
 import * as styles from "./ProjectListTable.module.scss";
-import type { ColumnsType } from "antd/lib/table";
-import { FilterValue, SorterResult } from "antd/es/table/interface";
 
 type Props = {
   onSelect: (projectId: string) => void;
@@ -68,7 +70,7 @@ function metaToColumn(meta: PropertyDescriptor): ColumnsType<ControlEventListDto
         : undefined,
     render:
       meta.type === FieldType.Directory
-        ? (cell: any) => <DirectoryValue descriptor={meta.directoryDescriptor} value={cell} />
+        ? (cell: any) => <DirectoryValue descriptor={ meta.directoryDescriptor } value={ cell } />
         : undefined
   };
 }
@@ -123,7 +125,7 @@ export const ProjectListTable = (props: Props) => {
   const [records, setRecords] = useState<ControlEventListDto[]>([]);
   const [columns, setColumns] = useState<ColumnsType<ControlEventListDto>>([]);
 
-  console.log({records})
+  console.log({ records });
 
   // Fetch metadata once on mount
   useEffect(() => {
@@ -191,27 +193,27 @@ export const ProjectListTable = (props: Props) => {
   return (
     <>
       <Table
-        dataSource={records}
-        columns={columns}
+        dataSource={ records }
+        columns={ columns }
         rowKey="id"
-        loading={loading}
-        className={loading ? styles.blur : undefined} // Apply blur effect during loading
-        onChange={handleTableChange}
-        onRow={(record) => ({
+        loading={ loading }
+        className={ loading ? styles.blur : undefined } // Apply blur effect during loading
+        onChange={ handleTableChange }
+        onRow={ (record) => ({
           onClick: () => onSelect(record.id)
-        })}
-        pagination={false} // Pagination handled separately
+        }) }
+        pagination={ false } // Pagination handled separately
       />
       <Pagination
-        current={currentPage}
-        pageSize={pageSize}
-        total={totalItemsNumber}
+        current={ currentPage }
+        pageSize={ pageSize }
+        total={ totalItemsNumber }
         showSizeChanger
-        pageSizeOptions={pageSizes}
-        onChange={(page, size) => {
+        pageSizeOptions={ pageSizes }
+        onChange={ (page, size) => {
           setCurrentPage(page);
           setPageSize(size);
-        }}
+        } }
       />
     </>
   );

@@ -3,7 +3,7 @@ import { Navigate, RouteObject } from "react-router";
 import { ProjectListPage } from "@pages/projectList/ProjectListPage";
 import { appPaths } from "@app/routes/appPaths";
 import ProjectPage from "@pages/project/ProjectPage";
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router";
 import { Layout } from "../../layout/Layout";
 import Page404 from "@pages/404";
 import { LayoutProjectPage } from "../../layout/LayoutProjectPage";
@@ -40,7 +40,7 @@ export const router = createBrowserRouter([
     element: <Layout />,
     path: `${appPaths.base}`,
     children: [...simpleRoutes]
-  },
+  }
   // {
   //   element: <LayoutProjectPage />, // Layout для одного проекта
   //   path: `${appPaths.projects}`,

@@ -2,10 +2,11 @@
 // import * as styles from './finder.module.scss';
 // import { CircularProgress, DropdownMenu, DropdownMenuItem, Input } from '@v-uik/base';
 // import { FaSearch } from 'react-icons/fa';
-import { FC, ReactNode, useCallback, useRef, useState } from 'react';
-import * as styles from './finder.module.scss';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { FaSearch } from 'react-icons/fa';
+import { FC, ReactNode, useCallback, useRef, useState } from "react";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import { FaSearch } from "react-icons/fa";
+
+import * as styles from "./finder.module.scss";
 
 export type TListItemFinderHOC = {
   value: string;
@@ -23,16 +24,16 @@ export type TFinderProps = {
   initialGetter?: () => Promise<TListItemFinderHOC[]>;
 };
 
-type TDisplaying = 'loading' | 'result' | 'empty';
+type TDisplaying = "loading" | "result" | "empty";
 
 export const Finder: FC<TFinderProps> = ({ messages, onSelectItem, dataGetter, initialGetter }) => {
   const anchorRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const [inputValue, setInputValue] = useState<string>('');
+  const [inputValue, setInputValue] = useState<string>("");
   const [searchingData, setSearchingData] = useState<TListItemFinderHOC[]>([]);
-  const [displayingState, setDisplayingState] = useState<TDisplaying>('loading');
+  const [displayingState, setDisplayingState] = useState<TDisplaying>("loading");
 
   // ! Чтобы заменить v-uik, делаем состояние
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -46,7 +47,9 @@ export const Finder: FC<TFinderProps> = ({ messages, onSelectItem, dataGetter, i
 
   const displayingSetter = useCallback(
     (result: TListItemFinderHOC[]) => {
-      if (!result) return;
+      if (!result) {
+        return;
+      }
       // switch (result.length) {
       //   case 0:
       //     setDisplayingState('empty');
@@ -56,7 +59,7 @@ export const Finder: FC<TFinderProps> = ({ messages, onSelectItem, dataGetter, i
       //     break;
       // }
       // ! МОЖНО ЗАМЕНИТЬ НА
-      setDisplayingState(result.length === 0 ? 'empty' : 'result');
+      setDisplayingState(result.length === 0 ? "empty" : "result");
     },
     [setDisplayingState]
   );
@@ -70,8 +73,12 @@ export const Finder: FC<TFinderProps> = ({ messages, onSelectItem, dataGetter, i
 
   const handleFilledRequest = useCallback(
     (request: string, delay: number) => {
-      if (!dataGetter) throw new Error('dataGetter is required');
-      if (timerRef.current) clearTimeout(timerRef.current);
+      if (!dataGetter) {
+        throw new Error("dataGetter is required");
+      }
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
 
       timerRef.current = setTimeout(() => {
         dataGetter(request).then((items) => {
@@ -86,7 +93,7 @@ export const Finder: FC<TFinderProps> = ({ messages, onSelectItem, dataGetter, i
   const handleSearching = useCallback(
     (currentValue: string) => {
       setInputValue(currentValue);
-      setDisplayingState('loading');
+      setDisplayingState("loading");
       // switch (currentValue.length) {
       //   case 0:
       //     handleInitialRequest();
@@ -116,7 +123,7 @@ export const Finder: FC<TFinderProps> = ({ messages, onSelectItem, dataGetter, i
       // </DropdownMenuItem>
       <DropdownMenu.Item className={styles.searchItem}>
         <div className={styles.spinner} />
-        <span>{loadingMessage || 'Loading...'}</span>
+        <span>{loadingMessage || "Loading..."}</span>
       </DropdownMenu.Item>
     );
   };
@@ -130,7 +137,7 @@ export const Finder: FC<TFinderProps> = ({ messages, onSelectItem, dataGetter, i
       //   </div>
       // </DropdownMenuItem>
       <DropdownMenu.Item className={styles.searchItem}>
-        <span>{nfMessage ?? 'Not found'}</span>
+        <span>{nfMessage ?? "Not found"}</span>
       </DropdownMenu.Item>
     );
   };
@@ -162,9 +169,9 @@ export const Finder: FC<TFinderProps> = ({ messages, onSelectItem, dataGetter, i
   // ! ПОЧЕМУ ЭТО СДЕЛАНО КАК IIEF????
   const content = ((): ReactNode => {
     switch (displayingState) {
-      case 'loading':
+      case "loading":
         return getLoader(messages?.loading);
-      case 'empty':
+      case "empty":
         return getEmpty(messages?.notfound);
       default:
         return getFoundedList();

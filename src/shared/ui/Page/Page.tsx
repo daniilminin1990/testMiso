@@ -1,5 +1,6 @@
 import { ComponentPropsWithoutRef, CSSProperties } from "react";
 import clsx from "clsx";
+
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import * as s from "./Page.module.scss";

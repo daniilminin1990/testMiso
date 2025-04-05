@@ -1,4 +1,5 @@
 import { Outlet } from "react-router";
+
 import { Header } from "./header/Header";
 import * as styles from "./Layout.module.scss";
 export const Layout = () => {

@@ -1,8 +1,8 @@
 // import type { TButtonColor } from '@v-uik/base';
-import type { Dispatch, ReactNode, SetStateAction } from 'react';
+import type { Dispatch, ReactNode, SetStateAction } from "react";
 
 // Определяем собственный тип для цветов кнопок
-export type ButtonColor = 'primary' | 'secondary' | 'error' | 'success';
+export type ButtonColor = "primary" | "secondary" | "error" | "success";
 
 export type ModalConfirmState = {
   open: boolean;
@@ -27,7 +27,7 @@ export const modalConfirmClosedState: Readonly<ModalConfirmState> = {
   onReject: undefined
 };
 
-export const modaConfirmClosedReason = 'closed' as const;
+export const modaConfirmClosedReason = "closed" as const;
 
 export async function modalConfirmPromise(message: ReactNode, setModal: Dispatch<SetStateAction<ModalConfirmState>>) {
   try {
@@ -42,7 +42,9 @@ export async function modalConfirmPromise(message: ReactNode, setModal: Dispatch
     });
     return true;
   } catch (error) {
-    if (error === modaConfirmClosedReason) return false;
+    if (error === modaConfirmClosedReason) {
+      return false;
+    }
     throw error; //unexpected
   }
 }

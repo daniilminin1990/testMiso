@@ -57,8 +57,9 @@
 // };
 
 import type { FC, ReactElement, ReactNode } from "react";
-import * as styles from "./BadgeItem.module.scss";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+
+import * as styles from "./BadgeItem.module.scss";
 
 type TBadgeItem = {
   icon: ReactElement;

@@ -1,21 +1,3 @@
-import { FieldType, FormFieldEdit, type FormFieldDescriptor } from "@shared/types/apiTypes";
-import { useTraceUpdate } from "../../../shared/hooks/debugHooks";
-import { type FormFieldProps } from "./FormFieldProps";
-import type { JsonObject } from "@shared/types/json";
-import { RecursiveField } from "./RecursiveField";
-import { Field, FieldArray, type FieldProps } from "formik";
-// import { Button, Text, type ColumnProps, type Key } from '@v-uik/base';
-import { Typography, Button as AntButton } from "antd"; // Замена Text и Button
-// import { ColumnProps } from 'antd/es/table'; // Замена ColumnProps, от AntD таблицы
-import { ExpandableCard } from "../../../shared/ui/ExpandableCard";
-import {
-  ExpandableTable,
-  type ControTableRef,
-  type DataSourceWithKey,
-  ColumnProps
-} from "../../../shared/ui/ExpandableTable";
-import { IoTrash } from "react-icons/io5";
-import { DirectoryValue } from "@shared/ui/DirectoryValue";
 import {
   memo,
   useCallback,
@@ -26,8 +8,28 @@ import {
   type MutableRefObject,
   Key
 } from "react";
-import { ModalConfirm } from "../../../shared/ui/ModalConfirm";
+import { Typography, Button as AntButton } from "antd"; // Замена Text и Button
+import { Field, FieldArray, type FieldProps } from "formik";
+import { IoTrash } from "react-icons/io5";
+
+import { FieldType, FormFieldEdit, type FormFieldDescriptor } from "@shared/types/apiTypes";
+import type { JsonObject } from "@shared/types/json";
+import { DirectoryValue } from "@shared/ui/DirectoryValue";
 import { modalConfirmClosedState } from "@shared/ui/ModalConfirmProps";
+
+import { type FormFieldProps } from "./FormFieldProps";
+import { RecursiveField } from "./RecursiveField";
+import { useTraceUpdate } from "../../../shared/hooks/debugHooks";
+// import { Button, Text, type ColumnProps, type Key } from '@v-uik/base';
+// import { ColumnProps } from 'antd/es/table'; // Замена ColumnProps, от AntD таблицы
+import { ExpandableCard } from "../../../shared/ui/ExpandableCard";
+import {
+  ExpandableTable,
+  type ControTableRef,
+  type DataSourceWithKey,
+  ColumnProps
+} from "../../../shared/ui/ExpandableTable";
+import { ModalConfirm } from "../../../shared/ui/ModalConfirm";
 import * as styles from "./ArrayField.module.scss";
 
 // interface ArrayFieldProps extends FormFieldProps {}

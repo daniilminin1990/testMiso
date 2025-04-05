@@ -1,8 +1,10 @@
 import type { FC } from "react";
-import { FaBell, FaInfoCircle, FaTh, FaUser } from "react-icons/fa";
-// import { DropdownMenuItem } from "@v-uik/base";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import { FaBell, FaInfoCircle, FaTh, FaUser } from "react-icons/fa";
+
+// import { DropdownMenuItem } from "@v-uik/base";
 import { BadgeItem } from "@shared/ui/badgeItem/BadgeItem";
+
 import * as styles from "./acBadge.module.scss";
 
 type TProfileBadge = {

@@ -39,7 +39,7 @@
         "id": "037008fc-9736-4c2a-ab01-5bb8381d2b8a",
         "name": "tatat",
         "administratorId": "12341234-1234-1234-1234-000000000000",
-        "number": "КМ-1-9",
+        "number": "КМ-1-99",
         "status": {
           "stage": "Prepare",
           "stageDescription": "Подготовка",
@@ -47,6 +47,20 @@
           "description": "Зарегистрировано"
         },
         "fields": [
+          {
+            "value": "2025-03-12",
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Date",
+                "id": "EventDate",
+                "title": "Дата АП",
+                "description": "Event Date Description",
+                "group": "Общая информация",
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
           {
             "value": "КМ-1-9",
             "descriptor": {
@@ -87,63 +101,6 @@
                 "directoryDescriptor": {
                   "id": "10000000-0000-0000-0000-000000000000",
                   "name": "Пользователь",
-                  "type": "Fixed"
-                },
-                "isCollection": false
-              },
-              "edit": "Editable"
-            }
-          },
-          {
-            "value": null,
-            "descriptor": {
-              "propDescriptor": {
-                "type": "Directory",
-                "id": "CuratorId",
-                "title": "Куратор АП",
-                "description": "CuratorId Description",
-                "group": "Данные КМ",
-                "directoryDescriptor": {
-                  "id": "10000000-0000-0000-0000-000000000000",
-                  "name": "Пользователь",
-                  "type": "Fixed"
-                },
-                "isCollection": false
-              },
-              "edit": "Editable"
-            }
-          },
-          {
-            "value": "00000002-0000-0000-0000-000000000000",
-            "descriptor": {
-              "propDescriptor": {
-                "type": "Directory",
-                "id": "HeadId",
-                "title": "Руководитель АП",
-                "description": "HeadId Description",
-                "group": "Данные КМ",
-                "directoryDescriptor": {
-                  "id": "10000000-0000-0000-0000-000000000000",
-                  "name": "Пользователь",
-                  "type": "Fixed"
-                },
-                "isCollection": false
-              },
-              "edit": "Editable"
-            }
-          },
-          {
-            "value": null,
-            "descriptor": {
-              "propDescriptor": {
-                "type": "Directory",
-                "id": "HeadDepartmentId",
-                "title": "Подразделение руководителя",
-                "description": "HeadDepartmentId Description",
-                "group": "Данные КМ",
-                "directoryDescriptor": {
-                  "id": "20000000-0000-0000-0000-000000000000",
-                  "name": "Департамент",
                   "type": "Fixed"
                 },
                 "isCollection": false
@@ -221,6 +178,63 @@
             "value": null,
             "descriptor": {
               "propDescriptor": {
+                "type": "Directory",
+                "id": "CuratorId",
+                "title": "Куратор АП",
+                "description": "CuratorId Description",
+                "group": "Данные КМ",
+                "directoryDescriptor": {
+                  "id": "10000000-0000-0000-0000-000000000000",
+                  "name": "Пользователь",
+                  "type": "Fixed"
+                },
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": "00000002-0000-0000-0000-000000000000",
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "HeadId",
+                "title": "Руководитель АП",
+                "description": "HeadId Description",
+                "group": "Данные КМ",
+                "directoryDescriptor": {
+                  "id": "10000000-0000-0000-0000-000000000000",
+                  "name": "Пользователь",
+                  "type": "Fixed"
+                },
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
+                "type": "Directory",
+                "id": "HeadDepartmentId",
+                "title": "Подразделение руководителя",
+                "description": "HeadDepartmentId Description",
+                "group": "Данные КМ",
+                "directoryDescriptor": {
+                  "id": "20000000-0000-0000-0000-000000000000",
+                  "name": "Департамент",
+                  "type": "Fixed"
+                },
+                "isCollection": false
+              },
+              "edit": "Editable"
+            }
+          },
+          {
+            "value": null,
+            "descriptor": {
+              "propDescriptor": {
                 "type": "Date",
                 "id": "StartDate",
                 "title": "Дата начала проведения АП",
@@ -237,7 +251,7 @@
               "propDescriptor": {
                 "type": "Date",
                 "id": "EndDate",
-                "title": "Дата окончания проведения к АП",
+                "title": "Дата окончания проведения АП",
                 "description": "EndDate Description",
                 "group": "Данные КМ",
                 "isCollection": false
@@ -298,17 +312,17 @@
             }
           },
           {
-            "value": null,
+            "value": [],
             "descriptor": {
               "propDescriptor": {
                 "type": "Directory",
                 "id": "CustomerJourney",
-                "title": "Бизнесы-процессы и клиентские пути (БП и КП)",
+                "title": "Бизнес-процессы и клиентские пути",
                 "description": "CustomerJourney Description",
                 "group": "Данные КМ",
                 "directoryDescriptor": {
                   "id": "40000000-0000-0000-0000-000000000000",
-                  "name": "П и КП",
+                  "name": "БП и КП",
                   "type": "Fixed"
                 },
                 "isCollection": true

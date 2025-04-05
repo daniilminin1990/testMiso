@@ -1,16 +1,17 @@
 import "./App.scss";
-import * as styles from "./App.module.scss";
 
 import { useEffect, useState } from "react";
 import { RouterProvider } from "react-router";
-import { ConfigProvider } from "antd"; // Если используешь Ant Design
+import { ConfigProvider, notification } from "antd"; // Если используешь Ant Design
 // Для уведомлений. Вместо тех, которые от v-uik
-import { notification } from "antd";
-import type { DirectoryContent } from "@shared/types/apiTypes";
-import { DirectoriesContext } from "@shared/contexts/directories/DirectoriesContext";
-import { showErrorNotification } from "@shared/ui/showErrorNotification";
+
 import { router } from "@app/routes/router";
 import { directoryApi } from "@shared/contexts/directories/direcroryApi";
+import { DirectoriesContext } from "@shared/contexts/directories/DirectoriesContext";
+import type { DirectoryContent } from "@shared/types/apiTypes";
+import { showErrorNotification } from "@shared/ui/showErrorNotification";
+
+import * as styles from "./App.module.scss";
 
 // Глобальная настройка уведомлений
 notification.config({

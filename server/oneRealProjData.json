@@ -1,0 +1,919 @@
+{
+  "fields":[
+    {
+      "value":[
+        {
+          "Id":"14189dc4-1fbb-4a9f-b01c-0bddb618a9b9",
+          "OadType":"00000002-0000-0000-0000-000000000000",
+          "RegNumber":"1",
+          "Date":"2025-03-12",
+          "Url":"в"
+        },
+        {
+          "Id":"66de5d56-25ec-4424-9116-bbfcb12cf4dc",
+          "OadType":"00000001-0000-0000-0000-000000000000",
+          "RegNumber":"333",
+          "Date":"2025-03-12",
+          "Url":"234"
+        }
+      ],
+      "descriptor":{
+        "propDescriptor":{
+          "type":"Complex",
+          "id":"OADocuments",
+          "title":"Список ОРД",
+          "description":"OADocuments Description",
+          "validations":null,
+          "group":"Данные ОРД",
+          "addButtonLabel":"Добавить ОРД",
+          "valuesFrom":null,
+          "directoryDescriptor":null,
+          "isCollection":true,
+          "idPropertyName":"Id"
+        },
+        "edit":"Readonly",
+        "children":[
+          {
+            "propDescriptor":{
+              "type":"Hidden",
+              "id":"Id",
+              "title":"Id",
+              "description":"Id Description",
+              "validations":null,
+              "group":"",
+              "addButtonLabel":null,
+              "valuesFrom":null,
+              "directoryDescriptor":null,
+              "isCollection":false,
+              "idPropertyName":null
+            },
+            "edit":"Readonly",
+            "children":null
+          },
+          {
+            "propDescriptor":{
+              "type":"Directory",
+              "id":"OadType",
+              "title":"Тип ОРД",
+              "description":"OadType Description",
+              "validations":null,
+              "group":"",
+              "addButtonLabel":null,
+              "valuesFrom":null,
+              "directoryDescriptor":{
+                "id":"00000000-000b-0000-0000-000000000000",
+                "name":"Тип ОРД",
+                "type":"Fixed"
+              },
+              "isCollection":false,
+              "idPropertyName":null
+            },
+            "edit":"Readonly",
+            "children":null
+          },
+          {
+            "propDescriptor":{
+              "type":"String",
+              "id":"RegNumber",
+              "title":"Регистрационный номер",
+              "description":"RegNumber Description",
+              "validations":null,
+              "group":"",
+              "addButtonLabel":null,
+              "valuesFrom":null,
+              "directoryDescriptor":null,
+              "isCollection":false,
+              "idPropertyName":null
+            },
+            "edit":"Readonly",
+            "children":null
+          },
+          {
+            "propDescriptor":{
+              "type":"Date",
+              "id":"Date",
+              "title":"Дата",
+              "description":"Date Description",
+              "validations":null,"group":"",
+              "addButtonLabel":null,
+              "valuesFrom":null,
+              "directoryDescriptor":null,
+              "isCollection":false,
+              "idPropertyName":null
+            },
+            "edit":"Readonly",
+            "children":null
+          },
+          {
+            "propDescriptor":{
+              "type":"String",
+              "id":"Url",
+              "title":"Ссылка",
+              "description":"Url Description",
+              "validations":null,
+              "group":"",
+              "addButtonLabel":null,
+              "valuesFrom":null,
+              "directoryDescriptor":null,
+              "isCollection":false,
+              "idPropertyName":null
+            },
+            "edit":"Readonly",
+            "children":null
+          }
+        ]
+      }
+    },
+    {
+      "value":"КМ-1-9",
+      "descriptor":{
+        "propDescriptor":{
+          "type":"String",
+          "id":"Number",
+          "title":"Номер КМ",
+          "description":"Number Description",
+          "validations":null,
+          "group":"Общая информация",
+          "addButtonLabel":null,
+          "valuesFrom":null,
+          "directoryDescriptor":null,
+          "isCollection":false,
+          "idPropertyName":null
+        },
+        "edit":"Readonly",
+        "children":null
+      }
+    },
+    {
+      "value":"00000007-0000-0000-0000-000000000000",
+      "descriptor":{
+        "propDescriptor":{
+          "type":"Directory",
+          "id":"ReviewDepartmentId",
+          "title":"Проверяющее подразделение",
+          "description":"ReviewDepartmentId Description",
+          "validations":null,
+          "group":"Общая информация",
+          "addButtonLabel":null,
+          "valuesFrom":null,
+          "directoryDescriptor":{
+            "id":"00000000-0009-0000-0000-000000000000",
+            "name":"ТБ",
+            "type":"Fixed"
+          },
+          "isCollection":false,
+          "idPropertyName":null
+        },
+        "edit":"Readonly",
+        "children":null
+      }
+    },
+    {
+      "value":"grdgre",
+      "descriptor":{
+        "propDescriptor":{
+          "type":"String",
+          "id":"Name",
+          "title":"Наименование АП",
+          "description":"Name Description",
+          "validations":null,
+          "group":"Общая информация",
+          "addButtonLabel":null,
+          "valuesFrom":null,
+          "directoryDescriptor":null,
+          "isCollection":false,
+          "idPropertyName":null
+        },
+        "edit":"Readonly",
+        "children":null
+      }
+    },
+    {
+      "value":[
+        "00000007-0000-0000-0000-000000000000"
+      ],
+      "descriptor":{
+        "propDescriptor":{
+          "type":"Directory",
+          "id":"CheckDepartmentId",
+          "title":"Проверяемое подразделение",
+          "description":"CheckDepartmentId Description",
+          "validations":null,
+          "group":"Общая информация",
+          "addButtonLabel":null,
+          "valuesFrom":null,
+          "directoryDescriptor":{
+            "id":"00000000-0002-0000-0000-000000000000",
+            "name":"Департамент",
+            "type":"Fixed"
+          },
+          "isCollection":true,
+          "idPropertyName":null
+        },
+        "edit":"Readonly",
+        "children":null
+      }
+    },
+    {
+      "value":"00000001-0000-0000-0000-000000000000",
+      "descriptor":{
+        "propDescriptor":{
+          "type":"Directory",
+          "id":"AdministratorId",
+          "title":"Администратор АП",
+          "description":"AdministratorId Description",
+          "validations":null,
+          "group":"Общая информация",
+          "addButtonLabel":null,
+          "valuesFrom":null,
+          "directoryDescriptor":{
+            "id":"00000000-0001-0000-0000-000000000000",
+            "name":"Пользователь",
+            "type":"Fixed"
+          },
+          "isCollection":false,
+          "idPropertyName":null
+        },
+        "edit":"Required",
+        "children":null
+      }
+    },
+    {
+      "value":"00000004-0000-0000-0000-000000000000",
+      "descriptor":{
+        "propDescriptor":{
+          "type":"Directory",
+          "id":"HeadId",
+          "title":"Руководитель АП (Product owner)",
+          "description":"HeadId Description",
+          "validations":null,
+          "group":"Данные КМ",
+          "addButtonLabel":null,
+          "valuesFrom":null,
+          "directoryDescriptor":{
+            "id":"00000000-0001-0000-0000-000000000000",
+            "name":"Пользователь",
+            "type":"Fixed"
+          },
+          "isCollection":false,
+          "idPropertyName":null
+        },"edit":"Readonly",
+        "children":null
+      }
+    },
+    {
+      "value":"00000005-0000-0000-0000-000000000000",
+      "descriptor":{
+        "propDescriptor":{
+          "type":"Directory",
+          "id":"HeadDepartmentId",
+          "title":"Подразделение руководителя",
+          "description":"HeadDepartmentId Description",
+          "validations":null,
+          "group":"Данные КМ",
+          "addButtonLabel":null,
+          "valuesFrom":null,
+          "directoryDescriptor":{
+            "id":"00000000-000e-0000-0000-000000000000",
+            "name":"Подразделение руководителя",
+            "type":"Fixed"
+          },
+          "isCollection":false,
+          "idPropertyName":null
+        },
+        "edit":"Required",
+        "children":null
+      }
+    },
+    {
+      "value":"00000001-0000-0000-0000-000000000000",
+      "descriptor":{
+        "propDescriptor":{
+          "type":"Directory",
+          "id":"PlanPoint",
+          "title":"Пункт плана",
+          "description":"PlanPoint Description",
+          "validations":null,
+          "group":"Данные КМ",
+          "addButtonLabel":null,
+          "valuesFrom":null,
+          "directoryDescriptor":{
+            "id":"00000000-0008-0000-0000-000000000000",
+            "name":"Пункт плана",
+            "type":"Fixed"
+          },
+          "isCollection":false,
+          "idPropertyName":null
+        },
+        "edit":"Required",
+        "children":null
+      }
+    },
+    {
+      "value":[
+        "00000001-0000-0000-0000-000000000000","00000002-0000-0000-0000-000000000000","00000003-0000-0000-0000-000000000000"
+      ],
+      "descriptor":{
+        "propDescriptor":{
+          "type":"Directory",
+          "id":"Directions",
+          "title":"Направления (карманы)",
+          "description":"Directions Description",
+          "validations":null,
+          "group":"Данные КМ",
+          "addButtonLabel":null,
+          "valuesFrom":null,
+          "directoryDescriptor":{
+            "id":"00000000-0013-0000-0000-000000000000",
+            "name":"Направления (Карманы)",
+            "type":"Fixed"
+          },
+          "isCollection":true,
+          "idPropertyName":null
+        },
+        "edit":"Readonly",
+        "children":null
+      }
+    },
+    {
+      "value":"2025-03-12",
+      "descriptor":{
+        "propDescriptor":{
+          "type":"Date",
+          "id":"StartDate",
+          "title":"Дата начала проведения АП",
+          "description":"StartDate Description",
+          "validations":null,
+          "group":"Даты АП",
+          "addButtonLabel":null,
+          "valuesFrom":null,
+          "directoryDescriptor":null,
+          "isCollection":false,
+          "idPropertyName":null
+        },
+        "edit":"Readonly",
+        "children":null
+      }
+    },
+    {
+      "value":"324",
+      "descriptor":{
+        "propDescriptor":{
+          "type":"String",
+          "id":"Goal",
+          "title":"Цель АП",
+          "description":"Goal Description",
+          "validations":null,
+          "group":"Данные КМ",
+          "addButtonLabel":null,
+          "valuesFrom":null,
+          "directoryDescriptor":null,
+          "isCollection":false,
+          "idPropertyName":null
+        },
+        "edit":"Readonly",
+        "children":null
+      }
+    },
+    {
+      "value":[
+        "00000001-0000-0000-0000-000000000000"
+      ],
+      "descriptor":{
+        "propDescriptor":{
+          "type":"Directory",
+          "id":"Sprint",
+          "title":"ID спринта",
+          "description":"Sprint Description",
+          "validations":null,
+          "group":"Данные КМ",
+          "addButtonLabel":null,
+          "valuesFrom":null,
+          "directoryDescriptor":{
+            "id":"00000000-000d-0000-0000-000000000000",
+            "name":"Спринт",
+            "type":"Fixed"
+          },
+          "isCollection":true,
+          "idPropertyName":null
+        },
+        "edit":"Required",
+        "children":null
+      }
+    },
+    {
+      "value":[
+        "00000001-0000-0000-0000-000000000000"
+      ],
+      "descriptor":{
+        "propDescriptor":{
+          "type":"Directory",
+          "id":"Risk",
+          "title":"Риск",
+          "description":"Risk Description",
+          "validations":null,
+          "group":"Данные КМ",
+          "addButtonLabel":null,
+          "valuesFrom":null,
+          "directoryDescriptor":{
+            "id":"00000000-0005-0000-0000-000000000000",
+            "name":"Риски",
+            "type":"Fixed"
+          },
+          "isCollection":true,
+          "idPropertyName":null
+        },
+        "edit":"Required",
+        "children":null
+      }
+    },
+    {
+      "value":null,
+      "descriptor":{
+        "propDescriptor":{
+          "type":"Directory",
+          "id":"Esg",
+          "title":"ESG",
+          "description":"Esg Description",
+          "validations":null,
+          "group":"Данные КМ",
+          "addButtonLabel":null,
+          "valuesFrom":null,
+          "directoryDescriptor":{
+            "id":"00000000-0006-0000-0000-000000000000",
+            "name":"ESG",
+            "type":"Fixed"
+          },
+          "isCollection":false,
+          "idPropertyName":null
+        },
+        "edit":"Editable",
+        "children":null
+      }
+    },
+    {
+      "value":null,
+      "descriptor":{
+        "propDescriptor":{
+          "type":"Directory",
+          "id":"CuratorId",
+          "title":"Куратор АП",
+          "description":"CuratorId Description",
+          "validations":null,
+          "group":"Данные КМ",
+          "addButtonLabel":null,
+          "valuesFrom":null,
+          "directoryDescriptor":{
+            "id":"00000000-0001-0000-0000-000000000000",
+            "name":"Пользователь",
+            "type":"Fixed"
+          },
+          "isCollection":false,
+          "idPropertyName":null
+        },
+        "edit":"Editable",
+        "children":null
+      }
+    },
+    {
+      "value":null,
+      "descriptor":{
+        "propDescriptor":{
+          "type":"String",
+          "id":"Comment",
+          "title":"Комментарий",
+          "description":"Comment Description",
+          "validations":null,
+          "group":"Данные КМ",
+          "addButtonLabel":null,
+          "valuesFrom":null,
+          "directoryDescriptor":null,
+          "isCollection":false,
+          "idPropertyName":null
+        },
+        "edit":"Editable",
+        "children":null
+      }
+    },
+    {
+      "value":"5fa4c46d-c36f-4c84-ad38-d2a72db4af15",
+      "descriptor":{
+        "propDescriptor":{
+          "type":"Directory",
+          "id":"ParentId",
+          "title":"Родительская АП",
+          "description":"ParentId Description",
+          "validations":null,
+          "group":"Данные КМ",
+          "addButtonLabel":null,
+          "valuesFrom":null,
+          "directoryDescriptor":{
+            "id":"00000000-0007-0000-0000-000000000000",
+            "name":"Parent",
+            "type":"Fixed"
+          },
+          "isCollection":false,
+          "idPropertyName":null
+        },
+        "edit":"Readonly",
+        "children":null
+      }
+    },
+    {
+      "value":[
+        {
+          "Id":"999d2b85-ea9e-4c53-ae82-72261a165d1b",
+          "PersonId":"00000001-0000-0000-0000-000000000000",
+          "Directions":[
+            "00000001-0000-0000-0000-000000000000"
+          ],
+          "Roles":[
+            "00000002-0000-0000-0000-000000000000",
+            "00000001-0000-0000-0000-000000000000",
+            "00000003-0000-0000-0000-000000000000"
+          ],
+          "Tools":[
+            "00000005-0000-0000-0000-000000000000"
+          ],
+          "Assignments":[
+            "00000002-0000-0000-0000-000000000000",
+            "00000004-0000-0000-0000-000000000000",
+            "00000005-0000-0000-0000-000000000000",
+            "00000007-0000-0000-0000-000000000000"
+          ],
+          "ProductOwner":"00000001-0000-0000-0000-000000000000"
+        }
+      ],
+      "descriptor":{
+        "propDescriptor":{
+          "type":"Complex",
+          "id":"Team",
+          "title":"Команда АП",
+          "description":"Team Description",
+          "validations":null,
+          "group":"Команда",
+          "addButtonLabel":"Добавить участника АП",
+          "valuesFrom":null,
+          "directoryDescriptor":null,
+          "isCollection":true,
+          "idPropertyName":"Id"
+
+        },"edit":"Readonly",
+        "children":[
+          {
+            "propDescriptor":{
+              "type":"Hidden",
+              "id":"Id",
+              "title":"Id",
+              "description":"Id Description",
+              "validations":null,
+              "group":"",
+              "addButtonLabel":null,
+              "valuesFrom":null,
+              "directoryDescriptor":null,
+              "isCollection":false,
+              "idPropertyName":null
+            },
+            "edit":"Readonly",
+            "children":null
+          },
+          {
+            "propDescriptor":{
+              "type":"Directory",
+              "id":"PersonId",
+              "title":"Участник АП",
+              "description":"PersonId Description",
+              "validations":null,
+              "group":"",
+              "addButtonLabel":null,
+              "valuesFrom":null,
+              "directoryDescriptor":{
+                "id":"00000000-0001-0000-0000-000000000000",
+                "name":"Пользователь",
+                "type":"Fixed"
+              },
+              "isCollection":false,
+              "idPropertyName":null
+            },
+            "edit":"Readonly",
+            "children":null
+          },
+          {
+            "propDescriptor":{
+              "type":"Directory",
+              "id":"Directions",
+              "title":"Направления (карманы)",
+              "description":"Directions Description",
+              "validations":null,
+              "group":"",
+              "addButtonLabel":null,
+              "valuesFrom":"Directions",
+              "directoryDescriptor":{
+                "id":"00000000-0013-0000-0000-000000000000",
+                "name":"Направления (Карманы)",
+                "type":"Fixed"
+              },
+              "isCollection":true,
+              "idPropertyName":null
+            },
+            "edit":"Readonly",
+            "children":null
+          },
+          {
+            "propDescriptor":{
+              "type":"Directory",
+              "id":"Roles",
+              "title":"Роли",
+              "description":"Roles Description",
+              "validations":null,
+              "group":"",
+              "addButtonLabel":null,
+              "valuesFrom":null,
+              "directoryDescriptor":{
+                "id":"00000000-000f-0000-0000-000000000000",
+                "name":"Роли",
+                "type":"Fixed"
+              },"isCollection":true,
+              "idPropertyName":null
+            },"edit":"RequiredNew",
+            "children":null
+          },
+          {
+            "propDescriptor":{
+              "type":"Directory",
+              "id":"Tools",
+              "title":"Инструменты",
+              "description":"Tools Description",
+              "validations":null,
+              "group":"",
+              "addButtonLabel":null,
+              "valuesFrom":null,
+              "directoryDescriptor":{
+                "id":"00000000-0010-0000-0000-000000000000",
+                "name":"Инструменты",
+                "type":"Fixed"
+              },"isCollection":true,
+              "idPropertyName":null
+            },
+            "edit":"RequiredNew",
+            "children":null
+          },
+          {
+            "propDescriptor":{
+              "type":"Directory",
+              "id":"Assignments",
+              "title":"Назначения (П и КП)",
+              "description":"Assignments Description",
+              "validations":null,
+              "group":"",
+              "addButtonLabel":null,
+              "valuesFrom":"CustomerJourney",
+              "directoryDescriptor":{
+                "id":"00000000-0004-0000-0000-000000000000",
+                "name":"П и КП",
+                "type":"Fixed"
+              },
+              "isCollection":true,
+              "idPropertyName":null
+            },
+            "edit":"RequiredNew",
+            "children":null
+          },
+          {
+            "propDescriptor":{
+              "type":"Directory",
+              "id":"ProductOwner",
+              "title":"Product Owner",
+              "description":"ProductOwner Description",
+              "validations":null,
+              "group":"",
+              "addButtonLabel":null,
+              "valuesFrom":null,
+              "directoryDescriptor":{
+                "id":"00000000-0012-0000-0000-000000000000",
+                "name":"Признак PO",
+                "type":"Fixed"
+              },
+              "isCollection":false,
+              "idPropertyName":null
+            },
+            "edit":"RequiredNew",
+            "children":null
+          }
+        ]
+      }
+    },
+    {
+      "value":null,
+      "descriptor":{
+        "propDescriptor":{
+          "type":"Directory",
+          "id":"ProcessMining",
+          "title":"Process Mining",
+          "description":"ProcessMining Description",
+          "validations":null,
+          "group":"Данные КМ",
+          "addButtonLabel":null,
+          "valuesFrom":null,
+          "directoryDescriptor":{
+            "id":"00000000-000c-0000-0000-000000000000",
+            "name":"Process Mining",
+            "type":"Fixed"
+          },
+          "isCollection":false,
+          "idPropertyName":null
+        },
+        "edit":"RequiredNew",
+        "children":null
+      }
+    },
+    {
+      "value":null,
+      "descriptor":{
+        "propDescriptor":{
+          "type":"Directory",
+          "id":"FunctionalBlock",
+          "title":"Функциональный блок",
+          "description":"FunctionalBlock Description",
+          "validations":null,
+          "group":"Данные КМ",
+          "addButtonLabel":null,
+          "valuesFrom":null,
+          "directoryDescriptor":{
+            "id":"00000000-0003-0000-0000-000000000000",
+            "name":"Функциональный блок",
+            "type":"Fixed"
+          },
+          "isCollection":false,
+          "idPropertyName":null
+        },
+        "edit":"RequiredNew",
+        "children":null
+      }
+    },
+    {
+      "value":[
+        "00000007-0000-0000-0000-000000000000",
+        "00000005-0000-0000-0000-000000000000",
+        "00000004-0000-0000-0000-000000000000",
+        "00000002-0000-0000-0000-000000000000"
+      ],
+      "descriptor":{
+        "propDescriptor":{
+          "type":"Directory",
+          "id":"CustomerJourney",
+          "title":"Бизнесы-процессы и клиентские пути (П и КП)",
+          "description":"CustomerJourney Description",
+          "validations":null,
+          "group":"Данные КМ",
+          "addButtonLabel":null,
+          "valuesFrom":null,
+          "directoryDescriptor":{
+            "id":"00000000-0004-0000-0000-000000000000",
+            "name":"П и КП",
+            "type":"Fixed"
+          },
+          "isCollection":true,
+          "idPropertyName":null
+        },
+        "edit":"RequiredNew",
+        "children":null
+      }
+    },
+    {
+      "value":[
+        {
+          "Id":"02b49501-7a2e-8778-a71e-1003382a81cf",
+          "RegNumber":"123",
+          "Date":"2025-03-25",
+          "Url":"http://test.com"
+        }
+      ],
+      "descriptor":{
+        "propDescriptor":{
+          "type":"Complex",
+          "id":"SzDocument",
+          "title":"СЗ с финальным актом АП",
+          "description":"SzDocument Description",
+          "validations":null,
+          "group":"Финальный акт АП",
+          "addButtonLabel":null,
+          "valuesFrom":null,
+          "directoryDescriptor":null,
+          "isCollection":true,
+          "idPropertyName":"Id"
+        },
+        "edit":"RequiredNew",
+        "children":[
+          {
+            "propDescriptor":{
+              "type":"Hidden",
+              "id":"Id",
+              "title":"Id",
+              "description":"Id Description",
+              "validations":null,
+              "group":"",
+              "addButtonLabel":null,
+              "valuesFrom":null,
+              "directoryDescriptor":null,
+              "isCollection":false,
+              "idPropertyName":null
+            },
+            "edit":"Readonly",
+            "children":null
+          },
+          {
+            "propDescriptor":{
+              "type":"String",
+              "id":"RegNumber",
+              "title":"Регистрационный номер",
+              "description":"RegNumber Description",
+              "validations":null,
+              "group":"",
+              "addButtonLabel":null,
+              "valuesFrom":null,
+              "directoryDescriptor":null,
+              "isCollection":false,
+              "idPropertyName":null
+            },
+            "edit":"Required",
+            "children":null
+          },
+          {
+            "propDescriptor":{
+              "type":"Date",
+              "id":"Date",
+              "title":"Дата",
+              "description":"Date Description",
+              "validations":null,
+              "group":"",
+              "addButtonLabel":null,
+              "valuesFrom":null,
+              "directoryDescriptor":null,
+              "isCollection":false,
+              "idPropertyName":null
+            },
+            "edit":"Required",
+            "children":null
+          },
+          {
+            "propDescriptor":{
+              "type":"String",
+              "id":"Url",
+              "title":"Ссылка",
+              "description":"Url Description",
+              "validations":null,
+              "group":"",
+              "addButtonLabel":null,
+              "valuesFrom":null,
+              "directoryDescriptor":null,
+              "isCollection":false,
+              "idPropertyName":null
+            },
+            "edit":"RequiredNew",
+            "children":null
+          }
+        ]
+      }
+    }
+  ],
+  "transitions":[
+    {
+      "label":"Проведение завершено",
+      "goToStatus":"Proceeding_Completed",
+      "active":true,
+      "forward":true,
+      "note":null
+    },
+    {
+      "label":"Проведение завершено (без реализации)",
+      "goToStatus":"Proceeding_CompletedNoRealization",
+      "active":true,
+      "forward":true,
+      "note":null
+    },
+    {
+      "label":"Регистрация КМ (Проведение)",
+      "goToStatus":"Proceeding_Registration",
+      "active":true,
+      "forward":false,
+      "note":null
+    },
+    {
+      "label":"Регистрация КМ (Подготовка)",
+      "goToStatus":"Prepare_Registration",
+      "active":false,
+      "forward":false,
+      "note":"Нельзя вернуться к этапу Подготовка, если он был пропущен"
+    },
+    {
+      "label":"Завершение подготовки",
+      "goToStatus":"Prepare_Completion",
+      "active":false,
+      "forward":false,
+      "note":"Нельзя вернуться к этапу Подготовка, если он был пропущен"
+    }
+  ],
+  "timestamp":"2025-03-14T14:40:28.251035+03:00"
+},
+}

@@ -1,8 +1,9 @@
 // * РАБОЧАЯ ВЕРСИЯ без v-uik и styled
 
-import { useCallback, useState, type FC, type ReactNode } from 'react';
-import { IoIosArrowDown } from 'react-icons/io';
-import * as styles from './Foldable.module.scss';
+import { useCallback, useState, type FC, type ReactNode } from "react";
+import { IoIosArrowDown } from "react-icons/io";
+
+import * as styles from "./Foldable.module.scss";
 
 type FoldableProps = {
   label: string;
@@ -19,14 +20,14 @@ export const Foldable: FC<FoldableProps> = ({ label, children, error }) => {
 
   // Определяем цвета напрямую (можно вынести в константы или конфиг)
   const colors = {
-    error: '#ff4d4f', // Аналог theme.palette.red.$30
-    neutral: '#d9dfe6', // Аналог theme.palette.greyCold.$30
-    hover: '#f5f6f8', // Аналог theme.palette.greyCold.$5
-    focus: '#0066ff' // Аналог theme.sys.color.focus
+    error: "#ff4d4f", // Аналог theme.palette.red.$30
+    neutral: "#d9dfe6", // Аналог theme.palette.greyCold.$30
+    hover: "#f5f6f8", // Аналог theme.palette.greyCold.$5
+    focus: "#0066ff" // Аналог theme.sys.color.focus
   };
 
   return (
-    <div style={{ padding: '5px', width: '100%' }}>
+    <div style={{ padding: "5px", width: "100%" }}>
       <div
         className={styles.fieldContainer}
         style={{
@@ -38,7 +39,7 @@ export const Foldable: FC<FoldableProps> = ({ label, children, error }) => {
           className={`${styles.fieldTitle} ${isOpen ? styles.arrowUp : styles.arrowDown}`}
           onClick={clickHandler}
           style={{
-            backgroundColor: isOpen ? colors.hover : 'transparent'
+            backgroundColor: isOpen ? colors.hover : "transparent"
           }}
         >
           <span className={styles.label}>{label}</span>

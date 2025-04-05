@@ -1,21 +1,3 @@
-import { FieldType, FormFieldEdit, type FormFieldDescriptor } from '@shared/types/apiTypes';
-import { useTraceUpdate } from '../../../shared/hooks/debugHooks';
-import { type FormFieldProps } from './FormFieldProps';
-import type { JsonObject } from '@shared/types/json';
-import { RecursiveField } from './RecursiveField';
-import { Field, FieldArray, type FieldProps } from 'formik';
-// import { Button, Text, type ColumnProps, type Key } from '@v-uik/base';
-import { Typography, Button as AntButton } from 'antd'; // Замена Text и Button
-// import { ColumnProps } from 'antd/es/table'; // Замена ColumnProps, от AntD таблицы
-import { ExpandableCard } from '../../../shared/ui/ExpandableCard';
-import {
-  ExpandableTable,
-  type ControTableRef,
-  type DataSourceWithKey,
-  ColumnProps
-} from '../../../shared/ui/ExpandableTable';
-import { IoTrash } from 'react-icons/io5';
-import { DirectoryValue } from '@shared/ui/DirectoryValue';
 import {
   memo,
   useCallback,
@@ -25,10 +7,30 @@ import {
   type MouseEventHandler,
   type MutableRefObject,
   Key
-} from 'react';
-import { ModalConfirm } from '../../../shared/ui/ModalConfirm';
-import { modalConfirmClosedState } from '@shared/ui/ModalConfirmProps';
-import * as styles from './ArrayField.module.scss';
+} from "react";
+import { Typography, Button as AntButton } from "antd"; // Замена Text и Button
+import { Field, FieldArray, type FieldProps } from "formik";
+import { IoTrash } from "react-icons/io5";
+
+import { FieldType, FormFieldEdit, type FormFieldDescriptor } from "@shared/types/apiTypes";
+import type { JsonObject } from "@shared/types/json";
+import { DirectoryValue } from "@shared/ui/DirectoryValue";
+import { modalConfirmClosedState } from "@shared/ui/ModalConfirmProps";
+
+import { type FormFieldProps } from "./FormFieldProps";
+import { RecursiveField } from "./RecursiveField";
+import { useTraceUpdate } from "../../../shared/hooks/debugHooks";
+// import { Button, Text, type ColumnProps, type Key } from '@v-uik/base';
+// import { ColumnProps } from 'antd/es/table'; // Замена ColumnProps, от AntD таблицы
+import { ExpandableCard } from "../../../shared/ui/ExpandableCard";
+import {
+  ExpandableTable,
+  type ControTableRef,
+  type DataSourceWithKey,
+  ColumnProps
+} from "../../../shared/ui/ExpandableTable";
+import { ModalConfirm } from "../../../shared/ui/ModalConfirm";
+import * as styles from "./ArrayField.module.scss";
 
 // interface ArrayFieldProps extends FormFieldProps {}
 type ArrayFieldProps = FormFieldProps; // Замена
@@ -37,35 +39,35 @@ interface ArrayFieldInternalProps extends ArrayFieldProps {
 }
 
 export const ArrayField: React.FC<ArrayFieldProps> = (props) => (
-  <Field name={props.inputId}>
-    {(formik: FieldProps<JsonObject[] | null>) => <ArrayFieldInternal {...props} value={formik.field.value} />}
+  <Field name={ props.inputId }>
+    {(formik: FieldProps<JsonObject[] | null>) => <ArrayFieldInternal { ...props } value={ formik.field.value } />}
   </Field>
 );
 
 const ArrayFieldInternal: React.FC<ArrayFieldInternalProps> = memo((props) => {
-  useTraceUpdate('ArrayFieldInternal', props);
+  useTraceUpdate("ArrayFieldInternal", props);
   const { fieldDescriptor: fd, inputId, value } = props;
 
   const pd = fd.propDescriptor;
   const required = fd.edit === FormFieldEdit.Required || fd.edit === FormFieldEdit.RequiredNew;
 
   return (
-    <div className={styles.fullRow}>
+    <div className={ styles.fullRow }>
       <ExpandableCard
-        labelProps={{
+        labelProps={ {
           label: <Typography.Text>{pd.title}</Typography.Text>, // Замена Text
           labelProps: { tooltipText: pd.description },
           required: required
-        }}
+        } }
       >
-        <FieldArray name={inputId}>
+        <FieldArray name={ inputId }>
           {(arrayHelpers) => (
             <ArrayTableControl
-              fd={fd}
-              inputId={inputId}
-              value={value}
-              onAdd={arrayHelpers.push}
-              onRemove={arrayHelpers.remove}
+              fd={ fd }
+              inputId={ inputId }
+              value={ value }
+              onAdd={ arrayHelpers.push }
+              onRemove={ arrayHelpers.remove }
             />
           )}
         </FieldArray>
@@ -83,7 +85,7 @@ type ArrayTableControlProps = {
 };
 
 const ArrayTableControl = memo((props: ArrayTableControlProps) => {
-  useTraceUpdate('ArrayTableControl', props);
+  useTraceUpdate("ArrayTableControl", props);
   const { fd, inputId, value, onRemove, onAdd } = props;
   const disabled = fd.edit === FormFieldEdit.Readonly;
 
@@ -130,7 +132,7 @@ const ArrayTableControl = memo((props: ArrayTableControlProps) => {
     const idx = dataSource?.length ?? 0;
     setTimeout(() => {
       document
-        .querySelector<HTMLLabelElement>('#' + CSS.escape(`${inputId}[${idx}].${firstField.propDescriptor.id}-label`))
+        .querySelector<HTMLLabelElement>("#" + CSS.escape(`${inputId}[${idx}].${firstField.propDescriptor.id}-label`))
         ?.click();
     });
 
@@ -142,24 +144,24 @@ const ArrayTableControl = memo((props: ArrayTableControlProps) => {
   }, [onAdd, fd, inputId, dataSource]);
 
   return (
-    <div className={styles.cardContentContainer}>
+    <div className={ styles.cardContentContainer }>
       {/*<Button disabled={disabled} onClick={onAddHandler}>*/}
       {/*  {fd.propDescriptor.addButtonLabel ?? 'Добавить'}*/}
       {/*</Button>*/}
       {/* Замена Button от v-uik */}
-      <AntButton disabled={disabled} onClick={onAddHandler}>
-        {fd.propDescriptor.addButtonLabel ?? 'Добавить'}
+      <AntButton disabled={ disabled } onClick={ onAddHandler }>
+        {fd.propDescriptor.addButtonLabel ?? "Добавить"}
       </AntButton>
       <ArrayTable
-        controTableRef={controTableRef}
-        onRemove={onRemoveHandler}
-        dataSource={dataSource}
-        inputId={inputId}
-        fd={fd}
+        controTableRef={ controTableRef }
+        onRemove={ onRemoveHandler }
+        dataSource={ dataSource }
+        inputId={ inputId }
+        fd={ fd }
       />
       <ModalConfirm
-        state={modal}
-        setState={setModal}
+        state={ modal }
+        setState={ setModal }
         headerText="Внимание"
         mainButtonText="Удалить"
         mainButtonColor="error"
@@ -180,7 +182,7 @@ type ArrayTableProps = {
 
 const ArrayTable = memo((props: ArrayTableProps) => {
   const { onRemove, dataSource, fd, inputId, controTableRef } = props;
-  useTraceUpdate('ArrayTable', props);
+  useTraceUpdate("ArrayTable", props);
 
   const columns = useMemo(() => {
     const columns = fd
@@ -194,8 +196,8 @@ const ArrayTable = memo((props: ArrayTableProps) => {
           renderCellContent:
             pd.type === FieldType.Directory
               ? ({ cell, originClassName }) => (
-                  <div className={originClassName}>
-                    <DirectoryValue descriptor={pd.directoryDescriptor} value={cell} />
+                  <div className={ originClassName }>
+                    <DirectoryValue descriptor={ pd.directoryDescriptor } value={ cell } />
                   </div>
                 )
               : undefined
@@ -205,16 +207,16 @@ const ArrayTable = memo((props: ArrayTableProps) => {
     const disabled = fd.edit === FormFieldEdit.Readonly;
 
     columns.push({
-      title: '',
-      key: '_delete',
+      title: "",
+      key: "_delete",
       width: 1,
-      renderCellContent: ({ row, rowIndex }) => ( 
+      renderCellContent: ({ row, rowIndex }) => (
         <RemoveRowButton
-          disabled={disabled}
-          onClick={() => {
-            const warn = Object.keys(row).some((x) => x !== 'key' && x !== fd.propDescriptor.idPropertyName);
+          disabled={ disabled }
+          onClick={ () => {
+            const warn = Object.keys(row).some((x) => x !== "key" && x !== fd.propDescriptor.idPropertyName);
             onRemove(rowIndex, row.key, warn);
-          }}
+          } }
         />
       )
     });
@@ -223,14 +225,14 @@ const ArrayTable = memo((props: ArrayTableProps) => {
 
   return (
     <ExpandableTable
-      ref={controTableRef}
-      columns={columns}
-      dataSource={dataSource ?? []}
-      renderExpandableContent={({ rowIndex }) => (
-        <div className={styles.expandedRowContainer}>
-          <RecursiveField inline fieldDescriptor={fd} inputId={`${inputId}[${rowIndex}]`} />
+      ref={ controTableRef }
+      columns={ columns }
+      dataSource={ dataSource ?? [] }
+      renderExpandableContent={ ({ rowIndex }) => (
+        <div className={ styles.expandedRowContainer }>
+          <RecursiveField inline fieldDescriptor={ fd } inputId={ `${inputId}[${rowIndex}]` } />
         </div>
-      )}
+      ) }
     />
   );
 });
@@ -240,7 +242,7 @@ const RemoveRowButton = memo(
     // <Button kind="ghost" color="secondary" disabled={disabled} onClick={onClick}>
     //   <IoTrash />
     // </Button>
-    <AntButton type="text" danger disabled={disabled} onClick={onClick}>
+    <AntButton type="text" danger disabled={ disabled } onClick={ onClick }>
       <IoTrash />
     </AntButton>
   )

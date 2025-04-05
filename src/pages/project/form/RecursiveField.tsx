@@ -1,13 +1,15 @@
+import { memo } from "react";
+
 import { FieldType } from "@shared/types/apiTypes";
-import { useTraceUpdate } from "../../../shared/hooks/debugHooks";
-import { type FormFieldProps } from "./FormFieldProps";
-import { ComplexField } from "./ComplexField";
+
 import { ArrayField } from "./ArrayField";
-import { PlainField } from "./PlainField";
+import { ComplexField } from "./ComplexField";
 import { DirectoryField } from "./DirectoryField";
+import { type FormFieldProps } from "./FormFieldProps";
+import { PlainField } from "./PlainField";
+import { useTraceUpdate } from "../../../shared/hooks/debugHooks";
 // import { createUseStyles } from '@v-uik/base';
 import * as styles from "./RecursiveField.module.scss";
-import { memo } from "react";
 
 interface RecursiveFieldProps extends FormFieldProps {
   inline?: boolean;

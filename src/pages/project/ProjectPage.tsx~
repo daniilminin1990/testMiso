@@ -1,20 +1,21 @@
 // import { notification, Text } from '@v-uik/base';
-import { notification } from "antd"; // Замена notification из @v-uik/base
 import { memo, MutableRefObject, UIEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
-import { projectPageApi } from "@pages/project/projectPageApi";
+import { useParams, Outlet, useOutletContext } from "react-router";
+import { notification } from "antd"; // Замена notification из @v-uik/base
+import clsx from "clsx";
+import { observer } from "mobx-react-lite";
+
 import { ControlEventForm, type ControlEventFormProps } from "@pages/project/form/ControlEventForm";
+import { projectPageApi } from "@pages/project/projectPageApi";
 import type { ControlEventDto, FormFieldDescriptor } from "@shared/types/apiTypes";
-import { showErrorNotification } from "@shared/ui/showErrorNotification";
+import { undoPartial } from "@shared/types/utils";
 import { ModalConfirm } from "@shared/ui/ModalConfirm";
 import { modalConfirmClosedState, modalConfirmPromise } from "@shared/ui/ModalConfirmProps";
 import PageTitle from "@shared/ui/PageTitle";
-import { Outlet, useOutletContext } from "react-router";
-import * as styles from "./ProjectPage.module.scss";
-import clsx from "clsx";
-import { undoPartial } from "@shared/types/utils";
+import { showErrorNotification } from "@shared/ui/showErrorNotification";
+
 import { projectPageNavigationStore } from "../../stores/projectPageNavigationStore";
-import { observer } from "mobx-react-lite";
+import * as styles from "./ProjectPage.module.scss";
 
 function translateError(key: string) {
   switch (key) {
@@ -27,27 +28,35 @@ function translateError(key: string) {
 
 const ProjectPage = memo(
   observer(() => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const { projectId } = useParams() as { projectId: string };
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [data, setData] = useState<ControlEventDto>();
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [modal, setModal] = useState(modalConfirmClosedState);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const prevEditNotificationIdRef = useRef<string | null>(null);
 
     // ++
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [pageTitle, setPageTitle] = useState<string>(""); // Состояние для заголовка
     // ++
 
     // ПОЛУЧЕНИЕ ДАННЫХ
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const fetchProject = useCallback(
       (projectId: string) => projectPageApi.fetch(projectId).then(setData).catch(showErrorNotification),
       []
     );
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
       /* await */ fetchProject(projectId);
     }, [projectId, fetchProject]);
 
     // ++
     // Устанавливаем заголовок страницы при получении данных
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
       if (data) {
         const tempNumberField = data.fields.find((x) => x.descriptor.propDescriptor.id === "TempNumber");
@@ -58,6 +67,7 @@ const ProjectPage = memo(
     }, [data]);
     // ++
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const submit = useCallback<ControlEventFormProps["handleSubmit"]>(
       async (values, btn) => {
         if (!data) {
@@ -254,7 +264,7 @@ const ProjectPage = memo(
           {/* Основной контент, центральная колонна */}
           <div className={styles.content}>
             <PageTitle title={pageTitle} />
-            <ControlEventForm data={data} handleSubmit={submit} />
+            <ControlEventForm data={data} handleSubmit={submit} /> 
             <ModalConfirm headerText="Переход на статус" state={modal} setState={setModal} />
             {/*<NotificationContainer nextNotification position="top-right" autoClose={1500} limit={5} />*/}
           </div>

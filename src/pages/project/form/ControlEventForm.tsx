@@ -1,17 +1,19 @@
+import { memo, useMemo, useRef, type FC, type ReactNode } from "react";
+import { Typography } from "antd"; // Новый импорт
 import { Formik, type FormikHelpers } from "formik";
+
 // import * as yup from 'yup';
+import { FieldGroupWrapper } from "@pages/project/form/groupWrapper/FieldGroupWrapper";
 import { type ControlEventDto, type ControlEventTransitionDto } from "@shared/types/apiTypes";
 import type { JsonObject } from "@shared/types/json";
-import { RecursiveField } from "./RecursiveField";
-import { FieldGroupWrapper } from "@pages/project/form/groupWrapper/FieldGroupWrapper";
-import { memo, useMemo, useRef, type FC, type ReactNode } from "react";
-import * as styles from "./ControlEventForm.module.scss";
-import { FormButtons } from "./FormButtons";
+
 import { FieldsLayout } from "./FieldsLayout";
+import { FormButtons } from "./FormButtons";
+import { RecursiveField } from "./RecursiveField";
 import { useTraceUpdate } from "../../../shared/hooks/debugHooks";
 import { undoPartial } from "../../../shared/types/utils";
+import * as styles from "./ControlEventForm.module.scss";
 // import { Text } from "@v-uik/base";
-import { Typography } from "antd"; // Новый импорт
 export interface ControlEventFormProps {
   data: ControlEventDto;
   handleSubmit: (values: JsonObject, goToStatus: ControlEventTransitionDto | null) => Promise<void>;

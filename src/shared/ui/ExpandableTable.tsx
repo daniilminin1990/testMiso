@@ -1,6 +1,6 @@
 // ! Замена v-uik
-import { Table } from 'antd';
-import React, { ForwardedRef, forwardRef, ReactNode, useImperativeHandle, useState } from 'react';
+import React, { ForwardedRef, forwardRef, ReactNode, useImperativeHandle, useState } from "react";
+import { Table } from "antd";
 
 export type DataSourceWithKey<T> = T & { key: React.Key };
 
@@ -46,9 +46,9 @@ export const ExpandableTable = forwardRef(
 
     const columnsWithExpand = [
       {
-        title: '№',
+        title: "№",
         width: 50,
-        align: 'center' as const,
+        align: "center" as const,
         render: (_: any, __: any, index: number) => index + 1
       },
       ...columns
@@ -64,7 +64,7 @@ export const ExpandableTable = forwardRef(
           expandedRowKeys,
           onExpand: (expanded, record) => toggleRow(record.key)
         }}
-        scroll={{ y: '70vh' }}
+        scroll={{ y: "70vh" }}
         size="small"
         onRow={(record) => ({
           onClick: () => toggleRow(record.key)

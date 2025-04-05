@@ -1,11 +1,11 @@
-import { Navigate, RouteObject } from "react-router";
+import { Navigate, RouteObject, createBrowserRouter } from "react-router";
 
-import { ProjectListPage } from "@pages/projectList/ProjectListPage";
 import { appPaths } from "@app/routes/appPaths";
-import ProjectPage from "@pages/project/ProjectPage";
-import { createBrowserRouter } from "react-router-dom";
-import { Layout } from "../../layout/Layout";
 import Page404 from "@pages/404";
+import ProjectPage from "@pages/project/ProjectPage";
+import { ProjectListPage } from "@pages/projectList/ProjectListPage";
+
+import { Layout } from "../../layout/Layout";
 import { LayoutProjectPage } from "../../layout/LayoutProjectPage";
 
 const simpleRoutes: RouteObject[] = [

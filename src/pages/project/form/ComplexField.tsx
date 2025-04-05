@@ -1,12 +1,14 @@
-import { useTraceUpdate } from "../../../shared/hooks/debugHooks";
+import { memo, type FC } from "react";
+import { Typography } from "antd"; // Импортируем Typography из AntD
+
+import { FormFieldEdit } from "@shared/types/apiTypes";
+
+import { FieldsLayout } from "./FieldsLayout";
 import { type FormFieldProps } from "./FormFieldProps";
 import { RecursiveField } from "./RecursiveField";
-import { memo, type FC } from "react";
-import { FormFieldEdit } from "@shared/types/apiTypes";
+import { useTraceUpdate } from "../../../shared/hooks/debugHooks";
 import { ExpandableCard } from "../../../shared/ui/ExpandableCard";
-import { FieldsLayout } from "./FieldsLayout";
 // import { Text } from '@v-uik/base';
-import { Typography } from "antd"; // Импортируем Typography из AntD
 interface ComplexFieldProps extends FormFieldProps {
   inline: boolean;
 }

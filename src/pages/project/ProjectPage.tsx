@@ -1,20 +1,21 @@
 // import { notification, Text } from '@v-uik/base';
-import { notification } from "antd"; // Замена notification из @v-uik/base
 import { memo, MutableRefObject, UIEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
-import { projectPageApi } from "@pages/project/projectPageApi";
+import { useParams, Outlet, useOutletContext } from "react-router";
+import { notification } from "antd"; // Замена notification из @v-uik/base
+import clsx from "clsx";
+import { observer } from "mobx-react-lite";
+
 import { ControlEventForm, type ControlEventFormProps } from "@pages/project/form/ControlEventForm";
+import { projectPageApi } from "@pages/project/projectPageApi";
 import type { ControlEventDto, FormFieldDescriptor } from "@shared/types/apiTypes";
-import { showErrorNotification } from "@shared/ui/showErrorNotification";
+import { undoPartial } from "@shared/types/utils";
 import { ModalConfirm } from "@shared/ui/ModalConfirm";
 import { modalConfirmClosedState, modalConfirmPromise } from "@shared/ui/ModalConfirmProps";
 import PageTitle from "@shared/ui/PageTitle";
-import { Outlet, useOutletContext } from "react-router";
-import * as styles from "./ProjectPage.module.scss";
-import clsx from "clsx";
-import { undoPartial } from "@shared/types/utils";
+import { showErrorNotification } from "@shared/ui/showErrorNotification";
+
 import { projectPageNavigationStore } from "../../stores/projectPageNavigationStore";
-import { observer } from "mobx-react-lite";
+import * as styles from "./ProjectPage.module.scss";
 
 function translateError(key: string) {
   switch (key) {

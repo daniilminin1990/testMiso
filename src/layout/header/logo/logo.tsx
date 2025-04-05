@@ -1,6 +1,7 @@
-import { FC } from 'react';
-import * as styles from './logo.module.scss';
-import { Link } from 'react-router';
+import { FC } from "react";
+import { Link } from "react-router";
+
+import * as styles from "./logo.module.scss";
 
 interface TLogoProps {
   headline: string;

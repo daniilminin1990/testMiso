@@ -1,7 +1,8 @@
 // ! Замена v-uik
+import { FC, ReactNode } from "react";
 import * as Accordion from "@radix-ui/react-accordion";
 import { ChevronDownIcon } from "@radix-ui/react-icons"; // Иконка стрелки
-import { FC, ReactNode } from "react";
+
 import * as styles from "./ExpandableCard.module.scss"; // Стили подключим отдельно
 
 type ExpandableCardProps = {
