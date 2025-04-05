@@ -6,27 +6,31 @@ import { projectPageNavigationStore } from "@/stores/projectPageNavigationStore"
  * Обработчик клика на элемент навигационной панели (левая колонка) или группы формы в основной колонке.
  * Использует MobX store projectPageNavigationStore
  * Изменят активный элемент навигационной панели, если он не является активным.
- * @param groupNameAndIndex - Имя группы элемента навигационной палени с индексом
+ * @param groupName - Имя группы навигационной палени
+ * @param groupIndex - Индекс элемента в группе навигационной палени
  */
-export const useHandleClickNavigation = (groupNameAndIndex: string | null) => {
+// export const useHandleClickNavigation = (groupNameAndIndex: string | null) => {
+export const useHandleClickNavigation = (groupName: string | null, groupIndex: number | null) => {
   return () => {
-    if (projectPageNavigationStore.activeGroupNameAndIndex === groupNameAndIndex) {
+    if (projectPageNavigationStore.isActiveGroup(groupName, groupIndex)) {
       // Обрываем обработку события, если это уже активный элемент
       return;
     }
 
     // Мгновенное обновление состояния, чтобы сразу отобразить активный элемент в навигационной панели (иначе с задержкой)
     runInAction(() => {
-      projectPageNavigationStore.setActiveGroupNameAndIndex(groupNameAndIndex);
+      projectPageNavigationStore.setActiveGroup(groupName, groupIndex);
     });
 
-    const groupElement = groupNameAndIndex ? document.getElementById(groupNameAndIndex) : null;
+    const uniqueId = `${groupName}_${groupIndex}`;
+    // const groupElement = groupNameAndIndex ? document.getElementById(groupNameAndIndex) : null;
+    const groupElement = groupName ? document.getElementById(uniqueId) : null;
     const headerHeight = document.getElementsByTagName("header").item(0)?.offsetHeight;
-    const index = groupNameAndIndex ? Number(groupNameAndIndex.split("_")[1]) : 0;
+    // const index = groupNameAndIndex ? Number(groupNameAndIndex.split("_")[1]) : 0;
 
     if (groupElement && headerHeight) {
       const groupPosition =
-        groupElement.getBoundingClientRect().top + window.scrollY - (headerHeight + (index === 0 ? 200 : 50));
+        groupElement.getBoundingClientRect().top + window.scrollY - (headerHeight + (groupIndex === 0 ? 200 : 50));
 
       // Скролим до выбранного элемента
       window.scrollTo({ top: groupPosition, behavior: "smooth" });

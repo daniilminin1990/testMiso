@@ -17,15 +17,10 @@ interface IGroupWrapper {
 const Component: FC<IGroupWrapper> = observer((props) => {
   const { children, name, index } = props;
   // Для слайдинга
-  // ++
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const groupRef = useRef<HTMLDivElement | null>(null);
-  const uniqueId = `${name}_${index}`;
+  const uniqueId = `${name}_${index}`; // // ID собирается здесь, если нужен для DOM
   // Обработчик клика по блоку
-  const handleGroupClick = useHandleClickNavigation(uniqueId);
-
-  const borderStyle = projectPageNavigationStore.activeGroupId === index ? "1px solid red" : "1px solid blue";
-  // ++
+  const handleGroupClick = useHandleClickNavigation(name, index);
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useTraceUpdate("FieldGroupWrapper", props);
@@ -33,7 +28,7 @@ const Component: FC<IGroupWrapper> = observer((props) => {
     <div
       ref={groupRef ? (groupRef as MutableRefObject<HTMLDivElement>) : null}
       id={uniqueId}
-      onClick={() => handleGroupClick()}
+      onClick={handleGroupClick}
     >
       <div
         className={clsx(

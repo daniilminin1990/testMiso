@@ -266,7 +266,6 @@ const ProjectPage = observer(() => {
                   projectPageNavigationStore.activeGroupNameAndIndex?.includes(groupName) && styles.active
                 )}
                 onClick={useHandleClickNavigation(groupNameAndIndex)}
-                rel={"noreferrer"}
               >
                 {groupName}
               </div>

@@ -263,9 +263,11 @@ const ProjectPage = observer(() => {
                 key={groupName}
                 className={clsx(
                   styles.group,
-                  projectPageNavigationStore.activeGroupNameAndIndex?.includes(groupName) && styles.active
+                  // projectPageNavigationStore.activeGroupNameAndIndex?.includes(groupName) && styles.active
+                  projectPageNavigationStore.isActiveGroup(groupName, groupIndex) && styles.active
                 )}
-                onClick={useHandleClickNavigation(groupNameAndIndex)}
+                // onClick={useHandleClickNavigation(groupNameAndIndex)}
+                onClick={useHandleClickNavigation(groupName, groupIndex)}
               >
                 {groupName}
               </div>
