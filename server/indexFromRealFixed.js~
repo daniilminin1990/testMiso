@@ -33,42 +33,7 @@ server.get("/check", (req, res) => {
 
 server.get("/controlevent/list", (req, res) => {
   const list = router.db.get("list").value();
-  let items = list.items;
-
-  // Фильтрация
-  const filter = req.query.filter;
-  if (filter && typeof filter === "string") {
-    items = items.filter((item) => item.name.toLowerCase().includes(filter.toLowerCase()));
-  }
-
-  // Сортировка
-  const orderBy = req.query.orderBy;
-  const orderDesc = req.query.orderDesc === "desc";
-  if (orderBy && typeof orderBy === "string") {
-    items.sort((a, b) => {
-      const valueA = a[orderBy.toLowerCase()] || "";
-      const valueB = b[orderBy.toLowerCase()] || "";
-      if (typeof valueA === "string" && typeof valueB === "string") {
-        return orderDesc ? valueB.localeCompare(valueA) : valueA.localeCompare(valueB);
-      }
-      return 0;
-    });
-  }
-
-  // Пагинация
-  const page = parseInt(req.query.page, 10) || 0;
-  const pageSize = parseInt(req.query.pageSize, 10) || 10;
-  const start = page * pageSize;
-  const end = start + pageSize;
-  const paginatedItems = items.slice(start, end);
-
-  // Формируем ответ
-  const response = {
-    total: items.length, // Общее количество после фильтрации
-    items: paginatedItems
-  };
-
-  res.jsonp(response);
+  res.jsonp(list);
 });
 
 server.get("/controlevent/list/meta", (req, res) => {
@@ -95,7 +60,7 @@ server.post("/controlevent/create", (req, res) => {
       stage: "Draft",
       stageDescription: "",
       status: "Draft",
-      description: "Черновик КМ"
+      description: "Черновик КМ",
     },
     fields: [
       {
@@ -112,7 +77,7 @@ server.post("/controlevent/create", (req, res) => {
             valuesFrom: null,
             directoryDescriptor: null,
             isCollection: true,
-            idPropertyName: "Id"
+            idPropertyName: "Id",
           },
           edit: "Editable",
           children: [
@@ -128,10 +93,10 @@ server.post("/controlevent/create", (req, res) => {
                 valuesFrom: null,
                 directoryDescriptor: null,
                 isCollection: false,
-                idPropertyName: null
+                idPropertyName: null,
               },
               edit: "Readonly",
-              children: null
+              children: null,
             },
             {
               propDescriptor: {
@@ -146,13 +111,13 @@ server.post("/controlevent/create", (req, res) => {
                 directoryDescriptor: {
                   id: "00000000-000b-0000-0000-000000000000",
                   name: "Тип ОРД",
-                  type: "Fixed"
+                  type: "Fixed",
                 },
                 isCollection: false,
-                idPropertyName: null
+                idPropertyName: null,
               },
               edit: "Required",
-              children: null
+              children: null,
             },
             {
               propDescriptor: {
@@ -166,10 +131,10 @@ server.post("/controlevent/create", (req, res) => {
                 valuesFrom: null,
                 directoryDescriptor: null,
                 isCollection: false,
-                idPropertyName: null
+                idPropertyName: null,
               },
               edit: "Required",
-              children: null
+              children: null,
             },
             {
               propDescriptor: {
@@ -183,10 +148,10 @@ server.post("/controlevent/create", (req, res) => {
                 valuesFrom: null,
                 directoryDescriptor: null,
                 isCollection: false,
-                idPropertyName: null
+                idPropertyName: null,
               },
               edit: "Required",
-              children: null
+              children: null,
             },
             {
               propDescriptor: {
@@ -200,13 +165,13 @@ server.post("/controlevent/create", (req, res) => {
                 valuesFrom: null,
                 directoryDescriptor: null,
                 isCollection: false,
-                idPropertyName: null
+                idPropertyName: null,
               },
               edit: "Editable",
-              children: null
-            }
-          ]
-        }
+              children: null,
+            },
+          ],
+        },
       },
       {
         value: null,
@@ -222,11 +187,11 @@ server.post("/controlevent/create", (req, res) => {
             valuesFrom: null,
             directoryDescriptor: null,
             isCollection: false,
-            idPropertyName: null
+            idPropertyName: null,
           },
           edit: "Readonly",
-          children: null
-        }
+          children: null,
+        },
       },
       {
         value: null,
@@ -243,14 +208,14 @@ server.post("/controlevent/create", (req, res) => {
             directoryDescriptor: {
               id: "00000000-0009-0000-0000-000000000000",
               name: "ТБ",
-              type: "Fixed"
+              type: "Fixed",
             },
             isCollection: false,
-            idPropertyName: null
+            idPropertyName: null,
           },
           edit: "Editable",
-          children: null
-        }
+          children: null,
+        },
       },
       {
         value: req.body.name || "Новый проект", // Используем имя из запроса или дефолтное
@@ -266,11 +231,11 @@ server.post("/controlevent/create", (req, res) => {
             valuesFrom: null,
             directoryDescriptor: null,
             isCollection: false,
-            idPropertyName: null
+            idPropertyName: null,
           },
           edit: "Required",
-          children: null
-        }
+          children: null,
+        },
       },
       {
         value: null,
@@ -287,14 +252,14 @@ server.post("/controlevent/create", (req, res) => {
             directoryDescriptor: {
               id: "00000000-0002-0000-0000-000000000000",
               name: "Департамент",
-              type: "Fixed"
+              type: "Fixed",
             },
             isCollection: true,
-            idPropertyName: null
+            idPropertyName: null,
           },
           edit: "Editable",
-          children: null
-        }
+          children: null,
+        },
       },
       {
         value: "00000001-0000-0000-0000-000000000000", // Фиксированный администратор по умолчанию
@@ -311,14 +276,14 @@ server.post("/controlevent/create", (req, res) => {
             directoryDescriptor: {
               id: "00000000-0001-0000-0000-000000000000",
               name: "Пользователь",
-              type: "Fixed"
+              type: "Fixed",
             },
             isCollection: false,
-            idPropertyName: null
+            idPropertyName: null,
           },
           edit: "Required",
-          children: null
-        }
+          children: null,
+        },
       },
       {
         value: null,
@@ -334,11 +299,11 @@ server.post("/controlevent/create", (req, res) => {
             valuesFrom: null,
             directoryDescriptor: null,
             isCollection: false,
-            idPropertyName: null
+            idPropertyName: null,
           },
           edit: "Editable",
-          children: null
-        }
+          children: null,
+        },
       },
       {
         value: null,
@@ -355,14 +320,14 @@ server.post("/controlevent/create", (req, res) => {
             directoryDescriptor: {
               id: "00000000-0001-0000-0000-000000000000",
               name: "Пользователь",
-              type: "Fixed"
+              type: "Fixed",
             },
             isCollection: false,
-            idPropertyName: null
+            idPropertyName: null,
           },
           edit: "Editable",
-          children: null
-        }
+          children: null,
+        },
       },
       {
         value: null,
@@ -379,14 +344,14 @@ server.post("/controlevent/create", (req, res) => {
             directoryDescriptor: {
               id: "00000000-000e-0000-0000-000000000000",
               name: "Подразделение руководителя",
-              type: "Fixed"
+              type: "Fixed",
             },
             isCollection: false,
-            idPropertyName: null
+            idPropertyName: null,
           },
           edit: "Editable",
-          children: null
-        }
+          children: null,
+        },
       },
       {
         value: null,
@@ -403,14 +368,14 @@ server.post("/controlevent/create", (req, res) => {
             directoryDescriptor: {
               id: "00000000-0008-0000-0000-000000000000",
               name: "Пункт плана",
-              type: "Fixed"
+              type: "Fixed",
             },
             isCollection: false,
-            idPropertyName: null
+            idPropertyName: null,
           },
           edit: "Editable",
-          children: null
-        }
+          children: null,
+        },
       },
       {
         value: null,
@@ -427,14 +392,14 @@ server.post("/controlevent/create", (req, res) => {
             directoryDescriptor: {
               id: "00000000-0013-0000-0000-000000000000",
               name: "Направления (Карманы)",
-              type: "Fixed"
+              type: "Fixed",
             },
             isCollection: true,
-            idPropertyName: null
+            idPropertyName: null,
           },
           edit: "Editable",
-          children: null
-        }
+          children: null,
+        },
       },
       {
         value: null,
@@ -450,11 +415,11 @@ server.post("/controlevent/create", (req, res) => {
             valuesFrom: null,
             directoryDescriptor: null,
             isCollection: false,
-            idPropertyName: null
+            idPropertyName: null,
           },
           edit: "Editable",
-          children: null
-        }
+          children: null,
+        },
       },
       {
         value: null,
@@ -470,11 +435,11 @@ server.post("/controlevent/create", (req, res) => {
             valuesFrom: null,
             directoryDescriptor: null,
             isCollection: false,
-            idPropertyName: null
+            idPropertyName: null,
           },
           edit: "Editable",
-          children: null
-        }
+          children: null,
+        },
       },
       {
         value: null,
@@ -491,14 +456,14 @@ server.post("/controlevent/create", (req, res) => {
             directoryDescriptor: {
               id: "00000000-000d-0000-0000-000000000000",
               name: "Спринт",
-              type: "Fixed"
+              type: "Fixed",
             },
             isCollection: true,
-            idPropertyName: null
+            idPropertyName: null,
           },
           edit: "Editable",
-          children: null
-        }
+          children: null,
+        },
       },
       {
         value: null,
@@ -515,14 +480,14 @@ server.post("/controlevent/create", (req, res) => {
             directoryDescriptor: {
               id: "00000000-0005-0000-0000-000000000000",
               name: "Риски",
-              type: "Fixed"
+              type: "Fixed",
             },
             isCollection: true,
-            idPropertyName: null
+            idPropertyName: null,
           },
           edit: "Editable",
-          children: null
-        }
+          children: null,
+        },
       },
       {
         value: null,
@@ -539,14 +504,14 @@ server.post("/controlevent/create", (req, res) => {
             directoryDescriptor: {
               id: "00000000-0006-0000-0000-000000000000",
               name: "ESG",
-              type: "Fixed"
+              type: "Fixed",
             },
             isCollection: false,
-            idPropertyName: null
+            idPropertyName: null,
           },
           edit: "Editable",
-          children: null
-        }
+          children: null,
+        },
       },
       {
         value: null,
@@ -563,14 +528,14 @@ server.post("/controlevent/create", (req, res) => {
             directoryDescriptor: {
               id: "00000000-0001-0000-0000-000000000000",
               name: "Пользователь",
-              type: "Fixed"
+              type: "Fixed",
             },
             isCollection: false,
-            idPropertyName: null
+            idPropertyName: null,
           },
           edit: "Editable",
-          children: null
-        }
+          children: null,
+        },
       },
       {
         value: null,
@@ -586,11 +551,11 @@ server.post("/controlevent/create", (req, res) => {
             valuesFrom: null,
             directoryDescriptor: null,
             isCollection: false,
-            idPropertyName: null
+            idPropertyName: null,
           },
           edit: "Editable",
-          children: null
-        }
+          children: null,
+        },
       },
       {
         value: null,
@@ -607,14 +572,14 @@ server.post("/controlevent/create", (req, res) => {
             directoryDescriptor: {
               id: "00000000-0007-0000-0000-000000000000",
               name: "Parent",
-              type: "Fixed"
+              type: "Fixed",
             },
             isCollection: false,
-            idPropertyName: null
+            idPropertyName: null,
           },
           edit: "Editable",
-          children: null
-        }
+          children: null,
+        },
       },
       {
         value: [],
@@ -630,7 +595,7 @@ server.post("/controlevent/create", (req, res) => {
             valuesFrom: null,
             directoryDescriptor: null,
             isCollection: true,
-            idPropertyName: "Id"
+            idPropertyName: "Id",
           },
           edit: "Editable",
           children: [
@@ -646,10 +611,10 @@ server.post("/controlevent/create", (req, res) => {
                 valuesFrom: null,
                 directoryDescriptor: null,
                 isCollection: false,
-                idPropertyName: null
+                idPropertyName: null,
               },
               edit: "Readonly",
-              children: null
+              children: null,
             },
             {
               propDescriptor: {
@@ -664,13 +629,13 @@ server.post("/controlevent/create", (req, res) => {
                 directoryDescriptor: {
                   id: "00000000-0001-0000-0000-000000000000",
                   name: "Пользователь",
-                  type: "Fixed"
+                  type: "Fixed",
                 },
                 isCollection: false,
-                idPropertyName: null
+                idPropertyName: null,
               },
               edit: "Required",
-              children: null
+              children: null,
             },
             {
               propDescriptor: {
@@ -685,17 +650,17 @@ server.post("/controlevent/create", (req, res) => {
                 directoryDescriptor: {
                   id: "00000000-0013-0000-0000-000000000000",
                   name: "Направления (Карманы)",
-                  type: "Fixed"
+                  type: "Fixed",
                 },
                 isCollection: true,
-                idPropertyName: null
+                idPropertyName: null,
               },
               edit: "Editable",
-              children: null
-            }
-          ]
-        }
-      }
+              children: null,
+            },
+          ],
+        },
+      },
     ],
     transitions: [
       {
@@ -703,17 +668,17 @@ server.post("/controlevent/create", (req, res) => {
         goToStatus: "Prepare_Registration",
         active: false,
         forward: true,
-        note: "Отсутствует хотя бы одно соответсвующее ОРД"
+        note: "Отсутствует хотя бы одно соответсвующее ОРД",
       },
       {
         label: "Регистрация КМ (Проведение)",
         goToStatus: "Proceeding_Registration",
         active: false,
         forward: true,
-        note: "Отсутствует хотя бы одно соответсвующее ОРД"
-      }
+        note: "Отсутствует хотя бы одно соответсвующее ОРД",
+      },
     ],
-    timestamp: new Date().toISOString() // Текущая дата и время
+    timestamp: new Date().toISOString(), // Текущая дата и время
   };
 
   // Добавляем проект в "projects"
@@ -745,28 +710,22 @@ server.post("/controlevent/create", (req, res) => {
     risk: [],
     esg: null,
     comment: null,
-    parentId: null
+    parentId: null,
   };
 
   // Обновляем "list.items" и увеличиваем "total"
-  const list = router.db.get("list").value(); // Предполагаем, что "list" — массив с одним объектом
+  const list = router.db.get("list").value()[0]; // Предполагаем, что "list" — массив с одним объектом
   list.items.push(newListItem);
   list.total += 1;
-  router.db.set("list", list).write();
+  router.db.set("list", [list]).write();
 
-  // // Возвращаем только новый проект
-  // res.jsonp(newProjectTemplate);
-  // Вернем только id созданного проекта
-  res.jsonp(newProjectTemplate.id);
+  // Возвращаем только новый проект
+  res.jsonp(newProjectTemplate);
 });
 
 // Пути
-server.get("/directory/batchForControlEvent", (req, res) => {
-  const directories = router.db.get("directories").value();
-  res.jsonp(directories);
-});
-
 server.get("/directory/:id", (req, res) => {
+  // const directory = router.db.get('directories').find({ id: directoryId }).value();
   const directoryId = req.params.id;
   const batch = router.db.get("directories").get("batch").value();
   const items = batch[directoryId];
@@ -775,6 +734,11 @@ server.get("/directory/:id", (req, res) => {
   } else {
     res.status(404).jsonp({ error: "Items for this directory not found" });
   }
+});
+
+server.get("/batchForControlEvent", (req, res) => {
+  const batch = router.db.get("directories").get("batch").value();
+  res.jsonp(batch);
 });
 
 const PORT = 3001;

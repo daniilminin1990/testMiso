@@ -2,6 +2,7 @@
 import { useNavigate } from "react-router";
 import { Button as AntButton } from "antd";
 
+import { appPaths } from "@/app/routes/appPaths";
 import { projectPageApi } from "@/pages/project/projectPageApi";
 import PageTitle from "@/shared/ui/PageTitle";
 import { showErrorNotification } from "@/shared/ui/showErrorNotification";
@@ -11,7 +12,7 @@ import * as styles from "./ProjectListPage.module.scss";
 export const ProjectListPage = () => {
   const navigate = useNavigate();
   const redirectToProject = (projectId: string) => {
-    navigate(`/projects/${projectId}`);
+    navigate(`${appPaths.projects}/${projectId}`);
   };
   return (
     <>

@@ -149,8 +149,7 @@ export const ProjectListTable = (props: Props) => {
       })
       .then((data) => {
         console.log({ data });
-        setRecords(data.items);
-        // setRecords(data[0].items);
+        setRecords(data[0].items);
         setTotalItemsNumber(data.total);
       })
       .catch(showErrorNotification)

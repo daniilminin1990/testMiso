@@ -33,42 +33,7 @@ server.get("/check", (req, res) => {
 
 server.get("/controlevent/list", (req, res) => {
   const list = router.db.get("list").value();
-  let items = list.items;
-
-  // Фильтрация
-  const filter = req.query.filter;
-  if (filter && typeof filter === "string") {
-    items = items.filter((item) => item.name.toLowerCase().includes(filter.toLowerCase()));
-  }
-
-  // Сортировка
-  const orderBy = req.query.orderBy;
-  const orderDesc = req.query.orderDesc === "desc";
-  if (orderBy && typeof orderBy === "string") {
-    items.sort((a, b) => {
-      const valueA = a[orderBy.toLowerCase()] || "";
-      const valueB = b[orderBy.toLowerCase()] || "";
-      if (typeof valueA === "string" && typeof valueB === "string") {
-        return orderDesc ? valueB.localeCompare(valueA) : valueA.localeCompare(valueB);
-      }
-      return 0;
-    });
-  }
-
-  // Пагинация
-  const page = parseInt(req.query.page, 10) || 0;
-  const pageSize = parseInt(req.query.pageSize, 10) || 10;
-  const start = page * pageSize;
-  const end = start + pageSize;
-  const paginatedItems = items.slice(start, end);
-
-  // Формируем ответ
-  const response = {
-    total: items.length, // Общее количество после фильтрации
-    items: paginatedItems
-  };
-
-  res.jsonp(response);
+  res.jsonp(list);
 });
 
 server.get("/controlevent/list/meta", (req, res) => {
@@ -749,24 +714,18 @@ server.post("/controlevent/create", (req, res) => {
   };
 
   // Обновляем "list.items" и увеличиваем "total"
-  const list = router.db.get("list").value(); // Предполагаем, что "list" — массив с одним объектом
+  const list = router.db.get("list").value()[0]; // Предполагаем, что "list" — массив с одним объектом
   list.items.push(newListItem);
   list.total += 1;
-  router.db.set("list", list).write();
+  router.db.set("list", [list]).write();
 
-  // // Возвращаем только новый проект
-  // res.jsonp(newProjectTemplate);
-  // Вернем только id созданного проекта
-  res.jsonp(newProjectTemplate.id);
+  // Возвращаем только новый проект
+  res.jsonp(newProjectTemplate);
 });
 
 // Пути
-server.get("/directory/batchForControlEvent", (req, res) => {
-  const directories = router.db.get("directories").value();
-  res.jsonp(directories);
-});
-
 server.get("/directory/:id", (req, res) => {
+  // const directory = router.db.get('directories').find({ id: directoryId }).value();
   const directoryId = req.params.id;
   const batch = router.db.get("directories").get("batch").value();
   const items = batch[directoryId];
@@ -775,6 +734,11 @@ server.get("/directory/:id", (req, res) => {
   } else {
     res.status(404).jsonp({ error: "Items for this directory not found" });
   }
+});
+
+server.get("/batchForControlEvent", (req, res) => {
+  const batch = router.db.get("directories").get("batch").value();
+  res.jsonp(batch);
 });
 
 const PORT = 3001;
