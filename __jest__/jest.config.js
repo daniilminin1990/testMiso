@@ -8,7 +8,7 @@ module.exports = {
     "^@helpers(.*)": "<rootDir>/../src/helpers/$1",
     "^@hooks(.*)": "<rootDir>/../src/hooks/$1",
     "^@defs(.*)": "<rootDir>/../src/types/$1",
-    "^@pages(.*)": "<rootDir>/../src/pages/$1",
+    "^@/pages(.*)": "<rootDir>/../src/pages/$1",
     "^@routes(.*)": "<rootDir>/../src/routes/$1"
   },
   transform: {

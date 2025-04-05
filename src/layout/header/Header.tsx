@@ -1,4 +1,4 @@
-import { Finder, TFinderProps } from "@shared/ui/finderItem/finderItem";
+import { Finder, TFinderProps } from "@/shared/ui/finderItem/finderItem";
 
 import { AccountBadge, TAccountBadgeProps } from "./accountBadge/acBadge";
 import { Logo } from "./logo/logo";

@@ -2,7 +2,7 @@ import { memo, type MutableRefObject, type ReactNode } from "react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu"; // DropdownMenu из Radix UI
 import { Button as AntButton, Tooltip as AntTooltip } from "antd"; // Button и Tooltip из AntD
 
-import type { ControlEventTransitionDto } from "@shared/types/apiTypes";
+import type { ControlEventTransitionDto } from "@/shared/types/apiTypes";
 // import { ButtonGroup, DropdownMenu, DropdownMenuItem, Tooltip, Button } from '@v-uik/base';
 
 import { useTraceUpdate } from "../../../shared/hooks/debugHooks";
@@ -153,7 +153,7 @@ function createDropdownMenu(
  */
 /**
 
-import type { ControlEventTransitionDto } from "@shared/types/apiTypes";
+import type { ControlEventTransitionDto } from "@/shared/types/apiTypes";
 import {
   ButtonGroup,
   DropdownMenu,

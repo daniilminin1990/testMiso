@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { apiRoutes } from "@shared/api/apiRoutes";
+import { apiRoutes } from "@/shared/api/apiRoutes";
 
 import {
   ControlEventDto,

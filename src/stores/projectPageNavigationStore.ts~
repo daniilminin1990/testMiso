@@ -2,7 +2,7 @@
 import { makeAutoObservable } from "mobx";
 
 class ProjectPageNavigationStore {
-  activeGroupId: number | null = 1; // Сделаем активынм 1 блок
+  activeGroupIndex: number | null = 0; // Сделаем активынм 1 блок
   // isScrolling: boolean = false;
   // isInitialLoad: boolean = true; // Флаг начальной загрузки
 
@@ -11,7 +11,7 @@ class ProjectPageNavigationStore {
   }
 
   setActiveGroupId(id: number) {
-    this.activeGroupId = id;
+    this.activeGroupIndex = id;
   }
 
   // setIsScrolling(scrolling: boolean) {

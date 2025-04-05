@@ -11,9 +11,9 @@ import { Table, Pagination, TablePaginationConfig } from "antd"; // Import AntD 
 import { FilterValue, SorterResult } from "antd/es/table/interface";
 import type { ColumnsType } from "antd/lib/table";
 
-import { FieldType, PropertyDescriptor, type ControlEventListDto } from "@shared/types/apiTypes";
-import { DirectoryValue } from "@shared/ui/DirectoryValue";
-import { showErrorNotification } from "@shared/ui/showErrorNotification";
+import { FieldType, PropertyDescriptor, type ControlEventListDto } from "@/shared/types/apiTypes";
+import { DirectoryValue } from "@/shared/ui/DirectoryValue";
+import { showErrorNotification } from "@/shared/ui/showErrorNotification";
 
 import { projectListApi } from "./projectListApi";
 // import * as styles from "./ProjectListTable.module.css";

@@ -1,12 +1,12 @@
-// import { FormFieldEdit, type DirectoryContent, type PropertyDescriptor } from "@shared/types/apiTypes";
+// import { FormFieldEdit, type DirectoryContent, type PropertyDescriptor } from "@/shared/types/apiTypes";
 // import { useTraceUpdate } from "../../../shared/hooks/debugHooks";
 // import { type FormFieldProps } from "./FormFieldProps";
 // import { ComboBox, type ComboboxProps } from "@v-uik/base";
 // // import { Select } from "antd"; // Новый импорт AntD Select
 // import { memo, useContext, useMemo, useRef } from "react";
 // import { Field, getIn, type FieldProps, type FormikHandlers } from "formik";
-// import { DirectoriesContext, type Directory } from "@shared/contexts/directories/DirectoriesContext";
-// import type { JsonObject } from "@shared/types/json";
+// import { DirectoriesContext, type Directory } from "@/shared/contexts/directories/DirectoriesContext";
+// import type { JsonObject } from "@/shared/types/json";
 //
 // interface DirectoryContentModel extends DirectoryContent {
 //   unavailable?: boolean;

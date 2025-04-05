@@ -1,7 +1,7 @@
 import { memo, type FC } from "react";
 import { Typography } from "antd"; // Импортируем Typography из AntD
 
-import { FormFieldEdit } from "@shared/types/apiTypes";
+import { FormFieldEdit } from "@/shared/types/apiTypes";
 
 import { FieldsLayout } from "./FieldsLayout";
 import { type FormFieldProps } from "./FormFieldProps";

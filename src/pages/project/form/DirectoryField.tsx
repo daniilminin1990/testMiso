@@ -2,9 +2,9 @@ import { memo, useContext, useMemo, useRef } from "react";
 import { Select } from "antd"; // Новый импорт AntD Select
 import { Field, getIn, type FieldProps, type FormikHandlers } from "formik";
 
-import { DirectoriesContext, type Directory } from "@shared/contexts/directories/DirectoriesContext";
-import { FormFieldEdit, type DirectoryContent, type PropertyDescriptor } from "@shared/types/apiTypes";
-import type { JsonObject } from "@shared/types/json";
+import { DirectoriesContext, type Directory } from "@/shared/contexts/directories/DirectoriesContext";
+import { FormFieldEdit, type DirectoryContent, type PropertyDescriptor } from "@/shared/types/apiTypes";
+import type { JsonObject } from "@/shared/types/json";
 
 import { type FormFieldProps } from "./FormFieldProps";
 import { useTraceUpdate } from "../../../shared/hooks/debugHooks";

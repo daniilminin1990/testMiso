@@ -1,9 +1,9 @@
 import { Navigate, RouteObject, createBrowserRouter } from "react-router";
 
-import { appPaths } from "@app/routes/appPaths";
-import Page404 from "@pages/404";
-import ProjectPage from "@pages/project/ProjectPage";
-import { ProjectListPage } from "@pages/projectList/ProjectListPage";
+import { appPaths } from "@/app/routes/appPaths";
+import Page404 from "@/pages/404";
+import ProjectPage from "@/pages/project/ProjectPage";
+import { ProjectListPage } from "@/pages/projectList/ProjectListPage";
 
 import { Layout } from "../../layout/Layout";
 import { LayoutProjectPage } from "../../layout/LayoutProjectPage";

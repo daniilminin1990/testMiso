@@ -1,16 +1,19 @@
 @use "../../shared/styles/variables.scss";
 
 .header {
-  top: 0;
-  width: 100%;
-  height: var(--header-height);
-  z-index: 1000;
-  background: variables.$white;
-  border-bottom: solid 2px variables.$grey;
-  align-items: center;
   position: sticky;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  z-index: 1000;
+  top: 0;
+  height: var(--header-height);
+
+  align-items: center;
+
+  left: 0;
+  right: 0;
+  padding: 20px;
+  border-bottom: solid 2px variables.$grey;
+
+  background: variables.$white;
 }
 
 .headerRow {

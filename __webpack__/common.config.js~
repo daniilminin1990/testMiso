@@ -110,16 +110,19 @@ module.exports = {
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".jsx", ".css", ".scss", ".d.ts"],
     // alias: {
-    //   "@shared": path.resolve(__dirname, "../src/shared"),
+    //   "@/shared": path.resolve(__dirname, "../src/shared"),
     //   "@entities": path.resolve(__dirname, "../src/entities/"),
     //   "@features": path.resolve(__dirname, "../src/features"),
-    //   "@pages": path.resolve(__dirname, "../src/pages"),
+    //   "@/pages": path.resolve(__dirname, "../src/pages"),
     //   "@widgets": path.resolve(__dirname, "../src/widgets"),
-    //   "@app": path.resolve(__dirname, "../src/app"),
+    //   "@/app": path.resolve(__dirname, "../src/app"),
     //   "@server": path.resolve(__dirname, "../src/server"),
     //   "@defs": path.resolve(__dirname, "../src/types"),
     // },
-    plugins: [new TsconfigPathsPlugin()]
+    // plugins: [new TsconfigPathsPlugin()]
+    alias: {
+      "@": path.resolve(__dirname, "..", "src")
+    }
   },
   module: {
     strictExportPresence: true,
@@ -145,7 +148,17 @@ module.exports = {
         test: /\.(?:s[ac]|c)ss$/i,
         use: [
           { loader: devMode ? "style-loader" : MiniCssExtractPlugin.loader },
-          { loader: "css-loader", options: { sourceMap: true } },
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+              modules: {
+                // Включаем CSS-модули (если вы их используете)
+                auto: true, // Автоматическое включение модулей только для файлов с .module. в имени
+                localIdentName: devMode ? "[name]__[local]__[hash:base64:5]" : "[hash:base64:8]"
+              }
+            }
+          },
           { loader: "sass-loader" }
         ]
       },
@@ -258,12 +271,12 @@ const config: Configuration = {
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".jsx", ".css", ".scss", ".d.ts"],
     alias: {
-      "@shared": path.resolve(__dirname, "../src/shared"),
+      "@/shared": path.resolve(__dirname, "../src/shared"),
       "@entities": path.resolve(__dirname, "../src/entities/"),
       "@features": path.resolve(__dirname, "../src/features"),
-      "@pages": path.resolve(__dirname, "../src/pages"),
+      "@/pages": path.resolve(__dirname, "../src/pages"),
       "@widgets": path.resolve(__dirname, "../src/widgets"),
-      "@app": path.resolve(__dirname, "../src/app"),
+      "@/app": path.resolve(__dirname, "../src/app"),
       "@server": path.resolve(__dirname, "../src/server"),
       "@defs": path.resolve(__dirname, "../src/types"),
     },

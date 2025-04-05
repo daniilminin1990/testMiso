@@ -1,6 +1,6 @@
 import { memo } from "react";
 
-import { FieldType } from "@shared/types/apiTypes";
+import { FieldType } from "@/shared/types/apiTypes";
 
 import { ArrayField } from "./ArrayField";
 import { ComplexField } from "./ComplexField";

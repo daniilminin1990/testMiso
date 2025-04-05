@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { ProjectListTable } from "@pages/projectList/ProjectListTable";
+import { ProjectListTable } from "@/pages/projectList/ProjectListTable";
 
 import { DelayedInput } from "../../shared/ui/DelayedInput";
 // refactor props

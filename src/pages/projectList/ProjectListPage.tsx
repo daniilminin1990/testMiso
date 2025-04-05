@@ -2,9 +2,9 @@
 import { useNavigate } from "react-router";
 import { Button as AntButton } from "antd";
 
-import { projectPageApi } from "@pages/project/projectPageApi";
-import PageTitle from "@shared/ui/PageTitle";
-import { showErrorNotification } from "@shared/ui/showErrorNotification";
+import { projectPageApi } from "@/pages/project/projectPageApi";
+import PageTitle from "@/shared/ui/PageTitle";
+import { showErrorNotification } from "@/shared/ui/showErrorNotification";
 
 import { ProjectListContainer } from "./ProjectListContainer";
 import * as styles from "./ProjectListPage.module.scss";

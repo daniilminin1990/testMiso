@@ -1,6 +1,6 @@
 import { type FC, memo, useContext } from "react";
 
-import type { DirectoryDescriptor } from "@shared/types/apiTypes";
+import type { DirectoryDescriptor } from "@/shared/types/apiTypes";
 
 import { DirectoriesContext, type Directory } from "../contexts/directories/DirectoriesContext";
 // TODO EDIT MININ QUESTION ПОЧЕМУ НЕ РАБОТАЕТ ЭТОТ ИМПОРТ???

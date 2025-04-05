@@ -2,7 +2,7 @@ import { useRef, useState, UIEvent } from "react";
 import { Outlet } from "react-router";
 import clsx from "clsx";
 
-import AppRouter from "@app/routes/AppRouter";
+import AppRouter from "@/app/routes/AppRouter";
 
 import { Header } from "./header/Header";
 import * as styles from "./LayoutProjectPage.module.scss";

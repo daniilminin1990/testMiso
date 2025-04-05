@@ -1,15 +1,7 @@
 @use './colors';
+@use './typography';
+@use './boilerplate';
 @use './theme';
-
-:root {
-  --header-height: 170px;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 @font-face {
   font-family: Roboto;
@@ -44,29 +36,4 @@
   font-weight: 600;
   font-display: fallback;
   src: url("shared/fonts/Roboto-Black.ttf") format("truetype");
-}
-
-html,
-body {
-  box-sizing: border-box;
-
-  // min-width: 1200px;
-  font-family: Roboto;
-  font-size: 16px;
-  font-weight: 300;
-}
-
-* {
-  font-family: Roboto;
-  font-weight: 300;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-a {
-  text-decoration: none;
 }

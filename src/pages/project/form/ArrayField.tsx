@@ -12,10 +12,10 @@ import { Typography, Button as AntButton } from "antd"; // Замена Text и 
 import { Field, FieldArray, type FieldProps } from "formik";
 import { IoTrash } from "react-icons/io5";
 
-import { FieldType, FormFieldEdit, type FormFieldDescriptor } from "@shared/types/apiTypes";
-import type { JsonObject } from "@shared/types/json";
-import { DirectoryValue } from "@shared/ui/DirectoryValue";
-import { modalConfirmClosedState } from "@shared/ui/ModalConfirmProps";
+import { FieldType, FormFieldEdit, type FormFieldDescriptor } from "@/shared/types/apiTypes";
+import type { JsonObject } from "@/shared/types/json";
+import { DirectoryValue } from "@/shared/ui/DirectoryValue";
+import { modalConfirmClosedState } from "@/shared/ui/ModalConfirmProps";
 
 import { type FormFieldProps } from "./FormFieldProps";
 import { RecursiveField } from "./RecursiveField";

@@ -1,9 +1,18 @@
 :root {
   // basic colors
   --color-black: #111;
-  --color-white: #fff;
-  --color-dark: #41454d;
+  --color-dark-grey: #41454d;
   --color-grey: #a3b2cd;
+  --color-light-grey: #d5d6dc;
+  --color-lightest-grey: #f3f4f6;
+  --color-white: #fff;
+
+  // base colors
+  --color-base-100: #d2e5fd;
+  --color-base-300: #5d9df1;
+  --color-base-500: #1c69f8;
+  --color-base-700: #1e40af;
+  --color-base-900: #162a65;
   --color-base: #2a72f7;
 
   // accent colors

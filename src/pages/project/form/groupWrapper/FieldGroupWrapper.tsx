@@ -1,7 +1,9 @@
-import { memo, ReactNode, useRef, FC } from "react";
+import { memo, ReactNode, useRef, FC, MutableRefObject } from "react";
+import clsx from "clsx";
 import { observer } from "mobx-react-lite";
 
-import { useTraceUpdate } from "@shared/hooks/debugHooks";
+import { useHandleClickNavigation } from "@/pages/project/useHandleClickNavigation";
+import { useTraceUpdate } from "@/shared/hooks/debugHooks";
 
 import { projectPageNavigationStore } from "../../../../stores/projectPageNavigationStore";
 import * as styles from "./FieldGroupWrapper.module.scss";
@@ -12,42 +14,39 @@ interface IGroupWrapper {
   index: number;
 }
 
-export const FieldGroupWrapper: FC<IGroupWrapper> = memo(
-  observer((props) => {
-    const { children, name, index } = props;
-    // Для слайдинга
-    // ++
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const groupRef = useRef<HTMLDivElement | null>(null);
-    // Обработчик клика по блоку
-    const handleGroupClick = () => {
-      if (projectPageNavigationStore.activeGroupId === index) {
-        console.log("Не нажал в FIELDGROUOPWRAPPER");
-        return;
-      }
-      console.log("НАЖАЛ В FIELDGROUOPWRAPPER");
-      const groupElement = document.getElementById(index.toString());
-      if (groupElement) {
-        const headerHeight = 200; // Высота header
-        const groupPosition = groupElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+const Component: FC<IGroupWrapper> = observer((props) => {
+  const { children, name, index } = props;
+  // Для слайдинга
+  // ++
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const groupRef = useRef<HTMLDivElement | null>(null);
+  // Обработчик клика по блоку
+  const handleGroupClick = useHandleClickNavigation(index);
 
-        // Устанавливаем активный блок
-        projectPageNavigationStore.setActiveGroupId(index);
+  const borderStyle = projectPageNavigationStore.activeGroupId === index ? "1px solid red" : "1px solid blue";
+  // ++
 
-        // Прокручиваем к блоку
-        window.scrollTo({ top: groupPosition, behavior: "smooth" });
-      }
-    };
-    const borderStyle = projectPageNavigationStore.activeGroupId === index ? "1px solid red" : "1px solid blue";
-    // ++
-
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useTraceUpdate("FieldGroupWrapper", props);
-    return (
-      <div id={index.toString()} ref={groupRef} onClick={handleGroupClick} style={{ border: borderStyle }}>
-        <div className={styles.fieldGroupTitle}>{name}</div>
-        <div className={styles.fieldGroup}>{children}</div>
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useTraceUpdate("FieldGroupWrapper", props);
+  return (
+    <div
+      ref={groupRef ? (groupRef as MutableRefObject<HTMLDivElement>) : null}
+      id={index.toString()}
+      onClick={() => handleGroupClick()}
+    >
+      <div
+        className={clsx(
+          styles.fieldGroupTitle,
+          projectPageNavigationStore.activeGroupIndex === index && styles.activeText
+        )}
+      >
+        {name}
       </div>
-    );
-  })
-);
+      <div className={clsx(styles.fieldGroup, projectPageNavigationStore.activeGroupIndex === index && styles.active)}>
+        {children}
+      </div>
+    </div>
+  );
+});
+
+export const FieldGroupWrapper = memo(Component);

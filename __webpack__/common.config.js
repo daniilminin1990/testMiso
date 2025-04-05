@@ -110,16 +110,19 @@ module.exports = {
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".jsx", ".css", ".scss", ".d.ts"],
     // alias: {
-    //   "@shared": path.resolve(__dirname, "../src/shared"),
+    //   "@/shared": path.resolve(__dirname, "../src/shared"),
     //   "@entities": path.resolve(__dirname, "../src/entities/"),
     //   "@features": path.resolve(__dirname, "../src/features"),
-    //   "@pages": path.resolve(__dirname, "../src/pages"),
+    //   "@/pages": path.resolve(__dirname, "../src/pages"),
     //   "@widgets": path.resolve(__dirname, "../src/widgets"),
-    //   "@app": path.resolve(__dirname, "../src/app"),
+    //   "@/app": path.resolve(__dirname, "../src/app"),
     //   "@server": path.resolve(__dirname, "../src/server"),
     //   "@defs": path.resolve(__dirname, "../src/types"),
     // },
     plugins: [new TsconfigPathsPlugin()]
+    // alias: {
+    //   "@": path.resolve(__dirname, "..", "src")
+    // }
   },
   module: {
     strictExportPresence: true,
@@ -268,12 +271,12 @@ const config: Configuration = {
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".jsx", ".css", ".scss", ".d.ts"],
     alias: {
-      "@shared": path.resolve(__dirname, "../src/shared"),
+      "@/shared": path.resolve(__dirname, "../src/shared"),
       "@entities": path.resolve(__dirname, "../src/entities/"),
       "@features": path.resolve(__dirname, "../src/features"),
-      "@pages": path.resolve(__dirname, "../src/pages"),
+      "@/pages": path.resolve(__dirname, "../src/pages"),
       "@widgets": path.resolve(__dirname, "../src/widgets"),
-      "@app": path.resolve(__dirname, "../src/app"),
+      "@/app": path.resolve(__dirname, "../src/app"),
       "@server": path.resolve(__dirname, "../src/server"),
       "@defs": path.resolve(__dirname, "../src/types"),
     },

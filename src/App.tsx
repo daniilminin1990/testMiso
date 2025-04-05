@@ -1,15 +1,13 @@
-import "./App.scss";
-
 import { useEffect, useState } from "react";
 import { RouterProvider } from "react-router";
 import { ConfigProvider, notification } from "antd"; // Если используешь Ant Design
 // Для уведомлений. Вместо тех, которые от v-uik
 
-import { router } from "@app/routes/router";
-import { directoryApi } from "@shared/contexts/directories/direcroryApi";
-import { DirectoriesContext } from "@shared/contexts/directories/DirectoriesContext";
-import type { DirectoryContent } from "@shared/types/apiTypes";
-import { showErrorNotification } from "@shared/ui/showErrorNotification";
+import { router } from "@/app/routes/router";
+import { directoryApi } from "@/shared/contexts/directories/direcroryApi";
+import { DirectoriesContext } from "@/shared/contexts/directories/DirectoriesContext";
+import type { DirectoryContent } from "@/shared/types/apiTypes";
+import { showErrorNotification } from "@/shared/ui/showErrorNotification";
 
 import * as styles from "./App.module.scss";
 
@@ -41,21 +39,21 @@ export default function App() {
 }
 
 // ! ОРИГИНАЛ
-// import './App.scss';
+// import './index.scss';
 // import * as styles from './App.module.scss';
 //
 // import { useEffect, useState } from 'react';
 // import { RouterProvider } from 'react-router';
 // import { ConfigProvider } from 'antd'; // Если используешь Ant Design
-// import { whiteInputTheme } from '@shared/theme/whiteInputTheme';
+// import { whiteInputTheme } from '@/shared/theme/whiteInputTheme';
 // import { DateLibAdapterProvider, NotificationContainer, ThemeProvider, useResetCss } from '@v-uik/base';
 // import { DateFnsAdapter } from '@v-uik/date-picker/dist/adapters/date-fns';
 // import { ru } from 'date-fns/locale';
-// import type { DirectoryContent } from '@shared/types/apiTypes';
-// import { DirectoriesContext } from '@shared/contexts/directories/DirectoriesContext';
-// import { showErrorNotification } from '@shared/ui/showErrorNotification';
-// import { router } from '@app/routes/router';
-// import { directoryApi } from '@shared/contexts/directories/direcroryApi';
+// import type { DirectoryContent } from '@/shared/types/apiTypes';
+// import { DirectoriesContext } from '@/shared/contexts/directories/DirectoriesContext';
+// import { showErrorNotification } from '@/shared/ui/showErrorNotification';
+// import { router } from '@/app/routes/router';
+// import { directoryApi } from '@/shared/contexts/directories/direcroryApi';
 
 // const options: ConstructorParameters<typeof DateFnsAdapter>[0] = { locale: ru };
 

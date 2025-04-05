@@ -3,9 +3,9 @@ import { Typography } from "antd"; // Новый импорт
 import { Formik, type FormikHelpers } from "formik";
 
 // import * as yup from 'yup';
-import { FieldGroupWrapper } from "@/pages/project/form/groupWrapper/FieldGroupWrapper";
 import { type ControlEventDto, type ControlEventTransitionDto } from "@/shared/types/apiTypes";
 import type { JsonObject } from "@/shared/types/json";
+import { FieldGroupWrapper } from "@/pages/project/form/groupWrapper/FieldGroupWrapper";
 
 import { FieldsLayout } from "./FieldsLayout";
 import { FormButtons } from "./FormButtons";
