@@ -7,7 +7,7 @@ import { observer } from "mobx-react-lite";
 
 import { ControlEventForm, type ControlEventFormProps } from "@/pages/project/form/ControlEventForm";
 import { projectPageApi } from "@/pages/project/projectPageApi";
-import type { ControlEventDto, FormFieldDescriptor } from "@/shared/types/apiTypes";
+import type { ControlEventDto, FormFieldDescriptor, FormFieldValue } from "@/shared/types/apiTypes";
 import { undoPartial } from "@/shared/types/utils";
 import { ModalConfirm } from "@/shared/ui/ModalConfirm";
 import { modalConfirmClosedState, modalConfirmPromise } from "@/shared/ui/ModalConfirmProps";
@@ -233,11 +233,14 @@ const ProjectPage = observer(() => {
     if (data) {
       return Object.entries(undoPartial(Object.groupBy(data.fields, (x) => x.descriptor.propDescriptor.group)));
     }
-    return [];
+    return []; // Unexpected
   }, [data]);
 
-  const activeGroupName = projectPageNavigationStore.activeGroupNameAndIndex;
-  const groupIndexCalculated = activeGroupName ? activeGroupName.split("_")[1] : 0;
+  // const activeGroupName = projectPageNavigationStore.activeGroupNameAndIndex;
+  // const groupIndexCalculated = activeGroupName ? activeGroupName.split("_")[1] : 0;
+  // const arrayOfFormFieldsFromGroup = groups[groupIndexCalculated]?.[1];
+
+  const groupIndexCalculated = projectPageNavigationStore.activeGroupIndex ?? 0;
   const arrayOfFormFieldsFromGroup = groups[groupIndexCalculated]?.[1];
 
   return data ? (
@@ -257,7 +260,7 @@ const ProjectPage = observer(() => {
         <nav className={clsx(styles.side, styles.navigation)}>
           {groups.map((group, groupIndex) => {
             const [groupName, groupItems] = group;
-            const groupNameAndIndex = `${groupName}_${groupIndex}`;
+            // const groupNameAndIndex = `${groupName}_${groupIndex}`;
             return (
               <div
                 key={groupName}

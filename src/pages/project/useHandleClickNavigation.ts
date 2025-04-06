@@ -12,7 +12,7 @@ import { projectPageNavigationStore } from "@/stores/projectPageNavigationStore"
 // export const useHandleClickNavigation = (groupNameAndIndex: string | null) => {
 export const useHandleClickNavigation = (groupName: string | null, groupIndex: number | null) => {
   return () => {
-    if (projectPageNavigationStore.isActiveGroup(groupName, groupIndex)) {
+    if (groupName !== null && groupIndex !== null && projectPageNavigationStore.isActiveGroup(groupName, groupIndex)) {
       // Обрываем обработку события, если это уже активный элемент
       return;
     }

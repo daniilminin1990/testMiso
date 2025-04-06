@@ -105,7 +105,6 @@ const PlainFieldInternal: React.FC<PlainFieldInternalProps> = memo((props) => {
       return (
         <div color="grey">
           {inputId} ({pd.type}): <code>[{value as string}]</code>
-          {/* ДЛЯ ПОКАЗА ОШИБОК*/}
           {touched[inputId] && error && <div color="red">{JSON.stringify(error)}</div>}
         </div>
       );

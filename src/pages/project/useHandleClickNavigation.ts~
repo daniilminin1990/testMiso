@@ -6,12 +6,17 @@ import { projectPageNavigationStore } from "@/stores/projectPageNavigationStore"
  * Обработчик клика на элемент навигационной панели (левая колонка) или группы формы в основной колонке.
  * Использует MobX store projectPageNavigationStore
  * Изменят активный элемент навигационной панели, если он не является активным.
- * @param groupNameAndIndex - Имя группы элемента навигационной палени с индексом
+ * @param groupName - Имя группы навигационной палени
+ * @param groupIndex - Индекс элемента в группе навигационной палени
  */
 // export const useHandleClickNavigation = (groupNameAndIndex: string | null) => {
 export const useHandleClickNavigation = (groupName: string | null, groupIndex: number | null) => {
   return () => {
-    if (projectPageNavigationStore.isActiveGroup(groupName, groupIndex)) {
+    if (
+      groupName !== null &&
+      groupIndex !== null &&
+      projectPageNavigationStore.isActiveGroup(groupName, groupIndex)
+    ) {
       // Обрываем обработку события, если это уже активный элемент
       return;
     }

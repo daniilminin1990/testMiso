@@ -6223,7 +6223,29 @@
           "note": "Отсутствует хотя бы одно соответсвующее ОРД"
         }
       ],
-      "timestamp": "2025-04-05T16:27:17.217Z"
+      "timestamp": "2025-04-06T09:18:53.969Z",
+      "values": {
+        "OADocuments": [],
+        "TempNumber": null,
+        "ReviewDepartmentId": null,
+        "Name": "Новый проект",
+        "CheckDepartmentId": null,
+        "AdministratorId": "00000001-0000-0000-0000-000000000000",
+        "PrepareStartDate": null,
+        "HeadId": null,
+        "HeadDepartmentId": null,
+        "PlanPoint": null,
+        "Directions": null,
+        "StartDate": null,
+        "Goal": null,
+        "Sprint": null,
+        "Risk": null,
+        "Esg": null,
+        "CuratorId": null,
+        "Comment": null,
+        "ParentId": null,
+        "Team": []
+      }
     }
   ],
   "list": {

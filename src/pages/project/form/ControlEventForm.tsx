@@ -1,8 +1,8 @@
 import { memo, useMemo, useRef, type FC, type ReactNode } from "react";
 import { Typography } from "antd"; // Новый импорт
 import { Formik, type FormikHelpers } from "formik";
+import * as yup from "yup";
 
-// import * as yup from 'yup';
 import { FieldGroupWrapper } from "@/pages/project/form/groupWrapper/FieldGroupWrapper";
 import { type ControlEventDto, type ControlEventTransitionDto } from "@/shared/types/apiTypes";
 import type { JsonObject } from "@/shared/types/json";
@@ -18,6 +18,20 @@ export interface ControlEventFormProps {
   data: ControlEventDto;
   handleSubmit: (values: JsonObject, goToStatus: ControlEventTransitionDto | null) => Promise<void>;
 }
+
+// ФУНКЦИЯ ВАЛИДАЦИИ ФОРМЫ С Yup
+const generateValidationSchema = (fields: any) => {
+  const schemaShape = fields.reduce((acc: any, field: any) => {
+    const fieldId = field.descriptor.propDescriptor.id; // Идентификатор поля
+    // Минимальная проверка: поле не должно быть undefined
+    acc[fieldId] = yup
+      .mixed()
+      .required(`${field.descriptor.propDescriptor.title || fieldId} обязательно для заполнения`);
+    return acc;
+  }, {});
+
+  return yup.object().shape(schemaShape);
+};
 
 export const ControlEventForm: FC<ControlEventFormProps> = memo((props) => {
   // const signupSchema = yup.object().shape({
@@ -43,8 +57,16 @@ export const ControlEventForm: FC<ControlEventFormProps> = memo((props) => {
     // formik.setSubmitting(false) // call manually for synchronous submit function
   };
 
+  // ИСПОЛЬЗОВАНИЕ ВАЛИДАЦИИ НА КЛИЕНТЕ
+  const validationSchema = useMemo(() => generateValidationSchema(data.fields), [data.fields]);
+
   return (
-    <Formik<JsonObject> enableReinitialize initialValues={initialValues} onSubmit={formSubmit}>
+    <Formik<JsonObject>
+      enableReinitialize
+      initialValues={initialValues}
+      onSubmit={formSubmit}
+      validationSchema={validationSchema}
+    >
       {(formik) => (
         <form autoComplete="off">
           <DynamicForm data={data} />

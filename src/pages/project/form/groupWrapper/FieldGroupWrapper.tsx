@@ -44,7 +44,7 @@ const Component: FC<IGroupWrapper> = observer((props) => {
         className={clsx(
           styles.fieldGroup,
           // projectPageNavigationStore.activeGroupNameAndIndex === uniqueId && styles.active
-          projectPageNavigationStore.isActiveGroup(name, index) && styles.activeText
+          projectPageNavigationStore.isActiveGroup(name, index) && styles.active
         )}
       >
         {children}

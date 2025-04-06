@@ -42,6 +42,7 @@ server.get("/controlevent/list", (req, res) => {
   }
 
   // Сортировка
+  // a и b — это два объекта из массива items, которые сравниваются при сортировке. Например, каждый объект может выглядеть так (на основе структуры из db.json):
   const orderBy = req.query.orderBy;
   const orderDesc = req.query.orderDesc === "desc";
   if (orderBy && typeof orderBy === "string") {
@@ -88,6 +89,8 @@ server.get("/controlevent/:id", (req, res) => {
 });
 
 server.post("/controlevent/create", (req, res) => {
+  const list = router.db.get("list").value();
+  const numberOfItem = list.items.length + 1;
   // Шаблон для нового проекта со статусом "Черновик КМ"
   const newProjectTemplate = {
     id: uuidv4(),
@@ -724,7 +727,8 @@ server.post("/controlevent/create", (req, res) => {
     id: newProjectTemplate.id,
     status: "Черновик КМ",
     stage: "",
-    number: null, // Можно добавить логику генерации номера, если нужно
+    // number: null, // Можно добавить логику генерации номера, если нужно
+    number: `Test-${numberOfItem}`, // Можно добавить логику генерации номера, если нужно
     name: req.body.name || "Новый проект",
     administratorId: "00000001-0000-0000-0000-000000000000",
     curatorId: null,
@@ -749,13 +753,90 @@ server.post("/controlevent/create", (req, res) => {
   };
 
   // Обновляем "list.items" и увеличиваем "total"
-  const list = router.db.get("list").value(); // Предполагаем, что "list" — массив с одним объектом
+  // const list = router.db.get("list").value(); // Предполагаем, что "list" — массив с одним объектом
   list.items.push(newListItem);
   list.total += 1;
   router.db.set("list", list).write();
 
-  // Возвращаем только новый проект
-  res.jsonp(newProjectTemplate);
+  // // Возвращаем только новый проект
+  // res.jsonp(newProjectTemplate);
+  // Вернем только id созданного проекта
+  res.jsonp(newProjectTemplate.id);
+});
+
+// // update, обновление
+// server.patch("/controlevent/:id", (req, res) => {
+//   const projectId = req.params.id;
+//   const { timestamp, values, goToStatus } = req.body;
+//
+//   const project = router.db.get("projects").find({ id: projectId }).value();
+//   if (!project) {
+//     return res.status(404).jsonp({ error: "Project not found" });
+//   }
+//
+//   if (timestamp !== project.timestamp) {
+//     return res.status(409).jsonp({ error: "Data is outdated" });
+//   }
+//
+//   router.db
+//     .get("projects")
+//     .find({ id: projectId })
+//     .assign({ ...project, values })
+//     .write();
+//   res.jsonp({ ...project, values });
+// });
+
+// update, обновление проекта и валидация
+server.patch("/controlevent/:id", (req, res) => {
+  const projectId = req.params.id;
+  const updatedData = req.body;
+
+  const project = router.db.get("projects").find({ id: projectId }).value();
+  if (!project) {
+    return res.status(404).jsonp({ error: "Project not found" });
+  }
+
+  if (updatedData.timestamp && updatedData.timestamp !== project.timestamp) {
+    return res.status(409).jsonp({ status: "conflict", error: "Data is outdated" });
+  }
+
+  // Валидация полей
+  const errors = {};
+
+  if (!updatedData.values?.Name) {
+    errors["$.values.Name"] = ["is required"];
+  }
+
+  if (!updatedData.values?.AdministratorId) {
+    errors["$.values.AdministratorId"] = ["is required"];
+  }
+
+  // Добавьте другие проверки в зависимости от статуса
+  if (Object.keys(errors).length > 0) {
+    return res.status(400).jsonp({
+      type: "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+      title: "Validation Error",
+      status: 400,
+      errors: errors
+    });
+  }
+
+  // Обновление данных
+  const updatedProject = { ...project, ...updatedData, timestamp: new Date().toISOString() };
+  router.db.get("projects").find({ id: projectId }).assign(updatedProject).write();
+
+  const list = router.db.get("list").value();
+  const listItem = list.items.find((item) => item.id === projectId);
+  if (listItem) {
+    const updatedListItem = {
+      ...listItem,
+      name: updatedData.values?.Name || listItem.name,
+      status: updatedData.goToStatus || listItem.status
+    };
+    router.db.get("list").get("items").find({ id: projectId }).assign(updatedListItem).write();
+  }
+
+  res.jsonp({ status: "ok", ...updatedProject });
 });
 
 // Пути
